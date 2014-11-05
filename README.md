@@ -1,4 +1,4 @@
-class-names
+Classnames
 ===========
 
-A simple javascript utility for conditionally joining classNames together
+A simple javascript utility for conditionally joining classNames together.
