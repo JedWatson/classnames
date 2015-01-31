@@ -14,7 +14,7 @@ function classNames() {
 			}));
 		}
 	}
-	return classes.join(' ') || '';
+	return classes.join(' ');
 }
 
 module.exports = classNames;
