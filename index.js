@@ -1,15 +1,20 @@
-function classnames() {
+function classNames() {
 	var args = arguments, classes = [];
 	for (var i = 0; i < args.length; i++) {
-		if (args[i] && 'string' === typeof args[i]) {
-			classes.push(args[i]);
-		} else if ('object' === typeof args[i]) {
-			classes = classes.concat(Object.keys(args[i]).filter(function(cls) {
-				return args[i][cls];
+		var arg = args[i];
+		if (arg == null) {
+			continue;
+		}
+
+		if ('string' === typeof arg) {
+			classes.push(arg);
+		} else if ('object' === typeof arg) {
+			classes = classes.concat(Object.keys(arg).filter(function(cls) {
+				return arg[cls];
 			}));
 		}
 	}
-	return classes.join(' ') || undefined;
+	return classes.join(' ') || '';
 }
 
-module.exports = classnames;
+module.exports = classNames;

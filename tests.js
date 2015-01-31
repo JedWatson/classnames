@@ -1,9 +1,9 @@
 var assert = require("assert");
-var classnames = require('./');
+var classNames = require('./');
 
-describe('classnames', function() {
+describe('classNames', function() {
   it('keeps object keys with truthy values', function() {
-    assert.equal(classnames({
+    assert.equal(classNames({
       a: true,
       b: false,
       c: 0,
@@ -14,10 +14,14 @@ describe('classnames', function() {
   });
 
   it('joins arrays of class names and ignore falsy values', function() {
-    assert.equal(classnames('a', 0, 'b'), 'a b');
+    assert.equal(classNames('a', 0, null, undefined, 'b'), 'a b');
   });
 
   it('supports heterogenous arguments', function() {
-    assert.equal(classnames({a: true}, 'b', 0), 'a b');
+    assert.equal(classNames({a: true}, 'b', 0), 'a b');
+  });
+
+  it('returns an empty string for an empty configuration', function() {
+    assert.equal(classNames({}), '');
   });
 });
