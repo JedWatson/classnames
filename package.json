@@ -10,7 +10,7 @@
     "url": "https://github.com/JedWatson/classnames.git"
   },
   "scripts": {
-    "test": "echo \"no tests yet\" && exit 0"
+    "test": "./node_modules/.bin/mocha tests.js"
   },
   "keywords": [
     "css",
@@ -19,5 +19,8 @@
     "classnames",
     "util",
     "utility"
-  ]
+  ],
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
 }
