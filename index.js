@@ -4,11 +4,11 @@ function classNames() {
 
 	for (var i = 0; i < args.length; i++) {
 		var arg = args[i];
-		if (arg == null) {
+		if (!arg) {
 			continue;
 		}
 
-		if ('string' === typeof arg) {
+		if ('string' === typeof arg || 'number' === typeof arg) {
 			classes.push(arg);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {

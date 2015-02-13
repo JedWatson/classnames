@@ -13,12 +13,16 @@ describe('classNames', function() {
     }), 'a f');
   });
 
-  it('joins arrays of class names and ignore non-string values', function() {
-    assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a b');
+  it('joins arrays of class names and ignore falsy values', function() {
+    assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
   });
 
   it('supports heterogenous arguments', function() {
     assert.equal(classNames({a: true}, 'b', 0), 'a b');
+  });
+
+  it('should be trimmed', function() {
+    assert.equal(classNames('', 'b', {}, ''), 'b');
   });
 
   it('returns an empty string for an empty configuration', function() {
