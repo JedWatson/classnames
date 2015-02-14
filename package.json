@@ -1,6 +1,6 @@
 {
   "name": "classnames",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple utility for conditionally joining classNames together",
   "main": "index.js",
   "author": "Jed Watson",
@@ -13,6 +13,7 @@
     "test": "./node_modules/.bin/mocha tests.js"
   },
   "keywords": [
+    "react",
     "css",
     "classes",
     "classname",
