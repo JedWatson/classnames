@@ -22,4 +22,5 @@ function classNames() {
 	return classes.join(' ');
 }
 
-module.exports = classNames;
+// safely export classNames in case the script is included directly on a page
+try { module.exports = classNames; } catch(e) {};
