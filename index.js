@@ -23,4 +23,6 @@ function classNames() {
 }
 
 // safely export classNames in case the script is included directly on a page
-try { module.exports = classNames; } catch(e) {};
+if (module && module.exports) {
+	module.exports = classNames;
+}
