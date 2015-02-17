@@ -23,6 +23,6 @@ function classNames() {
 }
 
 // safely export classNames in case the script is included directly on a page
-if (module && module.exports) {
+if (typeof module !== 'undefined' && module.exports) {
 	module.exports = classNames;
 }
