@@ -10,7 +10,7 @@
     "url": "https://github.com/JedWatson/classnames.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha tests.js"
+    "test": "mocha tests.js"
   },
   "keywords": [
     "react",
