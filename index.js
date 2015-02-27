@@ -12,10 +12,9 @@ function classNames() {
 			classes.push(arg);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {
-				if (!arg.hasOwnProperty(key) || !arg[key]) {
-					continue;
+				if (arg.hasOwnProperty(key) && arg[key]) {
+					classes.push(key);
 				}
-				classes.push(key);
 			}
 		}
 	}
