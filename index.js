@@ -3,22 +3,35 @@ function classNames() {
 	var classes = [];
 
 	for (var i = 0; i < args.length; i++) {
-		var arg = args[i];
-		if (!arg) {
-			continue;
-		}
-
-		if ('string' === typeof arg || 'number' === typeof arg) {
-			classes.push(arg);
-		} else if ('object' === typeof arg) {
-			for (var key in arg) {
-				if (arg.hasOwnProperty(key) && arg[key]) {
-					classes.push(key);
-				}
-			}
-		}
+		checkArg(args[i]);
 	}
 	return classes.join(' ');
+
+	function checkArg(arg) {
+		if (!arg) {
+			return;
+		}
+
+		var x;
+		switch (Object.prototype.toString.call(arg).match(/(\w+)\]/)[1]) {
+			case 'String':
+			case 'Number':
+				classes.push(arg);
+				break;
+			case 'Array':
+				for (x = 0; x < arg.length; x++) {
+					checkArg(arg[x]);
+				}
+				break;
+			case 'Object':
+				for (x in arg) {
+					if (arg.hasOwnProperty(x) && arg[x]) {
+						classes.push(x);
+					}
+				}
+				break;
+		}
+	}
 }
 
 // safely export classNames in case the script is included directly on a page
