@@ -13,7 +13,7 @@ describe('classNames', function() {
     }), 'a f');
   });
 
-  it('joins arrays of class names and ignore falsy values', function() {
+  it('joins lists of class names and ignore falsy values', function() {
     assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
   });
 
@@ -28,4 +28,33 @@ describe('classNames', function() {
   it('returns an empty string for an empty configuration', function() {
     assert.equal(classNames({}), '');
   });
+
+	it('supports an array of class names', function() {
+		assert.equal(classNames(['a', 'b']), 'a b');
+	});
+
+	it('joins array arguments with string arguments', function() {
+		assert.equal(classNames(['a', 'b'], 'c'), 'a b c');
+		assert.equal(classNames('c', ['a', 'b']), 'c a b');
+	});
+
+	it('handles multiple array arguments', function() {
+		assert.equal(classNames(['a', 'b'], ['c', 'd']), 'a b c d');
+	});
+
+	it('handles arrays that include falsy and true values', function() {
+		assert.equal(classNames(['a', 0, null, undefined, false, true, 'b']), 'a b');
+	});
+
+	it('handles arrays that include arrays', function() {
+		assert.equal(classNames(['a', ['b', 'c']]), 'a b c');
+	});
+
+	it('handles arrays that include objects', function() {
+		assert.equal(classNames(['a', {b: true, c: false}]), 'a b');
+	});
+
+	it('handles deep array recursion', function() {
+		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
+	});
 });
