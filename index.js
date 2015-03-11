@@ -16,7 +16,7 @@ function classNames() {
 		}
 		if ('string' === typeof arg || 'number' === typeof arg) {
 			classes.push(arg);
-		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
+		} else if (arg.constructor === Array) {
 			classNames_recur(arg, classes);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {
