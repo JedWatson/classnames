@@ -1,3 +1,10 @@
+function classNames_recur(arg, classes) {
+	for (var i = 0; i < arg.length; i++) {
+		var result = classNames(arg[i]);
+		if (result) classes.push(result);
+	}
+}
+
 function classNames() {
 	var args = arguments;
 	var classes = [];
@@ -7,9 +14,10 @@ function classNames() {
 		if (!arg) {
 			continue;
 		}
-
 		if ('string' === typeof arg || 'number' === typeof arg) {
 			classes.push(arg);
+		} else if (arg.constructor === Array) {
+			classNames_recur(arg, classes);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {
 				if (arg.hasOwnProperty(key) && arg[key]) {
