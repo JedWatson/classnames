@@ -1,6 +1,8 @@
 Classnames
 ===========
 
+[![Version](http://img.shields.io/npm/v/classnames.svg)](https://www.npmjs.org/package/classnames)
+
 A simple javascript utility for conditionally joining classNames together.
 
 Install with npm, or download the [UMD version](http://wzrd.in/standalone/classnames@1) (provides window.classnames, or defines the AMD modules 'classnames').
