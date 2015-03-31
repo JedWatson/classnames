@@ -14,7 +14,7 @@ describe('classNames', function() {
   });
 
   it('joins arrays of class names and ignore falsy values', function() {
-    assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
+    assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), '1 a b');
   });
 
   it('supports heterogenous arguments', function() {
@@ -56,5 +56,9 @@ describe('classNames', function() {
 
   it('handles deep array recursion', function() {
     assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
+  });
+
+  it('dedupes args', function() {
+    assert.equal(classNames('a', 'b', {a: false, b: true}), 'b');
   });
 });
