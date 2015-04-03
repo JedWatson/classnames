@@ -17,7 +17,9 @@ function classNames() {
 				if (!arg.hasOwnProperty(key) || !arg[key]) {
 					continue;
 				}
-				classes += ' ' + key;
+				classes += ' ' + key.replace(/[A-Z]/g, function(l) {
+					return '-' + l.toLowerCase();
+				});
 			}
 		}
 	}
