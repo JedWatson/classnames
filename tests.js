@@ -33,6 +33,10 @@ describe('classNames', function() {
     assert.equal(classNames(['a', 'b']), 'a b');
   });
 
+  it('supports camelcased keys', function() {
+    assert.equal(classNames({fooBarBaz: true}), 'foo-bar-baz');
+  });
+
   it('joins array arguments with string arguments', function() {
     assert.equal(classNames(['a', 'b'], 'c'), 'a b c');
     assert.equal(classNames('c', ['a', 'b']), 'c a b');
