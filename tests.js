@@ -57,4 +57,15 @@ describe('classNames', function() {
   it('handles deep array recursion', function() {
     assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
   });
+  
+  it('handles customized toString results', function() {
+    function custom(output) {
+      function customOutput() {}
+      customOutput.prototype.toString = function() {
+        return output;
+      }
+      return new customOutput();
+    }
+    assert.equal(classNames(custom('a')), 'a');
+  });
 });
