@@ -1,5 +1,6 @@
 function classNames() {
 	var classes = '';
+	var argClasses;
 	var arg;
 
 	for (var i = 0; i < arguments.length; i++) {
@@ -13,11 +14,16 @@ function classNames() {
 		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
 			classes += ' ' + classNames.apply(null, arg);
 		} else if ('object' === typeof arg) {
-			for (var key in arg) {
-				if (!arg.hasOwnProperty(key) || !arg[key]) {
-					continue;
+			argClasses = arg.toString();
+			if (argClasses === '[object Object]') {
+				for (var key in arg) {
+					if (!arg.hasOwnProperty(key) || !arg[key]) {
+						continue;
+					}
+					classes += ' ' + key;
 				}
-				classes += ' ' + key;
+			} else {
+				classes += ' ' + argClasses;
 			}
 		}
 	}
