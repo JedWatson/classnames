@@ -24,7 +24,7 @@ function classNames() {
 	return classes.substr(1);
 }
 
-// safely export classNames in case the script is included directly on a page
+// safely export classNames for bower
 if (typeof module !== 'undefined' && module.exports) {
 	module.exports = classNames;
 }
