@@ -31,7 +31,7 @@ function classNames() {
 	return classes.substr(1);
 }
 
-// safely export classNames for bower
+// safely export classNames for node / browserify
 if (typeof module !== 'undefined' && module.exports) {
 	module.exports = classNames;
 }
