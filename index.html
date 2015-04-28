@@ -19,71 +19,63 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="classnames" class="anchor" href="#classnames" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classnames</h1>
+      <h1><a id="classnames" class="anchor" href="#classnames" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classnames</h1>
 
-<p><a href="https://www.npmjs.org/package/classnames"><img src="http://img.shields.io/npm/v/classnames.svg" alt="Version"></a></p>
+      <p><a href="https://www.npmjs.org/package/classnames"><img src="http://img.shields.io/npm/v/classnames.svg" alt="Version"></a></p>
 
-<p>A simple javascript utility for conditionally joining classNames together.</p>
+      <p>A simple javascript utility for conditionally joining classNames together.</p>
 
-<p>Install with npm or Bower.</p>
+      <p>Install with npm or Bower.</p>
 
-<div class="highlight highlight-sh"><pre>npm install classnames</pre></div>
+      <div class="highlight highlight-sh"><pre>npm install classnames</pre></div>
 
-<p>The <code>classNames</code> function takes any number of arguments which can be a string or object.
-The argument <code>'foo'</code> is short for <code>{foo: true}</code>. If the value of the key is falsy, it won't be included in the output.</p>
+      <p>The <code>classNames</code> function takes any number of arguments which can be a string or object.
+      The argument <code>'foo'</code> is short for <code>{foo: true}</code>. If the value of the key is falsy, it won't be included in the output.</p>
 
-<div class="highlight highlight-js"><pre>classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>); <span class="pl-c">// =&gt; 'foo bar'</span>
-classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
-classNames({ foo<span class="pl-k">:</span> <span class="pl-c1">true</span> }, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
-classNames({ foo<span class="pl-k">:</span> <span class="pl-c1">true</span>, bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
+      <div class="highlight highlight-js"><pre>classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>); <span class="pl-c">// =&gt; 'foo bar'</span>
+      classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
+      classNames({ foo<span class="pl-k">:</span> <span class="pl-c1">true</span> }, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
+      classNames({ foo<span class="pl-k">:</span> <span class="pl-c1">true</span>, bar<span class="pl-k">:</span> <span class="pl-c1">true</span> }); <span class="pl-c">// =&gt; 'foo bar'</span>
 
-<span class="pl-c">// lots of arguments of various types</span>
-classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span>, duck<span class="pl-k">:</span> <span class="pl-c1">false</span> }, <span class="pl-s"><span class="pl-pds">'</span>baz<span class="pl-pds">'</span></span>, { quux<span class="pl-k">:</span> <span class="pl-c1">true</span> }) <span class="pl-c">// =&gt; 'foo bar baz quux'</span>
+      <span class="pl-c">// lots of arguments of various types</span>
+      classNames(<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, { bar<span class="pl-k">:</span> <span class="pl-c1">true</span>, duck<span class="pl-k">:</span> <span class="pl-c1">false</span> }, <span class="pl-s"><span class="pl-pds">'</span>baz<span class="pl-pds">'</span></span>, { quux<span class="pl-k">:</span> <span class="pl-c1">true</span> }) <span class="pl-c">// =&gt; 'foo bar baz quux'</span>
 
-<span class="pl-c">// other falsy values are just ignored</span>
-classNames(<span class="pl-c1">null</span>, <span class="pl-c1">false</span>, <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>, <span class="pl-c1">undefined</span>, <span class="pl-c1">0</span>, <span class="pl-c1">1</span>, { baz<span class="pl-k">:</span> <span class="pl-c1">null</span> }, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>); <span class="pl-c">// =&gt; 'bar 1'</span></pre></div>
+      <span class="pl-c">// other falsy values are just ignored</span>
+      classNames(<span class="pl-c1">null</span>, <span class="pl-c1">false</span>, <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>, <span class="pl-c1">undefined</span>, <span class="pl-c1">0</span>, <span class="pl-c1">1</span>, { baz<span class="pl-k">:</span> <span class="pl-c1">null</span> }, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>); <span class="pl-c">// =&gt; 'bar 1'</span></pre></div>
 
-<p>Arrays will be recursively flattened as per the rules above:</p>
+      <p>Arrays will be recursively flattened as per the rules above:</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>, { c<span class="pl-k">:</span> <span class="pl-c1">true</span>, d<span class="pl-k">:</span> <span class="pl-c1">false</span> }];
-classNames(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>, arr); <span class="pl-c">// =&gt; 'a b c'</span></pre></div>
+      <div class="highlight highlight-js"><pre><span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>, { c<span class="pl-k">:</span> <span class="pl-c1">true</span>, d<span class="pl-k">:</span> <span class="pl-c1">false</span> }];
+      classNames(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>, arr); <span class="pl-c">// =&gt; 'a b c'</span></pre></div>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+      <h2><a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>(The MIT License)</p>
+      <p>(The MIT License)</p>
 
-<p>Copyright (c) 2015 Jed Watson</p>
+      <p>Copyright (c) 2015 Jed Watson</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:</p>
+      <p>Permission is hereby granted, free of charge, to any person obtaining
+      a copy of this software and associated documentation files (the
+      'Software'), to deal in the Software without restriction, including
+      without limitation the rights to use, copy, modify, merge, publish,
+      distribute, sublicense, and/or sell copies of the Software, and to
+      permit persons to whom the Software is furnished to do so, subject to
+      the following conditions:</p>
 
-<p>The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.</p>
+      <p>The above copyright notice and this permission notice shall be
+      included in all copies or substantial portions of the Software.</p>
 
-<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
+      <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+      IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+      CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+      TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+      SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/JedWatson/classnames">Classnames</a> is maintained by <a href="https://github.com/JedWatson">JedWatson</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-
     </section>
-
-  
   </body>
 </html>
 
