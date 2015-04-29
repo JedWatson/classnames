@@ -5,29 +5,40 @@
 */
 
 function classNames() {
-	var classes = '';
+	var classes = {};
 	var arg;
+  var str = "";
 
 	for (var i = 0; i < arguments.length; i++) {
-		arg = arguments[i];
+    parseArg(arguments[i]);
+  }
+
+  function parseArg(arg) {
 		if (!arg) {
-			continue;
+			return;
 		}
 
 		if ('string' === typeof arg || 'number' === typeof arg) {
-			classes += ' ' + arg;
+			classes[arg] = true;
 		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
-			classes += ' ' + classNames.apply(null, arg);
+			arg.forEach(parseArg);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {
-				if (!arg.hasOwnProperty(key) || !arg[key]) {
-					continue;
+				if (arg.hasOwnProperty(key)) {
+          classes[key] = !!arg[key];
 				}
-				classes += ' ' + key;
 			}
 		}
 	}
-	return classes.substr(1);
+
+  for (var key in classes) {
+    if (classes.hasOwnProperty(key) && classes[key]) {
+      str = str + " " + key;
+    }
+  }
+
+  return str.substring(1);
+
 }
 
 // safely export classNames for node / browserify
