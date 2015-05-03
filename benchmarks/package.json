@@ -1,0 +1,16 @@
+{
+  "name": "classnames-benchmarks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Tests should be run in the main classnames package.\" && exit 1"
+  },
+  "author": "Jed Watson",
+  "license": "MIT",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "classnames": "*"
+  }
+}
