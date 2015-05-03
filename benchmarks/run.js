@@ -1,6 +1,3 @@
-var assert = require("assert");
-var benchmark = require("benchmark");
-
 var fixtures = [
 	{
 		description: "strings",
@@ -20,7 +17,27 @@ var fixtures = [
 ];
 
 var local = require("../");
+var localPackage = require('../package.json');
+
+try {
 var npm = require("classnames");
+var npmPackage = require('./node_modules/classnames/package.json');
+} catch(e) {
+	console.log("There was an error loading the benchmark classnames package.\n" +
+		"Please make sure you have run `npm install` in ./benchmarks\n");
+	process.exit(0);
+}
+
+if (localPackage.version !== npmPackage.version) {
+	console.log("Your local version (" + localPackage.version + ") does not match the installed version (" + npmPackage.version + ")\n\n" +
+		"Please run `npm update` in ./benchmarks to ensure you are benchmarking\n" +
+		"the latest version of this package.\n");
+	process.exit(0);
+}
+
+var assert = require("assert");
+var benchmark = require("benchmark");
+
 
 fixtures.forEach(function(f) {
 	assert.equal(local.apply(null, f.args), f.expected);
