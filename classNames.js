@@ -13,10 +13,9 @@ function classNames() {
 		if (!arg) {
 			continue;
 		}
-
 		if ('string' === typeof arg || 'number' === typeof arg) {
 			classes += ' ' + arg;
-		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
+		} else if (Array.isArray(arg)) {
 			classes += ' ' + classNames.apply(null, arg);
 		} else if ('object' === typeof arg) {
 			for (var key in arg) {
