@@ -10,6 +10,6 @@
   "license": "MIT",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "classnames": "^1.1.4"
+    "classnames": "*"
   }
 }
