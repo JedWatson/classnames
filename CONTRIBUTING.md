@@ -11,3 +11,7 @@ performance.
 * To demonstrate performance differences please set up a
 [JSPerf](http://jsperf.com) test and link to it from your issue / PR.
 * Tests must be added for any change or new feature before it will be accepted.
+
+A benchmark utilitiy is included so that changes may be tested against the
+current published version. To run the benchmarks, `npm install` in the 
+`./benchmarks` directory then run `npm run benchmarks`.
