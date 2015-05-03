@@ -13,7 +13,6 @@ function classNames() {
 		if (!arg) {
 			continue;
 		}
-
 		if ('string' === typeof arg || 'number' === typeof arg) {
 			classes += ' ' + arg;
 		} else if (Array.isArray(arg)) {
