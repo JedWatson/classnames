@@ -36,6 +36,8 @@ classNames('a', arr); // => 'a b c'
 
 ## Polyfills needed to support older browsers
 
+#### `classNames >=2.0.0`
+
 `Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
  for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
 
