@@ -1,6 +1,5 @@
 var assert = require("assert");
 var benchmark = require("benchmark");
-//benchmark.options.minTime = 1
 
 var fixtures = [
 	{
@@ -44,7 +43,7 @@ fixtures.forEach(function(f) {
 
 	// other handling
 	suite.on("complete", function() {
-		console.log("\nFastest is " + this.filter("fastest").pluck("name"));
+		console.log("\n> Fastest is " + this.filter("fastest").pluck("name") + '\n');
 	});
 
 	suite.on("error", function(event) {
