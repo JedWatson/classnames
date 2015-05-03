@@ -1,5 +1,5 @@
-var assert = require("assert")
-var benchmark = require("benchmark")
+var assert = require("assert");
+var benchmark = require("benchmark");
 //benchmark.options.minTime = 1
 
 var fixtures = [
@@ -18,39 +18,38 @@ var fixtures = [
 		args: ["foo", { bar: true, baz: false }],
 		expected: "foo bar"
 	}
-]
+];
 
-var local = require("../")
-var npm = require("classnames")
+var local = require("../");
+var npm = require("classnames");
 
 fixtures.forEach(function(f) {
-	assert.equal(local.apply(null, f.args), f.expected)
-	assert.equal(npm.apply(null, f.args), f.expected)
+	assert.equal(local.apply(null, f.args), f.expected);
+	assert.equal(npm.apply(null, f.args), f.expected);
 
-	var suite = new benchmark.Suite()
+	var suite = new benchmark.Suite();
 
 	suite.add("local#" + f.description, function() {
-		local.apply(null, f.args)
-	})
+		local.apply(null, f.args);
+	});
 
 	suite.add("npm#" + f.description, function() {
-		npm.apply(null, f.args)
-	})
+		npm.apply(null, f.args);
+	});
 
 	// after each cycle
 	suite.on("cycle", function (event) {
-		console.log("*", String(event.target))
-	})
+		console.log("*", String(event.target));
+	});
 
 	// other handling
 	suite.on("complete", function() {
-		console.log("")
-		console.log("Fastest is " + this.filter("fastest").pluck("name"));
-	})
+		console.log("\nFastest is " + this.filter("fastest").pluck("name"));
+	});
 
 	suite.on("error", function(event) {
-		throw event.target.error
-	})
+		throw event.target.error;
+	});
 
-	suite.run()
+	suite.run();
 })
