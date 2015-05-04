@@ -5,6 +5,8 @@
 */
 
 function classNames () {
+	'use strict';
+
 	var classes = '';
 	var arg;
 
