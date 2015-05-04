@@ -65,10 +65,14 @@ var classNames = (function () {
 
 	function _classNames () {
 		var classSet = {};
-
 		_parseArray(classSet, arguments);
 
-		return Object.keys(classSet).join(' ')
+		var classes = '';
+		for (var k in classSet) {
+			classes += ' ' + k;
+		}
+
+		return classes.substr(1);
 	}
 
 	return _classNames;
