@@ -36,6 +36,7 @@ if (typeof module !== 'undefined' && module.exports) {
 	module.exports = classNames;
 }
 
+/* global define */
 // safely export classNames for RequireJS
 if (typeof define !== 'undefined' && define.amd) {
 	define('classnames', [], function() {
