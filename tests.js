@@ -1,3 +1,5 @@
+/* global describe, it */
+
 var assert = require("assert");
 var classNames = require('./');
 var dedupe = require('./dedupe');
