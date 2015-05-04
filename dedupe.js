@@ -43,6 +43,8 @@ var classNames = (function () {
 	}
 
 	function _parse (resultSet, arg) {
+		if (!arg) return
+
 		// 'foo bar'
 		if ('string' === typeof arg) {
 			_parseString(resultSet, arg)
