@@ -65,11 +65,8 @@ var classNames = (function () {
 
 	function _classNames () {
 		var classSet = {};
-		var argLength = arguments.length;
 
-		for (var i = 0; i < argLength; ++i) {
-			_parse(classSet, arguments[i]);
-		}
+		_parseArray(classSet, arguments);
 
 		return Object.keys(classSet).join(' ')
 	}
