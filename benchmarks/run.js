@@ -22,6 +22,7 @@ var fixtures = [
 ];
 
 var local = require("../");
+var dedupe = require("../dedupe");
 var localPackage = require('../package.json');
 
 try {
@@ -43,14 +44,24 @@ if (localPackage.version !== npmPackage.version) {
 var assert = require("assert");
 var benchmark = require("benchmark");
 
+function sortClasses(str) {
+	var sorted = str.split(' ').sort();
+	return sorted.join(' ');
+}
 
 fixtures.forEach(function(f) {
-	assert.equal(local.apply(null, f.args), f.expected);
-	assert.equal(npm.apply(null, f.args), f.expected);
+	// sort assertions because dedupe returns results in a different order
+	assert.equal(sortClasses(local.apply(null, f.args)), sortClasses(f.expected));
+	assert.equal(sortClasses(dedupe.apply(null, f.args)), sortClasses(f.expected));
+	assert.equal(sortClasses(npm.apply(null, f.args)), sortClasses(f.expected));
 
 	var suite = new benchmark.Suite();
 
 	suite.add("local#" + f.description, function() {
+		local.apply(null, f.args);
+	});
+
+	suite.add("local/dedupe#" + f.description, function() {
 		local.apply(null, f.args);
 	});
 
@@ -65,7 +76,7 @@ fixtures.forEach(function(f) {
 
 	// other handling
 	suite.on("complete", function() {
-		console.log("\n> Fastest is " + this.filter("fastest").pluck("name") + '\n');
+		console.log("\n> Fastest is " + this.filter("fastest").pluck("name").join(' | ') + '\n');
 	});
 
 	suite.on("error", function(event) {
