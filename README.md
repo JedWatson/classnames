@@ -12,7 +12,7 @@ Install with npm or Bower.
 npm install classnames
 ```
 
-[Changelog](https://github.com/JedWatson/react-select/blob/master/HISTORY.md)
+[Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md)
 
 ## Usage
 
