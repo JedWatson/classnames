@@ -62,7 +62,7 @@ fixtures.forEach(function(f) {
 	});
 
 	suite.add("local/dedupe#" + f.description, function() {
-		local.apply(null, f.args);
+		dedupe.apply(null, f.args);
 	});
 
 	suite.add("npm#" + f.description, function() {
