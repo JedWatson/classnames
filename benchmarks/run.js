@@ -1,18 +1,23 @@
 var fixtures = [
 	{
 		description: "strings",
-		args: ["foo", "bar", "baz"],
-		expected: "foo bar baz"
+		args: ["one", "two", "three"],
+		expected: "one two three"
 	},
 	{
 		description: "object",
-		args: [{ foo: true, bar: true, baz: false }],
-		expected: "foo bar"
+		args: [{ one: true, two: true, three: false }],
+		expected: "one two"
 	},
 	{
 		description: "mix",
-		args: ["foo", { bar: true, baz: false }],
-		expected: "foo bar"
+		args: ["one", { two: true, three: false }, { four: 'four', five: true }, 6, {}],
+		expected: "one two four five 6"
+	},
+	{
+		description: "arrays",
+		args: [["one", "two"], ["three"], ["four", ["five"]], [{ six: true }, { seven: false }]],
+		expected: "one two three four five six"
 	}
 ];
 
@@ -20,8 +25,8 @@ var local = require("../");
 var localPackage = require('../package.json');
 
 try {
-var npm = require("classnames");
-var npmPackage = require('./node_modules/classnames/package.json');
+	var npm = require("classnames");
+	var npmPackage = require('./node_modules/classnames/package.json');
 } catch(e) {
 	console.log("There was an error loading the benchmark classnames package.\n" +
 		"Please make sure you have run `npm install` in ./benchmarks\n");
