@@ -4,7 +4,7 @@
   http://jedwatson.github.io/classnames
 */
 
-function classNames() {
+function classNames () {
 	var classes = '';
 	var arg;
 
@@ -26,6 +26,7 @@ function classNames() {
 			}
 		}
 	}
+
 	return classes.substr(1);
 }
 
