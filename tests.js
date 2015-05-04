@@ -65,23 +65,14 @@ describe('classNames', function() {
 
 describe('dedupe', function () {
 	function _hasSameClasses (c1, c2) {
-		if (c1 === c2) {
-			return true;
-		}
+		if (c1 === c2) return true
 
-		c1 = c1.split(SPACE).sort();
-		c2 = c2.split(SPACE).sort();
+		c1 = c1.split(SPACE).sort().join(' ');
+		c2 = c2.split(SPACE).sort().join(' ');
 
-		if (c1.length !== c2.length) {
-			return false;
-		}
-
-		return c1.reduce(function (result, val, i) {
-			return result &= (val === c2[i]);
-		}, true);
+		return c1 === c2
 	}
 
-	
 	it('keeps object keys with truthy values', function() {
 		assert.equal(dedupe({
 			a: true,
