@@ -19,10 +19,10 @@ var classNames = (function () {
 		for (var k in object) {
 			if (object.hasOwnProperty(k)) {
 				if (object[k]) {
-					resultSet[k] = true
+					resultSet[k] = true;
 
 				} else {
-					delete resultSet[k]
+					delete resultSet[k];
 				}
 			}
 		}
@@ -43,23 +43,23 @@ var classNames = (function () {
 	}
 
 	function _parse (resultSet, arg) {
-		if (!arg) return
+		if (!arg) return;
 
 		// 'foo bar'
 		if ('string' === typeof arg) {
-			_parseString(resultSet, arg)
+			_parseString(resultSet, arg);
 
 		// ['foo', 'bar', ...]
 		} else if (Array.isArray(arg)) {
-			_parseArray(resultSet, arg)
+			_parseArray(resultSet, arg);
 
 		// { 'foo': true, ... }
 		} else if ('object' === typeof arg) {
-			_parseObject(resultSet, arg)
+			_parseObject(resultSet, arg);
 
 		// '130'
 		} else if ('number' === typeof arg) {
-			_parseNumber(resultSet, arg)
+			_parseNumber(resultSet, arg);
 		}
 	}
 
