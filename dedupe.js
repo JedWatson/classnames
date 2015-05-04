@@ -15,6 +15,10 @@ var classNames = (function () {
 		}
 	}
 
+	function _parseNumber (resultSet, num) {
+		resultSet[num] = true;
+	}
+
 	function _parseObject (resultSet, object) {
 		for (var k in object) {
 			if (object.hasOwnProperty(k)) {
@@ -26,10 +30,6 @@ var classNames = (function () {
 				}
 			}
 		}
-	}
-
-	function _parseNumber (resultSet, num) {
-		resultSet[num] = true;
 	}
 
 	var SPACE = /\s+/;
