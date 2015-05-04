@@ -7,49 +7,69 @@
 var classNames = (function () {
 	'use strict';
 
-	var SPACE = /\s+/;
-	var toString = Object.prototype.toString;
+	function _parseArray (resultSet, array) {
+		var length = array.length;
 
-	function _parse (result, arg) {
-		if (!arg) {
-			return;
+		for (var i = 0; i < length; ++i) {
+			_parse(resultSet, array[i]);
 		}
-		if ('number' === typeof arg) {
-			result[arg] = true;
-		} else if ('string' === typeof arg) {
-			arg = arg.split(SPACE);
-			if (arg.length === 1) {
-				result[arg[0]] = true;
-			} else if (arg.length) {
-				for (var i = 0; i < arg.length; i++) {
-					result[arg[i]] = true;
-				}
-			}
-		} else if (Array.isArray(arg)) {
-			for (var i = 0; i < arg.length; i++) {
-				_parse(result, arg[i]);
-			}
-		} else if ('object' === typeof arg) {
-			for (var k in arg) {
-				if (arg.hasOwnProperty(k)) {
-					result[k] = arg[k];
+	}
+
+	function _parseObject (resultSet, object) {
+		for (var k in object) {
+			if (object.hasOwnProperty(k)) {
+				if (object[k]) {
+					resultSet[k] = true
+
+				} else {
+					delete resultSet[k]
 				}
 			}
 		}
 	}
 
+	function _parseNumber (resultSet, num) {
+		resultSet[num] = true;
+	}
+
+	var SPACE = /\s+/;
+	function _parseString (resultSet, str) {
+		var array = str.split(SPACE);
+		var length = array.length;
+
+		for (var i = 0; i < length; ++i) {
+			resultSet[array[i]] = true;
+		}
+	}
+
+	function _parse (resultSet, arg) {
+		// 'foo bar'
+		if ('string' === typeof arg) {
+			_parseString(resultSet, arg)
+
+		// ['foo', 'bar', ...]
+		} else if (Array.isArray(arg)) {
+			_parseArray(resultSet, arg)
+
+		// { 'foo': true, ... }
+		} else if ('object' === typeof arg) {
+			_parseObject(resultSet, arg)
+
+		// '130'
+		} else if ('number' === typeof arg) {
+			_parseNumber(resultSet, arg)
+		}
+	}
+
 	function _classNames () {
 		var classSet = {};
-		var classes = '';
-		for (var i = 0, arg = arguments[i]; i < arguments.length; arg = arguments[++i]) {
-			_parse(classSet, arg);
+		var argLength = arguments.length;
+
+		for (var i = 0; i < argLength; ++i) {
+			_parse(classSet, arguments[i]);
 		}
-		for (var k in classSet) {
-			if (classSet.hasOwnProperty(k) && classSet[k]) {
-				classes += ' ' + k;
-			}
-		}
-		return classes.substr(1);
+
+		return Object.keys(classSet).join(' ')
 	}
 
 	return _classNames;
