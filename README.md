@@ -12,12 +12,21 @@ Install with npm or Bower.
 npm install classnames
 ```
 
+Use with node.js, browserify or webpack:
+
+```js
+var classNames = require('classnames');
+classNames('foo', 'bar'); // => 'foo bar'
+```
+
+Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
+
 [Changelog](https://github.com/JedWatson/react-select/blob/master/HISTORY.md)
 
 ## Usage
 
 The `classNames` function takes any number of arguments which can be a string or object.
-The argument `'foo'` is short for `{foo: true}`. If the value of the key is falsy, it won't be included in the output.
+The argument `'foo'` is short for `{ foo: true }`. If the value of the key is falsy, it won't be included in the output.
 
 ```js
 classNames('foo', 'bar'); // => 'foo bar'
