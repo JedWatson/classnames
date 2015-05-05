@@ -12,14 +12,15 @@ function classNames () {
 	for (var i = 0; i < arguments.length; i++) {
 		var arg = arguments[i];
 		if (!arg) continue;
+		var argtype = typeof arg;
 
-		if ('string' === typeof arg || 'number' === typeof arg) {
+		if ('string' === argtype || 'number' === argtype) {
 			classes += ' ' + arg;
 
 		} else if (Array.isArray(arg)) {
 			classes += ' ' + classNames.apply(null, arg);
 
-		} else if ('object' === typeof arg) {
+		} else if ('object' === argtype) {
 			for (var key in arg) {
 				if (arg.hasOwnProperty(key) && arg[key]) {
 					classes += ' ' + key;
