@@ -21,7 +21,7 @@ classNames('foo', 'bar'); // => 'foo bar'
 
 Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
 
-[Changelog](https://github.com/JedWatson/react-select/blob/master/HISTORY.md)
+[Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md)
 
 ## Usage
 
