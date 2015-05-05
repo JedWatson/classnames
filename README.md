@@ -48,6 +48,28 @@ var arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
 ```
 
+### Alternate `dedupe` version
+
+There is an alternate version of `classNames` available which correctly dedupes classes and ensures that falsy classes specified in later arguments are excluded from the result set.
+
+For example:
+
+```js
+classNames('foo', 'foo', 'bar'); // => 'foo bar'
+classNames('foo', { foo: false, bar: true }); // => 'bar'
+```
+
+This version is slower (about 10x) so it is offered as an opt-in.
+
+To use the dedupe version with node, browserify or webpack:
+
+```js
+var classNames = require('classnames/dedupe');
+```
+
+Or for standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
+
+
 ## Polyfills needed to support older browsers
 
 #### `classNames >=2.0.0`
