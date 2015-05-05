@@ -27,6 +27,7 @@ var localPackage = require('../package.json');
 
 try {
 	var npm = require("classnames");
+	var npmDedupe = require("classnames/dedupe");
 	var npmPackage = require('./node_modules/classnames/package.json');
 } catch(e) {
 	console.log("There was an error loading the benchmark classnames package.\n" +
@@ -54,6 +55,7 @@ fixtures.forEach(function(f) {
 	assert.equal(sortClasses(local.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(dedupe.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(npm.apply(null, f.args)), sortClasses(f.expected));
+	assert.equal(sortClasses(npmDedupe.apply(null, f.args)), sortClasses(f.expected));
 
 	var suite = new benchmark.Suite();
 
@@ -61,12 +63,16 @@ fixtures.forEach(function(f) {
 		local.apply(null, f.args);
 	});
 
+	suite.add("npm#" + f.description, function() {
+		npm.apply(null, f.args);
+	});
+
 	suite.add("local/dedupe#" + f.description, function() {
 		dedupe.apply(null, f.args);
 	});
 
-	suite.add("npm#" + f.description, function() {
-		npm.apply(null, f.args);
+	suite.add("npm/dedupe#" + f.description, function() {
+		npmDedupe.apply(null, f.args);
 	});
 
 	// after each cycle
