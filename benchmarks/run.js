@@ -63,7 +63,7 @@ fixtures.forEach(function(f) {
 		local.apply(null, f.args);
 	});
 
-	suite.add("npm#" + f.description, function() {
+	suite.add("  npm#" + f.description, function() {
 		npm.apply(null, f.args);
 	});
 
@@ -71,7 +71,7 @@ fixtures.forEach(function(f) {
 		dedupe.apply(null, f.args);
 	});
 
-	suite.add("npm/dedupe#" + f.description, function() {
+	suite.add("  npm/dedupe#" + f.description, function() {
 		npmDedupe.apply(null, f.args);
 	});
 
@@ -82,7 +82,7 @@ fixtures.forEach(function(f) {
 
 	// other handling
 	suite.on("complete", function() {
-		console.log("\n> Fastest is " + this.filter("fastest").pluck("name").join(' | ') + '\n');
+		console.log("\n> Fastest is" + (" " + this.filter("fastest").pluck("name").join(' | ')).replace(/\s+/, ' ') + '\n');
 	});
 
 	suite.on("error", function(event) {
