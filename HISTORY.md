@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0 / 2015-05-05
+
+* added alternate `dedupe` version of classNames, which is slower (10x) but ensures that if a class is added then overridden by a falsy value in a subsequent argument, it is excluded from the result.
+
 ## v2.0.0 / 2015-05-03
 
 * performance improvement; switched to `Array.isArray` for type detection, which is much faster in modern browsers. A polyfill is now required for IE8 support, see the Readme for details.
