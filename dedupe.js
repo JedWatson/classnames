@@ -44,9 +44,10 @@ var classNames = (function () {
 
 	function _parse (resultSet, arg) {
 		if (!arg) return;
+		var argType = typeof arg;
 
 		// 'foo bar'
-		if ('string' === typeof arg) {
+		if ('string' === argType) {
 			_parseString(resultSet, arg);
 
 		// ['foo', 'bar', ...]
@@ -54,11 +55,11 @@ var classNames = (function () {
 			_parseArray(resultSet, arg);
 
 		// { 'foo': true, ... }
-		} else if ('object' === typeof arg) {
+		} else if ('object' === argType) {
 			_parseObject(resultSet, arg);
 
 		// '130'
-		} else if ('number' === typeof arg) {
+		} else if ('number' === argType) {
 			_parseNumber(resultSet, arg);
 		}
 	}
