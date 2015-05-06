@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.1 / 2015-05-06
+
+* minor performance improvement thanks to type caching
+* improved benchmarking and results output
+
 ## v2.1.0 / 2015-05-05
 
 * added alternate `dedupe` version of classNames, which is slower (10x) but ensures that if a class is added then overridden by a falsy value in a subsequent argument, it is excluded from the result.
