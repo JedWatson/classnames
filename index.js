@@ -7,7 +7,7 @@
 function classNames () {
 	'use strict';
 
-	var classes = '';
+	var classes = [];
 
 	for (var i = 0; i < arguments.length; i++) {
 		var arg = arguments[i];
@@ -16,21 +16,21 @@ function classNames () {
 		var argType = typeof arg;
 
 		if ('string' === argType || 'number' === argType) {
-			classes += ' ' + arg;
+			classes.push(arg);
 
 		} else if (Array.isArray(arg)) {
-			classes += ' ' + classNames.apply(null, arg);
+			classes.push(classNames.apply(null, arg));
 
 		} else if ('object' === argType) {
 			for (var key in arg) {
 				if (arg.hasOwnProperty(key) && arg[key]) {
-					classes += ' ' + key;
+					classes.push(key);
 				}
 			}
 		}
 	}
 
-	return classes.substr(1);
+	return classes.join(' ');
 }
 
 // safely export classNames for node / browserify
