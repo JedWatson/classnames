@@ -11,7 +11,8 @@
   },
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
-    "unit": "mocha tests/*.js"
+    "unit": "mocha tests/*.js",
+    "test": "npm run unit"
   },
   "keywords": [
     "react",

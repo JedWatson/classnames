@@ -1,8 +1,8 @@
 /* global describe, it */
 
 var assert = require("assert");
-var classNames = require('./');
-var dedupe = require('./dedupe');
+var classNames = require('../');
+var dedupe = require('../dedupe');
 var SPACE = /\s+/;
 
 describe('classNames', function() {
