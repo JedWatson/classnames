@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.2 / 2015-05-28
+
+* added a proper UMD wrapper
+
 ## v2.1.1 / 2015-05-06
 
 * minor performance improvement thanks to type caching
