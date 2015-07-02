@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.3 / 2015-07-02
+
+* updated UMD wrapper to support AMD and CommonJS on the same pacge
+
 ## v2.1.2 / 2015-05-28
 
 * added a proper UMD wrapper
