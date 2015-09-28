@@ -6,6 +6,8 @@
 
 (function () {
 	'use strict';
+	
+	var hasOwn = {}.hasOwnProperty
 
 	var classNames = (function () {
 		function _parseArray (resultSet, array) {
@@ -22,7 +24,7 @@
 
 		function _parseObject (resultSet, object) {
 			for (var k in object) {
-				if (object.hasOwnProperty(k)) {
+				if (hasOwn.call(object, k)) {
 					if (object[k]) {
 						resultSet[k] = true;
 
