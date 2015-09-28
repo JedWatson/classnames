@@ -27,7 +27,7 @@
 
 			} else if ('object' === argType) {
 				for (var key in arg) {
-					if (hasOwn(arg, key) && arg[key]) {
+					if (hasOwn.call(arg, key) && arg[key]) {
 						classes += ' ' + key;
 					}
 				}
