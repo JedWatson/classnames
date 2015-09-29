@@ -3,6 +3,7 @@
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
+/* global define */
 
 (function () {
 	'use strict';
@@ -15,8 +16,8 @@
 				_parse(resultSet, array[i]);
 			}
 		}
-		
-		var hasOwn = {}.hasOwnProperty
+
+		var hasOwn = {}.hasOwnProperty;
 
 		function _parseNumber (resultSet, num) {
 			resultSet[num] = true;
@@ -27,7 +28,6 @@
 				if (hasOwn.call(object, k)) {
 					if (object[k]) {
 						resultSet[k] = true;
-
 					} else {
 						delete resultSet[k];
 					}
@@ -50,7 +50,7 @@
 			var argType = typeof arg;
 
 			// 'foo bar'
-			if ('string' === argType) {
+			if (argType === 'string') {
 				_parseString(resultSet, arg);
 
 			// ['foo', 'bar', ...]
@@ -58,11 +58,11 @@
 				_parseArray(resultSet, arg);
 
 			// { 'foo': true, ... }
-			} else if ('object' === argType) {
+			} else if (argType === 'object') {
 				_parseObject(resultSet, arg);
 
 			// '130'
-			} else if ('number' === argType) {
+			} else if (argType === 'number') {
 				_parseNumber(resultSet, arg);
 			}
 		}
@@ -70,17 +70,16 @@
 		function _classNames () {
 			var classSet = {};
 			_parseArray(classSet, arguments);
-			
+
 			return Object.keys(classSet).join(' ');
 		}
 
 		return _classNames;
-
 	})();
 
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd){
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(function () {
 			return classNames;
@@ -88,5 +87,4 @@
 	} else {
 		window.classNames = classNames;
 	}
-
 }());

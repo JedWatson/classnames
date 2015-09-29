@@ -29,7 +29,7 @@ try {
 	var npm = require('classnames');
 	var npmDedupe = require('classnames/dedupe');
 	var npmPackage = require('./node_modules/classnames/package.json');
-} catch(e) {
+} catch (e) {
 	console.log('There was an error loading the benchmark classnames package.\n' +
 		'Please make sure you have run `npm install` in ./benchmarks\n');
 	process.exit(0);
@@ -44,13 +44,12 @@ if (localPackage.version !== npmPackage.version) {
 
 var assert = require('assert');
 var benchmark = require('benchmark');
-benchmark.minTime = 1
 
-function sortClasses(str) {
+function sortClasses (str) {
 	return str.split(' ').sort().join(' ');
 }
 
-fixtures.forEach(function(f) {
+fixtures.forEach(function (f) {
 	// sort assertions because dedupe returns results in a different order
 	assert.equal(sortClasses(local.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(dedupe.apply(null, f.args)), sortClasses(f.expected));
@@ -59,19 +58,19 @@ fixtures.forEach(function(f) {
 
 	var suite = new benchmark.Suite();
 
-	suite.add('local#' + f.description, function() {
+	suite.add('local#' + f.description, function () {
 		local.apply(null, f.args);
 	});
 
-	suite.add('  npm#' + f.description, function() {
+	suite.add('  npm#' + f.description, function () {
 		npm.apply(null, f.args);
 	});
 
-	suite.add('local/dedupe#' + f.description, function() {
+	suite.add('local/dedupe#' + f.description, function () {
 		dedupe.apply(null, f.args);
 	});
 
-	suite.add('  npm/dedupe#' + f.description, function() {
+	suite.add('  npm/dedupe#' + f.description, function () {
 		npmDedupe.apply(null, f.args);
 	});
 
@@ -81,13 +80,13 @@ fixtures.forEach(function(f) {
 	});
 
 	// other handling
-	suite.on('complete', function() {
+	suite.on('complete', function () {
 		console.log('\n> Fastest is' + (' ' + this.filter('fastest').pluck('name').join(' | ')).replace(/\s+/, ' ') + '\n');
 	});
 
-	suite.on('error', function(event) {
+	suite.on('error', function (event) {
 		throw event.target.error;
 	});
 
 	suite.run();
-})
+});
