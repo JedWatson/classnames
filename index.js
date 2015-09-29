@@ -6,6 +6,8 @@
 
 (function () {
 	'use strict';
+	
+	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
 
@@ -25,7 +27,7 @@
 
 			} else if ('object' === argType) {
 				for (var key in arg) {
-					if (arg.hasOwnProperty(key) && arg[key]) {
+					if (hasOwn.call(arg, key) && arg[key]) {
 						classes += ' ' + key;
 					}
 				}

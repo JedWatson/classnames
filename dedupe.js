@@ -15,6 +15,8 @@
 				_parse(resultSet, array[i]);
 			}
 		}
+		
+		var hasOwn = {}.hasOwnProperty
 
 		function _parseNumber (resultSet, num) {
 			resultSet[num] = true;
@@ -22,7 +24,7 @@
 
 		function _parseObject (resultSet, object) {
 			for (var k in object) {
-				if (object.hasOwnProperty(k)) {
+				if (hasOwn.call(object, k)) {
 					if (object[k]) {
 						resultSet[k] = true;
 
@@ -68,13 +70,8 @@
 		function _classNames () {
 			var classSet = {};
 			_parseArray(classSet, arguments);
-
-			var classes = '';
-			for (var k in classSet) {
-				classes += ' ' + k;
-			}
-
-			return classes.substr(1);
+			
+			return Object.keys(classSet).join(' ');
 		}
 
 		return _classNames;
