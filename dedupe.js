@@ -70,8 +70,16 @@
 		function _classNames () {
 			var classSet = {};
 			_parseArray(classSet, arguments);
+			
+			var list = [];
+			
+			for (var k in classSet) {
+				if (hasOwn.call(classSet, k) && classSet[k]) {
+					list.push(k)
+				}
+			}
 
-			return Object.keys(classSet).join(' ');
+			return k.join(' ');
 		}
 
 		return _classNames;
