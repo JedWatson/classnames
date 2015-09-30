@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.1.4 / 2015-09-30
+
+* new case added to benchmarks
+* safer `hasOwnProperty` check
+* AMD module is now named, so you can do the following:
+
+```
+define(["classnames"], function (classNames) {
+  var style = classNames("foo", "bar");
+  // ...
+});
+```
+
 ## v2.1.3 / 2015-07-02
 
 * updated UMD wrapper to support AMD and CommonJS on the same pacge
@@ -32,7 +45,7 @@
 
 ## v1.2.0 / 2015-03-17
 
-* added comprehensive support for array argiments, including nested arrays
+* added comprehensive support for array arguments, including nested arrays
 * simplified code slightly
 
 ## Previous
