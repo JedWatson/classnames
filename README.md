@@ -21,7 +21,13 @@ classNames('foo', 'bar'); // => 'foo bar'
 
 Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
 
-[Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md)
+### Project philosophy
+
+We take the stability and performance of this package seriously, because it is run millions of times a day in browsers all around the world. Updates are thoroughly reviewed for performance impacts before being released, and we have a comprehensive test suite.
+
+Classnames follows the [SemVer](http://semver.org/) standard for versioning.
+
+There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md).
 
 ## Usage
 
