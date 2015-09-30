@@ -78,6 +78,16 @@ Or for standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on
  for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
 `Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) 	for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill. This is only used in `dedupe.js`.
 
+## Versioning
+
+Versioning for all projects follow standard Semantic Versioning. Basic details for Semantic Versioning take the format **MAJOR.MINOR.PATCH**
+
+- MAJOR version when you make incompatible API changes,
+- MINOR version when you add functionality in a backwards-compatible manner, and
+- PATCH version when you make backwards-compatible bug fixes.
+
+Full details are available at [semver.org](http://semver.org/)
+
 ## License
 
 [MIT](LICENSE)
