@@ -13,5 +13,9 @@ performance.
 * Tests must be added for any change or new feature before it will be accepted.
 
 A benchmark utilitiy is included so that changes may be tested against the
-current published version. To run the benchmarks, `npm install` in the 
-`./benchmarks` directory then run `npm run benchmarks`.
+current published version. To run the benchmarks, `npm install` in the
+`./benchmarks` directory then run `npm run benchmarks` in the package root.
+
+Please be aware though that local benchmarks are just a smoke-signal; they will
+run in the v8 version that your node/iojs uses, while classNames is _most_
+often run across a wide variety of browsers and browser versions.
