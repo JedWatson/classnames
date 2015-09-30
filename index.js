@@ -38,8 +38,8 @@
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
 	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// Register under the npm name.
-+               define("classnames", function () {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', function () {
 			return classNames;
 		});
 	} else {
