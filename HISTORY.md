@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.5 / 2015-09-30
+
+* reverted a new usage of `Object.keys` in `dedupe.js` that slipped through in the last release
+
 ## v2.1.4 / 2015-09-30
 
 * new case added to benchmarks
