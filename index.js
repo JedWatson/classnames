@@ -20,13 +20,13 @@
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes += ' ' + arg;
+				classes += ' ' + (this && this[arg] || arg);
 			} else if (Array.isArray(arg)) {
-				classes += ' ' + classNames.apply(null, arg);
+				classes += ' ' + classNames.apply(this, arg);
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes += ' ' + key;
+						classes += ' ' + (this && this[key] || key);
 					}
 				}
 			}
