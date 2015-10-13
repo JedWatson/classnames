@@ -37,6 +37,7 @@ The argument `'foo'` is short for `{ foo: true }`. If the value of the key is fa
 ```js
 classNames('foo', 'bar'); // => 'foo bar'
 classNames('foo', { bar: true }); // => 'foo bar'
+classNames({'foo-bar': true}); // => 'foo-bar'
 classNames({ foo: true }, { bar: true }); // => 'foo bar'
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
