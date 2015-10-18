@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.0 / 2015-10-18
+
+* added a new `bind` variant for use with [css-modules](https://github.com/css-modules/css-modules) and similar abstractions, thanks to [Kirill Yakovenko](https://github.com/blia)
+
 ## v2.1.5 / 2015-09-30
 
 * reverted a new usage of `Object.keys` in `dedupe.js` that slipped through in the last release
