@@ -72,13 +72,24 @@ classNames('foo', { foo: false, bar: true }); // => 'bar'
 
 For standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
 
-To use the dedupe version with node, browserify or webpack:
+
+### Alternate `bind` version (for [css-modules](https://github.com/css-modules/css-modules))
+
+If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class "names" and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
 
 ```js
-var classNames = require('classnames/dedupe');
-```
+var classNames = require('classnames/bind');
 
-Or for standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
+var styles = {
+  foo: 'abc',
+  bar: 'def',
+  baz: 'xyz'
+}
+
+var cx = classNames.bind(styles);
+
+var className = cx('foo', ['bar'], { baz: true }); // => "abc def xyz"
+```
 
 
 ## Polyfills needed to support older browsers
