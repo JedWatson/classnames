@@ -55,6 +55,52 @@ var arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
 ```
 
+### Usage with React.js
+
+This package is the official replacement for `classSet`, which was originally shipped in the React.js Addons bundle.
+
+One of its primary use cases is to make dynamic and conditional className props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
+
+```js
+var Button = React.createClass({
+  // ...
+  render () {
+    var btnClass = 'btn';
+    if (this.state.isPressed) btnClass += ' btn-pressed';
+    else if (this.state.isHovered) buttonClass += ' btn-over';
+    return <button className={btnClass}>{this.props.label}</button>;
+  }
+});
+```
+
+You can express the conditional classes more simply as an object:
+
+```js
+var classNames = require('classnames');
+
+var Button = React.createClass({
+  // ...
+  render () {
+    var btnClass = classNames({
+      'btn': true,
+      'btn-pressed': this.state.isPressed,
+      'btn-over': !this.state.isPressed && this.state.isHovered
+    });
+    return <button className={btnClass}>{this.props.label}</button>;
+  }
+});
+```
+
+Because you can mix together object, array and string arguments, supporting optional className props is also simpler as only truthy arguments get included in the result:
+
+```js
+var btnClass = classNames('btn', this.props.className, {
+  'btn-pressed': this.state.isPressed,
+  'btn-over': !this.state.isPressed && this.state.isHovered
+});
+```
+
+
 ### Alternate `dedupe` version
 
 There is an alternate version of `classNames` available which correctly dedupes classes and ensures that falsy classes specified in later arguments are excluded from the result set.
