@@ -137,6 +137,31 @@ var cx = classNames.bind(styles);
 var className = cx('foo', ['bar'], { baz: true }); // => "abc def xyz"
 ```
 
+Real-world example:
+
+```js
+/* components/submit-button.js */
+import { Component } from 'react';
+import classNames from 'classnames';
+import styles from './submit-button.css';
+
+classNames = classNames.bind(styles);
+
+export default class SubmitButton extends Component {
+  render () {
+    let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
+    let className = classNames({
+      base: true,
+      inProgress: this.props.store.submissionInProgress,
+      error: this.props.store.errorOccurred,
+      disabled: this.props.form.valid,
+    });
+    return <button className={className}>{text}</button>;
+  } 
+}
+
+```
+
 
 ## Polyfills needed to support older browsers
 
