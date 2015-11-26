@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.1 / 2015-11-26
+
+* Add deps parameter to the AMD module, fixes an issue using the Dojo loader, thanks [Chris Jordan](https://github.com/flipperkid)
+
 ## v2.2.0 / 2015-10-18
 
 * added a new `bind` variant for use with [css-modules](https://github.com/css-modules/css-modules) and similar abstractions, thanks to [Kirill Yakovenko](https://github.com/blia)
