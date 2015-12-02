@@ -46,9 +46,6 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo
 
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
-
-// computed (dynamic) classes
-classNames({ [‘col-${props.size}’]: props.size });
 ```
 
 Arrays will be recursively flattened as per the rules above:
@@ -56,6 +53,15 @@ Arrays will be recursively flattened as per the rules above:
 ```js
 var arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
+```
+
+### Dynamic class names with ES2015
+
+If you're in an environment that supports [computed keys](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
+
+```js
+let buttonType = 'primary';
+classNames({ [‘btn-${buttonType}’]: true });
 ```
 
 ### Usage with React.js
@@ -125,6 +131,8 @@ For standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on yo
 ### Alternate `bind` version (for [css-modules](https://github.com/css-modules/css-modules))
 
 If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class "names" and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
+
+_Note that in ES2015 environments, it may be better to use the "dynamic class names" approach documented above._
 
 ```js
 var classNames = require('classnames/bind');
