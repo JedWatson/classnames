@@ -46,6 +46,9 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo 
 
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
+
+//computed (dynamic) classes
+classNames({[‘col-${props.size}’]: props.size})
 ```
 
 Arrays will be recursively flattened as per the rules above:
