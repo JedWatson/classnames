@@ -42,13 +42,14 @@ classNames({ foo: true }, { bar: true }); // => 'foo bar'
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
 // lots of arguments of various types
-classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo bar baz quux'
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
 
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 
-//computed (dynamic) classes
-classNames({ [‘col-${props.size}’]: props.size })
+// computed (dynamic) classes, example using props from a React component
+// assuming this.props.bar = 'baz'
+classNames({ [`foo-${this.props.bar}`]: this.props.bar }); // => 'foo-baz'
 ```
 
 Arrays will be recursively flattened as per the rules above:
