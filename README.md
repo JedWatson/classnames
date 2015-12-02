@@ -42,13 +42,13 @@ classNames({ foo: true }, { bar: true }); // => 'foo bar'
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
 // lots of arguments of various types
-classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo bar baz quux'
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
 
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 
-//computed (dynamic) classes
-classNames({ [‘col-${props.size}’]: props.size })
+// computed (dynamic) classes
+classNames({ [‘col-${props.size}’]: props.size });
 ```
 
 Arrays will be recursively flattened as per the rules above:
@@ -133,7 +133,7 @@ var styles = {
   foo: 'abc',
   bar: 'def',
   baz: 'xyz'
-}
+};
 
 var cx = classNames.bind(styles);
 
@@ -160,8 +160,8 @@ export default class SubmitButton extends Component {
       disabled: this.props.form.valid,
     });
     return <button className={className}>{text}</button>;
-  } 
-}
+  }
+};
 
 ```
 
