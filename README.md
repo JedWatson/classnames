@@ -38,6 +38,7 @@ The argument `'foo'` is short for `{ foo: true }`. If the value of the key is fa
 classNames('foo', 'bar'); // => 'foo bar'
 classNames('foo', { bar: true }); // => 'foo bar'
 classNames({ 'foo-bar': true }); // => 'foo-bar'
+classNames({ 'foo-bar': false }); // => ''
 classNames({ foo: true }, { bar: true }); // => 'foo bar'
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
