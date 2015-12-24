@@ -2,7 +2,11 @@
   "name": "classnames",
   "version": "2.2.1",
   "description": "A simple utility for conditionally joining classNames together",
-  "main": "index.js",
+  "main": [
+    "index.js",
+    "bind.js",
+    "dedupe.js"
+  ],
   "homepage": "https://github.com/JedWatson/classnames",
   "authors": [
     "Jed Watson"
