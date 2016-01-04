@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.2 / 2016-01-04
+
+* Switched from string concatenation to `[].join(' ')` for a slight performance gain in the main function.
+
 ## v2.2.1 / 2015-11-26
 
 * Add deps parameter to the AMD module, fixes an issue using the Dojo loader, thanks [Chris Jordan](https://github.com/flipperkid)
