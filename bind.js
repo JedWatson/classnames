@@ -11,7 +11,7 @@
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
-		var classes = '';
+		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
@@ -20,19 +20,19 @@
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes += ' ' + (this && this[arg] || arg);
+				classes.push(this && this[arg] || arg);
 			} else if (Array.isArray(arg)) {
-				classes += ' ' + classNames.apply(this, arg);
+				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes += ' ' + (this && this[key] || key);
+						classes.push(this && this[key] || key);
 					}
 				}
 			}
 		}
 
-		return classes.substr(1);
+		return classes.join(' ');
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
