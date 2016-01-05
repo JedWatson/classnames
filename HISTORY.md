@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.3 / 2016-01-05
+
+* Updated `bind` variant to use `[].join(' ')` as per the main script in 2.2.2
+
 ## v2.2.2 / 2016-01-04
 
 * Switched from string concatenation to `[].join(' ')` for a slight performance gain in the main function.
