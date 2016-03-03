@@ -79,7 +79,7 @@
 				}
 			}
 
-			return list.join(' ');
+			return list[0] && list.join(' ');
 		}
 
 		return _classNames;

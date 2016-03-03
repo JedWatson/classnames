@@ -39,8 +39,8 @@ describe('bind', function () {
 			assert.equal(classNames('', 'b', {}, ''), 'b');
 		});
 
-		it('returns an empty string for an empty configuration', function () {
-			assert.equal(classNames({}), '');
+		it('returns undefined for an empty configuration', function () {
+			assert.equal(classNames({}), undefined);
 		});
 
 		it('supports an array of class names', function () {
@@ -109,8 +109,8 @@ describe('bind', function () {
 			assert.equal(classNamesBound('', 'b', {}, ''), '#b');
 		});
 
-		it('returns an empty string for an empty configuration', function () {
-			assert.equal(classNamesBound({}), '');
+		it('returns undefined for an empty configuration', function () {
+			assert.equal(classNamesBound({}), undefined);
 		});
 
 		it('supports an array of class names', function () {
