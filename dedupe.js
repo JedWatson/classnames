@@ -26,11 +26,9 @@
 		function _parseObject (resultSet, object) {
 			for (var k in object) {
 				if (hasOwn.call(object, k)) {
-					if (object[k]) {
-						resultSet[k] = true;
-					} else {
-						delete resultSet[k];
-					}
+					// set value to false instead of deleting it to avoid changing object structure
+					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
+					resultSet[k] = !!object[k];
 				}
 			}
 		}
