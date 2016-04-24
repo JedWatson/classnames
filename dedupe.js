@@ -76,13 +76,15 @@
 				args[i] = arguments[i];
 			}
 
-			var classSet = {};
+			// don't inherit from Object so we can skip hasOwnProperty check later
+			// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
+			var classSet = Object.create(null);
 			_parseArray(classSet, args);
 
 			var list = [];
 
 			for (var k in classSet) {
-				if (hasOwn.call(classSet, k) && classSet[k]) {
+				if (classSet[k]) {
 					list.push(k)
 				}
 			}
