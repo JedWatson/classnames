@@ -68,8 +68,16 @@
 		}
 
 		function _classNames () {
+			// don't leak arguments
+			// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
+			var len = arguments.length;
+			var args = Array(len);
+			for (var i = 0; i < len; i++) {
+				args[i] = arguments[i];
+			}
+
 			var classSet = {};
-			_parseArray(classSet, arguments);
+			_parseArray(classSet, args);
 
 			var list = [];
 
