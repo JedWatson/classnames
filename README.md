@@ -115,7 +115,7 @@ var btnClass = classNames('btn', this.props.className, {
 
 There is an alternate version of `classNames` available which correctly dedupes classes and ensures that falsy classes specified in later arguments are excluded from the result set.
 
-This version is slower (about 10x) so it is offered as an opt-in.
+This version is slower (about 5x) so it is offered as an opt-in.
 
 To use the dedupe version with node, browserify or webpack:
 

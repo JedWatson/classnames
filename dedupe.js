@@ -26,11 +26,9 @@
 		function _parseObject (resultSet, object) {
 			for (var k in object) {
 				if (hasOwn.call(object, k)) {
-					if (object[k]) {
-						resultSet[k] = true;
-					} else {
-						delete resultSet[k];
-					}
+					// set value to false instead of deleting it to avoid changing object structure
+					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
+					resultSet[k] = !!object[k];
 				}
 			}
 		}
@@ -68,13 +66,23 @@
 		}
 
 		function _classNames () {
-			var classSet = {};
-			_parseArray(classSet, arguments);
+			// don't leak arguments
+			// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
+			var len = arguments.length;
+			var args = Array(len);
+			for (var i = 0; i < len; i++) {
+				args[i] = arguments[i];
+			}
+
+			// don't inherit from Object so we can skip hasOwnProperty check later
+			// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
+			var classSet = Object.create(null);
+			_parseArray(classSet, args);
 
 			var list = [];
 
 			for (var k in classSet) {
-				if (hasOwn.call(classSet, k) && classSet[k]) {
+				if (classSet[k]) {
 					list.push(k)
 				}
 			}
