@@ -62,7 +62,7 @@ If you're in an environment that supports [computed keys](http://www.ecma-intern
 
 ```js
 let buttonType = 'primary';
-classNames({ [‘btn-${buttonType}’]: true });
+classNames({ [`btn-${buttonType}`]: true });
 ```
 
 ### Usage with React.js
