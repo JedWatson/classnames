@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.4 / 2016-04-25
+
+* Improved performance of `dedupe` variant by about 2x, thanks [Bartosz Gościński](https://github.com/bgoscinski)
+
 ## v2.2.3 / 2016-01-05
 
 * Updated `bind` variant to use `[].join(' ')` as per the main script in 2.2.2
