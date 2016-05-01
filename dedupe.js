@@ -9,6 +9,11 @@
 	'use strict';
 
 	var classNames = (function () {
+		// don't inherit from Object so we can skip hasOwnProperty check later
+		// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
+		function StorageObject() {}
+		StorageObject.prototype = Object.create(null);
+
 		function _parseArray (resultSet, array) {
 			var length = array.length;
 
@@ -74,9 +79,7 @@
 				args[i] = arguments[i];
 			}
 
-			// don't inherit from Object so we can skip hasOwnProperty check later
-			// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
-			var classSet = Object.create(null);
+			var classSet = new StorageObject();
 			_parseArray(classSet, args);
 
 			var list = [];
