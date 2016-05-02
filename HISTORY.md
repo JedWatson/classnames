@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.5 / 2016-05-02
+
+* Improved performance of `dedupe` variant even further, thanks [Andres Suarez](https://github.com/zertosh)
+
 ## v2.2.4 / 2016-04-25
 
 * Improved performance of `dedupe` variant by about 2x, thanks [Bartosz Gościński](https://github.com/bgoscinski)
