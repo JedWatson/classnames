@@ -1,6 +1,6 @@
 {
   "name": "classnames",
-  "version": "2.2.3",
+  "version": "2.2.5",
   "description": "A simple utility for conditionally joining classNames together",
   "main": [
     "index.js",
