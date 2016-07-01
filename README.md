@@ -9,7 +9,7 @@ A simple javascript utility for conditionally joining classNames together.
 Install with npm or Bower.
 
 ```sh
-npm install classnames
+npm install classnames --save
 ```
 
 Use with node.js, browserify or webpack:
