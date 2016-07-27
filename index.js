@@ -24,11 +24,17 @@
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(null, arg));
 			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
+				if ('classname' in arg && 'display' in arg) {
+                    if (hasOwn.call(arg, 'display') && arg['classname']) {
+                        classArr.push(arg['classname']);
+                    }
+                } else {
+                    for (var key in arg) {
+                        if (hasOwn.call(arg, key) && arg[key]) {
+                            classArr.push(key);
+                        }
+                    }
+                }
 			}
 		}
 
