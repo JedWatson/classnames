@@ -52,10 +52,6 @@
 	  return classArray.apply(null, arguments).join(' ');
 	}
 
-
-	module.exports = classNames;
-
-
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
 	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
