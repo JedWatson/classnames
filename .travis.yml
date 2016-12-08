@@ -8,6 +8,3 @@ node_js:
   - "6"
   - "0.10"
   - "0.12"
-env:
-  - TEST_SUITE=unit
-script: "npm run-script $TEST_SUITE"
