@@ -11,7 +11,7 @@
   },
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
-    "test": "mocha tests/*.js"
+    "test": "mocha tests/*.js && mocha --compilers ts:ts-node/register tests/*.ts"
   },
   "keywords": [
     "react",
@@ -23,7 +23,12 @@
     "utility"
   ],
   "devDependencies": {
+    "@types/mocha": "^2.2.33",
+    "@types/node": "0.0.2",
+    "assert": "^1.4.1",
     "benchmark": "^1.0.0",
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "ts-node": "^1.7.2",
+    "typescript": "^2.1.4"
   }
 }
