@@ -1,9 +1,15 @@
-type ClassValue = string | number | ClassDictionary | ClassArray;
+declare type ClassValue = string | number | ClassDictionary | ClassArray | undefined | null | false;
 
 interface ClassDictionary {
-	[id: string]: boolean;
+	[id: string]: boolean | undefined | null;
 }
 
 interface ClassArray extends Array<ClassValue> { }
 
-export default function(...classes: ClassValue[]): string;
+interface ClassNamesFn {
+	(...classes: ClassValue[]): string;
+}
+
+declare var classNames: ClassNamesFn;
+
+export = classNames
