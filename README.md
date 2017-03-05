@@ -197,4 +197,4 @@ export default class SubmitButton extends Component {
 
 ## License
 
-[MIT](LICENSE). Copyright (c) 2016 Jed Watson.
+[MIT](LICENSE). Copyright (c) 2017 Jed Watson.
