@@ -5,15 +5,26 @@ Classnames
 [![Build Status](https://travis-ci.org/JedWatson/classnames.svg?branch=master)](https://travis-ci.org/JedWatson/classnames)
 [![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
 
-A simple javascript utility for conditionally joining classNames together.
+A simple JavaScript utility for conditionally joining classNames together.
 
-Install with npm or Bower.
+Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
+npm:
 ```sh
 npm install classnames --save
 ```
 
-Use with node.js, browserify or webpack:
+Bower:
+```sh
+bower install classnames --save
+```
+
+Yarn (note that `yarn add` automatically saves the package to the `dependencies` in `package.json`):
+```sh
+yarn add classnames
+```
+
+Use with [Node.js](https://nodejs.org/en/), [Browserify](http://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
 var classNames = require('classnames');
@@ -33,7 +44,7 @@ There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/
 ## Usage
 
 The `classNames` function takes any number of arguments which can be a string or object.
-The argument `'foo'` is short for `{ foo: true }`. If the value of the key is falsy, it won't be included in the output.
+The argument `'foo'` is short for `{ foo: true }`. If the value associated with a given key is falsy, that key won't be included in the output.
 
 ```js
 classNames('foo', 'bar'); // => 'foo bar'
@@ -70,7 +81,7 @@ classNames({ [`btn-${buttonType}`]: true });
 
 This package is the official replacement for `classSet`, which was originally shipped in the React.js Addons bundle.
 
-One of its primary use cases is to make dynamic and conditional className props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
+One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
 var Button = React.createClass({
@@ -93,7 +104,7 @@ var Button = React.createClass({
   // ...
   render () {
     var btnClass = classNames({
-      'btn': true,
+      btn: true,
       'btn-pressed': this.state.isPressed,
       'btn-over': !this.state.isPressed && this.state.isHovered
     });
@@ -102,7 +113,7 @@ var Button = React.createClass({
 });
 ```
 
-Because you can mix together object, array and string arguments, supporting optional className props is also simpler as only truthy arguments get included in the result:
+Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
 var btnClass = classNames('btn', this.props.className, {
@@ -118,7 +129,7 @@ There is an alternate version of `classNames` available which correctly dedupes 
 
 This version is slower (about 5x) so it is offered as an opt-in.
 
-To use the dedupe version with node, browserify or webpack:
+To use the dedupe version with Node.js, Browserify, or webpack:
 
 ```js
 var classNames = require('classnames/dedupe');
@@ -186,4 +197,4 @@ export default class SubmitButton extends Component {
 
 ## License
 
-[MIT](LICENSE). Copyright (c) 2016 Jed Watson.
+[MIT](LICENSE). Copyright (c) 2017 Jed Watson.
