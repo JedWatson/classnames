@@ -44,7 +44,7 @@ There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/
 ## Usage
 
 The `classNames` function takes any number of arguments which can be a string or object.
-The argument `'foo'` is short for `{ foo: true }`. If the value of the key is falsy, it won't be included in the output.
+The argument `'foo'` is short for `{ foo: true }`. If the value associated with a given key is falsy, that key won't be included in the output.
 
 ```js
 classNames('foo', 'bar'); // => 'foo bar'
