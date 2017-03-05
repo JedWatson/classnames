@@ -5,7 +5,7 @@ Classnames
 [![Build Status](https://travis-ci.org/JedWatson/classnames.svg?branch=master)](https://travis-ci.org/JedWatson/classnames)
 [![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
 
-A simple javascript utility for conditionally joining classNames together.
+A simple JavaScript utility for conditionally joining classNames together.
 
 Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
