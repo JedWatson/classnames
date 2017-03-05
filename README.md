@@ -24,7 +24,7 @@ Yarn (note that `yarn add` automatically saves the package to the `dependencies`
 yarn add classnames
 ```
 
-Use with node.js, browserify or webpack:
+Use with [Node.js](https://nodejs.org/en/), [Browserify](http://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
 var classNames = require('classnames');
@@ -129,7 +129,7 @@ There is an alternate version of `classNames` available which correctly dedupes 
 
 This version is slower (about 5x) so it is offered as an opt-in.
 
-To use the dedupe version with node, browserify or webpack:
+To use the dedupe version with Node.js, Browserify, or webpack:
 
 ```js
 var classNames = require('classnames/dedupe');
