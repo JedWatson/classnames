@@ -7,10 +7,21 @@ Classnames
 
 A simple javascript utility for conditionally joining classNames together.
 
-Install with npm or Bower.
+Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
+npm:
 ```sh
 npm install classnames --save
+```
+
+Bower:
+```sh
+bower install classnames --save
+```
+
+Yarn (note that `yarn add` automatically saves the package to the `dependencies` in `package.json`):
+```sh
+yarn add classnames
 ```
 
 Use with node.js, browserify or webpack:
