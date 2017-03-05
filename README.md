@@ -104,7 +104,7 @@ var Button = React.createClass({
   // ...
   render () {
     var btnClass = classNames({
-      'btn': true,
+      btn: true,
       'btn-pressed': this.state.isPressed,
       'btn-over': !this.state.isPressed && this.state.isHovered
     });
