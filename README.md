@@ -81,7 +81,7 @@ classNames({ [`btn-${buttonType}`]: true });
 
 This package is the official replacement for `classSet`, which was originally shipped in the React.js Addons bundle.
 
-One of its primary use cases is to make dynamic and conditional className props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
+One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
 var Button = React.createClass({
@@ -113,7 +113,7 @@ var Button = React.createClass({
 });
 ```
 
-Because you can mix together object, array and string arguments, supporting optional className props is also simpler as only truthy arguments get included in the result:
+Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
 var btnClass = classNames('btn', this.props.className, {
