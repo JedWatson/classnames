@@ -141,6 +141,11 @@ describe('bind', function () {
 		it('handles deep array recursion', function () {
 			assert.equal(classNamesBound(['a', ['b', ['c', {d: true}]]]), '#a #b #c #d');
 		});
+
+		it('supports space separated classes', function () {
+			assert.equal(classNamesBound('a b c'), '#a #b #c');
+			assert.equal(classNamesBound('a   b', ['c x', ['e z']]), '#a #b #c x #e z');
+		});
 	});
 
 })
