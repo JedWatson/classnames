@@ -5,6 +5,11 @@ var fixtures = [
 		expected: 'one two three'
 	},
 	{
+		description: 'joint strings',
+		args: ['one two three'],
+		expected: 'one two three'
+	},
+	{
 		description: 'object',
 		args: [{ one: true, two: true, three: false }],
 		expected: 'one two'
@@ -26,13 +31,24 @@ var fixtures = [
 	}
 ];
 
+var cssModule = {
+	'one': 'one',
+	'two': 'two',
+	'three': 'three',
+	'four': 'four',
+	'five': 'five',
+	'six': 'six'
+};
+
 var local = require('../');
 var dedupe = require('../dedupe');
+var bind = require('../bind').bind(cssModule);
 var localPackage = require('../package.json');
 
 try {
 	var npm = require('classnames');
 	var npmDedupe = require('classnames/dedupe');
+	var npmBind = require('classnames/bind').bind(cssModule);
 	var npmPackage = require('./node_modules/classnames/package.json');
 } catch (e) {
 	console.log('There was an error loading the benchmark classnames package.\n' +
@@ -58,8 +74,10 @@ fixtures.forEach(function (f) {
 	// sort assertions because dedupe returns results in a different order
 	assert.equal(sortClasses(local.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(dedupe.apply(null, f.args)), sortClasses(f.expected));
+	assert.equal(sortClasses(bind.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(npm.apply(null, f.args)), sortClasses(f.expected));
 	assert.equal(sortClasses(npmDedupe.apply(null, f.args)), sortClasses(f.expected));
+	assert.equal(sortClasses(npmBind.apply(null, f.args)), sortClasses(f.expected));
 
 	var suite = new benchmark.Suite();
 
@@ -77,6 +95,14 @@ fixtures.forEach(function (f) {
 
 	suite.add('  npm/dedupe#' + f.description, function () {
 		npmDedupe.apply(null, f.args);
+	});
+
+	suite.add('local/bind#' + f.description, function () {
+		bind.apply(null, f.args);
+	});
+
+	suite.add('  npm/bind#' + f.description, function () {
+		npmBind.apply(null, f.args);
 	});
 
 	// after each cycle

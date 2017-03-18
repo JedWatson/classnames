@@ -19,7 +19,18 @@
 
 			var argType = typeof arg;
 
-			if (argType === 'string' || argType === 'number') {
+			if (argType === 'string') {
+				if (arg.indexOf(' ') !== -1) {
+					var words = arg.split(' ');
+					for (var j = 0; j < words.length; j++) {
+						if (words[j]) {
+							classes.push(this && this[words[j]] || words[j]);
+						}
+					}
+				} else {
+					classes.push(this && this[arg] || arg);
+				}
+			} else if (argType === 'number') {
 				classes.push(this && this[arg] || arg);
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
