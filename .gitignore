@@ -24,3 +24,5 @@ node_modules
 
 # Mac OS X DS_Store
 .DS_Store
+
+benchmarks/runInBrowser.bundle.js
