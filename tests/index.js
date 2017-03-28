@@ -59,4 +59,80 @@ describe('classNames', function () {
 	it('handles deep array recursion', function () {
 		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
+
+	it('handles with variable array', function() {
+        var classNames1 = 'a',
+            classNames2 = 'b',
+            classNames3 = 'c',
+            classNames4 = 'd';
+        assert.equal(classNames([{
+            'classname': classNames1,
+            'display': true
+        }, {
+            'classname': classNames2,
+            'display': true
+        }, {
+            'classname': classNames3,
+            'display': false
+        }, {
+            'classname': classNames4,
+            'display': true
+        }]), 'a b d');
+    });
+
+    it('handle with variable array of objects and string', function() {
+        var classNames1 = 'a',
+            classNames2 = 'b',
+            classNames3 = 'c',
+            classNames4 = 'd';
+        assert.equal(classNames([{
+            'classname': classNames1,
+            'display': true
+        }, {
+            'classname': classNames2,
+            'display': true
+        }, {
+            'classname': classNames3,
+            'display': false
+        }, 'd']), 'a b d');
+    });
+
+    it('handle with arrays and array with variable objects', function() {
+        var classNames1 = 'a',
+            classNames2 = 'b',
+            classNames3 = 'c',
+            classNames4 = 'd';
+        assert.equal(classNames([{
+                'classname': classNames1,
+                'display': true
+            }, {
+                'classname': classNames2,
+                'display': true
+            }, {
+                'classname': classNames3,
+                'display': false
+            },
+            ['d']
+        ]), 'a b d');
+    });
+
+    it('handle double with variable array of objects', function() {
+        var classNames1 = 'a',
+            classNames2 = 'b',
+            classNames3 = 'c',
+            classNames4 = 'd';
+        assert.equal(classNames([{
+            'classname': classNames1,
+            'display': true
+        }, {
+            'classname': classNames2,
+            'display': true
+        }], [{
+            'classname': classNames3,
+            'display': false
+        }, {
+            'classname': classNames4,
+            'display': true
+        }]), 'a b d');
+    });
 });
