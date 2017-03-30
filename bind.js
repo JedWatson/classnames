@@ -19,8 +19,10 @@
 
 			var argType = typeof arg;
 
-			if (argType === 'string' || argType === 'number') {
+			if (argType === 'string') {
 				classes.push(this && this[arg] || arg);
+			} else if (argType === 'number') {
+				classes.push(this && this['_' + arg] || '_' + arg);
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {

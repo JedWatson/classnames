@@ -25,7 +25,7 @@
 		var hasOwn = {}.hasOwnProperty;
 
 		function _parseNumber (resultSet, num) {
-			resultSet[num] = true;
+			resultSet['_' + num] = true;
 		}
 
 		function _parseObject (resultSet, object) {

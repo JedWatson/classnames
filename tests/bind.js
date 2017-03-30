@@ -28,7 +28,7 @@ describe('bind', function () {
 		});
 
 		it('joins arrays of class names and ignore falsy values', function () {
-			assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
+			assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a _1 b');
 		});
 
 		it('supports heterogenous arguments', function () {
@@ -98,7 +98,7 @@ describe('bind', function () {
 			}), '#a #f x z');
 		})
 		it('joins arrays of class names and ignore falsy values', function () {
-			assert.equal(classNamesBound('a', 0, null, undefined, true, 1, 'b'), '#a 1 #b');
+			assert.equal(classNamesBound('a', 0, null, undefined, true, 1, 'b'), '#a _1 #b');
 		});
 
 		it('supports heterogenous arguments', function () {
