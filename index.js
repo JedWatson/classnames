@@ -11,28 +11,28 @@
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
-		var classes = [];
+		var res = '';
 
-		for (var i = 0; i < arguments.length; i++) {
+		for (var i = 0, len = arguments.length; i < len; i++) {
 			var arg = arguments[i];
 			if (!arg) continue;
 
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
+				res += arg + ' ';
 			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
+				res += classNames.apply(null, arg) + ' ';
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+						res += key + ' ';
 					}
 				}
 			}
 		}
 
-		return classes.join(' ');
+		return res.trim();
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
