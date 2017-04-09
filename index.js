@@ -12,13 +12,12 @@
 
 	function classNames () {
 		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
+		var args = Array.prototype.slice.call(arguments, 0)
+		for (var i = 0; i < args.length; i++) {
+			var arg = args[i];
 			if (!arg) continue;
-
+			if (arg.callee) arg = Array.from(arg);
 			var argType = typeof arg;
-
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
 			} else if (Array.isArray(arg)) {
