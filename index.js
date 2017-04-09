@@ -16,6 +16,7 @@
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
 			if (!arg) continue;
+			if (arg.callee) arg = Array.from(arg)
 
 			var argType = typeof arg;
 
