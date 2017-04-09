@@ -59,4 +59,22 @@ describe('classNames', function () {
 	it('handles deep array recursion', function () {
 		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
+
+	it('handles arguments array', function () {
+		var func = function(a, b, c) { return classNames(arguments) }
+		assert.equal(func('a', 'b', 'c'), 'a b c');
+	});
+
+	it('handles deep arguments array', function () {
+		var func = function(a, b, c) { return classNames(arguments) }
+		assert.equal(classNames([func('a', 'b', 'c'), 'd']), 'a b c d');
+	});
+
+	it('handles arguments that include objects', function () {
+		var func = function(a, b, c) { return classNames(arguments) }
+		assert.equal(func('a', {b: true, c: false}), 'a b');
+	});
+
+
+
 });
