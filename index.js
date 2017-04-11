@@ -16,7 +16,11 @@
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
 			if (!arg) continue;
-
+			if (arg.callee) {
+				var argArr = [], it = arg.length;
+				while (it--) argArr[it] = arg[it];
+				arg = argArr;
+			}
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
