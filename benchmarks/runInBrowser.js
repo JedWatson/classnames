@@ -7,9 +7,20 @@ var cssModule = {
 	'five': 'five',
 	'six': 'six'
 };
+var cssModule1 = {
+	'one': 'one',
+	'two': 'two',
+	'three': 'three'
+}
+var cssModule2 = {
+	'four': 'four',
+	'five': 'five',
+	'six': 'six'
+};
 var local = require('../');
 var dedupe = require('../dedupe');
 var bind = require('../bind').bind(cssModule);
+var join = require('../bind').join(cssModule1, cssModule2);
 var localPackage = require('../package.json');
 
 var npm = require('classnames');
@@ -50,7 +61,7 @@ window.onload = function () {
 	log(navigator.userAgent);
 	setTimeout(function () {
 		deferredForEach(fixtures, function (f) {
-			runSuite(local, npm, dedupe, npmDedupe, bind, npmBind, f, log);
+			runSuite(local, npm, dedupe, npmDedupe, bind, npmBind, join, f, log);
 		}, function () {
 			log('Finished');
 			document.getElementById('loader').style.display = 'none';

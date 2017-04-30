@@ -7,10 +7,21 @@ var cssModule = {
 	'five': 'five',
 	'six': 'six'
 };
+var cssModule1 = {
+	'one': 'one',
+	'two': 'two',
+	'three': 'three'
+}
+var cssModule2 = {
+	'four': 'four',
+	'five': 'five',
+	'six': 'six'
+};
 
 var local = require('../');
 var dedupe = require('../dedupe');
 var bind = require('../bind').bind(cssModule);
+var join = require('../bind').join(cssModule1, cssModule2);
 var localPackage = require('../package.json');
 
 function log (message) {
@@ -39,6 +50,6 @@ var runChecks = require('./runChecks');
 var runSuite = require('./runSuite');
 
 fixtures.forEach(function (f) {
-	runChecks(local, npm, dedupe, npmDedupe, bind, npmBind, f);
-	runSuite(local, npm, dedupe, npmDedupe, bind, npmBind, f, log);
+	runChecks(local, npm, dedupe, npmDedupe, bind, npmBind, join, f);
+	runSuite(local, npm, dedupe, npmDedupe, bind, npmBind, join, f, log);
 });

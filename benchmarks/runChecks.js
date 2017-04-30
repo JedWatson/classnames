@@ -4,7 +4,7 @@ function sortClasses (str) {
 	return str.split(' ').sort().join(' ');
 }
 
-function runChecks (local, npm, dedupe, npmDedupe, bind, npmBind, fixture) {
+function runChecks (local, npm, dedupe, npmDedupe, bind, npmBind, join, fixture) {
 	// sort assertions because dedupe returns results in a different order
 	assert.equal(sortClasses(local.apply(null, fixture.args)), sortClasses(fixture.expected));
 	assert.equal(sortClasses(dedupe.apply(null, fixture.args)), sortClasses(fixture.expected));
@@ -12,6 +12,7 @@ function runChecks (local, npm, dedupe, npmDedupe, bind, npmBind, fixture) {
 	assert.equal(sortClasses(npmDedupe.apply(null, fixture.args)), sortClasses(fixture.expected));
 	assert.equal(sortClasses(bind.apply(null, fixture.args)), sortClasses(fixture.expected));
 	assert.equal(sortClasses(npmBind.apply(null, fixture.args)), sortClasses(fixture.expected));
+	assert.equal(sortClasses(join.apply(null, fixture.args)), sortClasses(fixture.expected));
 }
 
 module.exports = runChecks;
