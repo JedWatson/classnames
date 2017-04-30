@@ -1,6 +1,16 @@
 var fixtures = require('./fixtures');
+var cssModule = {
+	'one': 'one',
+	'two': 'two',
+	'three': 'three',
+	'four': 'four',
+	'five': 'five',
+	'six': 'six'
+};
+
 var local = require('../');
 var dedupe = require('../dedupe');
+var bind = require('../bind').bind(cssModule);
 var localPackage = require('../package.json');
 
 function log (message) {
@@ -10,6 +20,7 @@ function log (message) {
 try {
 	var npm = require('classnames');
 	var npmDedupe = require('classnames/dedupe');
+	var npmBind = require('classnames/bind').bind(cssModule);
 	var npmPackage = require('./node_modules/classnames/package.json');
 } catch (e) {
 	log('There was an error loading the benchmark classnames package.\n' +
@@ -28,6 +39,6 @@ var runChecks = require('./runChecks');
 var runSuite = require('./runSuite');
 
 fixtures.forEach(function (f) {
-	runChecks(local, npm, dedupe, npmDedupe, f);
-	runSuite(local, npm, dedupe, npmDedupe, f, log);
+	runChecks(local, npm, dedupe, npmDedupe, bind, npmBind, f);
+	runSuite(local, npm, dedupe, npmDedupe, bind, npmBind, f, log);
 });

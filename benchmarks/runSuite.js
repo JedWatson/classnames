@@ -1,6 +1,6 @@
 var benchmark = require('benchmark');
 
-function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
+function runSuite (local, npm, dedupe, npmDedupe, bind, npmBind, fixture, log) {
 	var suite = new benchmark.Suite();
 
 	suite.add('local#' + fixture.description, function () {
@@ -17,6 +17,14 @@ function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
 
 	suite.add('  npm/dedupe#' + fixture.description, function () {
 		npmDedupe.apply(null, fixture.args);
+	});
+
+	suite.add('local/bind#' + fixture.description, function () {
+		bind.apply(null, fixture.args);
+	});
+
+	suite.add('  npm/bind#' + fixture.description, function () {
+		npmBind.apply(null, fixture.args);
 	});
 
 	// after each cycle
