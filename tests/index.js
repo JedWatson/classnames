@@ -60,6 +60,14 @@ describe('classNames', function () {
 		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
 
+	it('handles arrays that are empty', function () {
+		assert.equal(classNames('a', []), 'a');
+	});
+
+	it('handles nested arrays that have empty nested arrays', function () {
+		assert.equal(classNames('a', [[]]), 'a');
+	});
+
 	it('handles all types of truthy and falsy property values as expected', function () {
 		assert.equal(classNames({
 			// falsy:
@@ -80,6 +88,6 @@ describe('classNames', function () {
 			emptyList: [],
 			nonEmptyList: [1, 2, 3],
 			greaterZero: 1
-		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero')
-	})
+		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
+	});
 });
