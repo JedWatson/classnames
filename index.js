@@ -21,7 +21,11 @@
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
-			} else if (Array.isArray(arg)) {
+			} else if (Array.isArray(arg) && arg.length) {
+				// if the element inside the array is an empty array do not push it
+				if (Array.isArray(arg[0]) && !arg[0].length) {
+					continue
+				}
 				classes.push(classNames.apply(null, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {

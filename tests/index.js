@@ -59,4 +59,12 @@ describe('classNames', function () {
 	it('handles deep array recursion', function () {
 		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
+
+	it('handles arrays that are empty', function () {
+		assert.equal(classNames('a', []), 'a');
+	});
+
+	it('handles nested arrays that have empty nested arrays', function () {
+		assert.equal(classNames('a', [[]]), 'a');
+	});
 });
