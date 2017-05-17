@@ -67,4 +67,27 @@ describe('classNames', function () {
 	it('handles nested arrays that have empty nested arrays', function () {
 		assert.equal(classNames('a', [[]]), 'a');
 	});
+
+	it('handles all types of truthy and falsy property values as expected', function () {
+		assert.equal(classNames({
+			// falsy:
+			null: null,
+			emptyString: "",
+			noNumber: NaN,
+			zero: 0,
+			negativeZero: -0,
+			false: false,
+			undefined: undefined,
+
+			// truthy (literally anything else):
+			nonEmptyString: "foobar",
+			whitespace: ' ',
+			function: Object.prototype.toString,
+			emptyObject: {},
+			nonEmptyObject: {a: 1, b: 2},
+			emptyList: [],
+			nonEmptyList: [1, 2, 3],
+			greaterZero: 1
+		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
+	});
 });
