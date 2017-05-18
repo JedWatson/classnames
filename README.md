@@ -48,6 +48,7 @@ The argument `'foo'` is short for `{ foo: true }`. If the value associated with 
 
 ```js
 classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo bar', 'bar'); // => 'foo bar'
 classNames('foo', { bar: true }); // => 'foo bar'
 classNames({ 'foo-bar': true }); // => 'foo-bar'
 classNames({ 'foo-bar': false }); // => ''
