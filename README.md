@@ -186,8 +186,37 @@ export default class SubmitButton extends Component {
 
 ```
 
+### Alternate `join` version (for [css-modules](https://github.com/css-modules/css-modules))
+
+If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class "names" and the real `className` values that are actually output to the DOM, and you have multiple sources for classNames, you may want to use the `join` variant.
+
+_Note that in ES2015 environments, it may be better to use the "dynamic class names" approach documented above._
+
+```js
+var classNames = require('classnames/bind');
+
+var styles1 = {
+  foo: 'abc',
+  bar: 'def',
+  baz: 'xyz'
+};
+
+var styles2 = {
+	qux: 'ghi',
+	quz: 'jkl',
+	quuz: 'uvw',
+}
+
+var cx = classNames.join(styles1, styles2);
+
+var className = cx('foo', 'bar', ['qux', 'quz'], { baz: true, quuz: true }); // => "abc def ghi jkl uvw xyz"
+```
 
 ## Polyfills needed to support older browsers
+
+#### `classNames >=2.3.0`
+
+`Object.assign`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) for details about unsupported older browsers (e.g. <= IE) and a simple polyfill. This is only used in `bind.js`, using `join` variant.
 
 #### `classNames >=2.0.0`
 

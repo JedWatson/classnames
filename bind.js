@@ -10,6 +10,15 @@
 
 	var hasOwn = {}.hasOwnProperty;
 
+	function join () {
+		var context = {}
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i]
+			Object.assign(context, arg)
+		}
+		return classNames.bind(context)
+	}
+
 	function classNames () {
 		var classes = [];
 
@@ -34,6 +43,8 @@
 
 		return classes.join(' ');
 	}
+
+	classNames.join = join
 
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
