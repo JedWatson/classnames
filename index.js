@@ -35,7 +35,7 @@
 			}
 		}
 
-		return classes.join(' ');
+		return classes[0] && classes.join(' ');
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
