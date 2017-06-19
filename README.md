@@ -9,7 +9,7 @@ A simple JavaScript utility for conditionally joining classNames together.
 
 Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
-npm:
+npm (note you don't need `--save` as npm ^5 it automatically saves the package to the `dependencies` in `package.json`):
 ```sh
 npm install classnames --save
 ```
