@@ -20,16 +20,16 @@
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes += (classes ? ' ' : '') + arg
+				classes += (classes ? ' ' : '') + arg;
 			} else if (Array.isArray(arg) && arg.length) {
 				var inner = classNames.apply(null, arg);
 				if (inner) {
-					classes += (classes ? ' ' : '') + inner
+					classes += (classes ? ' ' : '') + inner;
 				}
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes += (classes ? ' ' : '') + key
+						classes += (classes ? ' ' : '') + key;
 					}
 				}
 			}
