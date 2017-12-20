@@ -1,0 +1,6 @@
+{
+  "name": "classnames/dedupe",
+  "private": true,
+  "main": "../dist/dedupe.cjs.js",
+  "module": "../dist/dedupe.es.js"
+}

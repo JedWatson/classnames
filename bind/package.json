@@ -1,0 +1,6 @@
+{
+  "name": "classnames/bind",
+  "private": true,
+  "main": "../dist/bind.cjs.js",
+  "module": "../dist/bind.es.js"
+}
