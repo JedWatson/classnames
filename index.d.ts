@@ -12,4 +12,4 @@ interface ClassNamesFn {
 
 declare var classNames: ClassNamesFn;
 
-export = classNames
+export default classNames
