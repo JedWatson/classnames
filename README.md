@@ -68,7 +68,7 @@ var arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
 ```
 
-### Dynamic class names with ES2015
+### Dynamic class names with ES2015 (ES6)
 
 If you're in an environment that supports [computed keys](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
@@ -77,51 +77,79 @@ let buttonType = 'primary';
 classNames({ [`btn-${buttonType}`]: true });
 ```
 
+Here's an example in React:
+```jsx
+import cx from 'classnames';
+
+const Button = ({ buttonType, label, labelColor }) => {
+  const buttonClass = cx({
+    [`btn-${buttonType}`]: true,
+  });
+
+  const spanClass = cx(`label-${labelColor} label-sm`);
+
+  return (
+    <button className={buttonClass}>
+      <span className={spanClass}>
+        {label}
+      </span>
+    </button>
+  );
+};
+```
+
 ### Usage with React.js
 
 This package is the official replacement for `classSet`, which was originally shipped in the React.js Addons bundle.
 
 One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
-```js
-var Button = React.createClass({
-  // ...
-  render () {
-    var btnClass = 'btn';
-    if (this.state.isPressed) btnClass += ' btn-pressed';
-    else if (this.state.isHovered) btnClass += ' btn-over';
-    return <button className={btnClass}>{this.props.label}</button>;
-  }
-});
+```jsx
+const Button = ({ isPressed, isHovering, label }) => {
+  let buttonClass = 'btn';
+
+  if (isPressed) buttonClass += ' btn-pressed';
+  else if (isHovering) buttonClass += ' btn-hover';
+
+  return (
+    <button className={buttonClass}>
+      {label}
+    </button>
+  );
+};
+
+export default Button;
 ```
 
 You can express the conditional classes more simply as an object:
 
 ```js
-var classNames = require('classnames');
+import cx from 'classnames';
 
-var Button = React.createClass({
-  // ...
-  render () {
-    var btnClass = classNames({
-      btn: true,
-      'btn-pressed': this.state.isPressed,
-      'btn-over': !this.state.isPressed && this.state.isHovered
-    });
-    return <button className={btnClass}>{this.props.label}</button>;
-  }
-});
+const Button = ({ isPressed, isHovering, label }) => {
+  const buttonClass = cx('btn', {
+    'btn-pressed': isPressed,
+    'btn-hover': !isPressed && isHovering,
+  });
+
+  return (
+    <button className={buttonClass}>
+      {label}
+    </button>
+  );
+};
+
+export default Button;
 ```
 
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
-var btnClass = classNames('btn', this.props.className, {
+const buttonClass = classNames('btn', this.props.className, {
   'btn-pressed': this.state.isPressed,
-  'btn-over': !this.state.isPressed && this.state.isHovered
+  'btn-hover': !this.state.isPressed && this.state.isHovered,
 });
 ```
-
 
 ### Alternate `dedupe` version
 
