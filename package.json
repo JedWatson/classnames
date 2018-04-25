@@ -13,7 +13,7 @@
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
     "benchmarks-in-browser": "./node_modules/.bin/opn ./benchmarks/benchmarks.html",
-    "test": "mocha tests/*.js"
+    "test": "mocha tests/*.js && mocha --compilers ts:ts-node/register tests/*.ts"
   },
   "keywords": [
     "react",
@@ -25,9 +25,14 @@
     "utility"
   ],
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.5.4",
+    "assert": "^1.4.1",
     "benchmark": "^1.0.0",
     "browserify": "^14.1.0",
-    "mocha": "^2.1.0",
-    "opn-cli": "^3.1.0"
+    "mocha": "^5.2.0",
+    "opn-cli": "^3.1.0",
+    "ts-node": "^7.0.0",
+    "typescript": "^3.0.1"
   }
 }
