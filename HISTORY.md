@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.6 / 2018-06-08
+
+* Fixed compatibility issue with usage in an es module environment
+
 ## v2.2.5 / 2016-05-02
 
 * Improved performance of `dedupe` variant even further, thanks [Andres Suarez](https://github.com/zertosh)
