@@ -41,7 +41,7 @@
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+	} else if (typeof define === 'function' && define.amd) {
 		// register as 'classnames', consistent with npm package name
 		define('classnames', [], function () {
 			return classNames;
