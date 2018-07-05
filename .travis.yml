@@ -1,10 +1,7 @@
 language: node_js
-before_install:
-  - "npm install npm -g"
+install: true
 node_js:
   - "stable"
-  - "4"
-  - "5"
+  - "10"
+  - "8"
   - "6"
-  - "0.10"
-  - "0.12"
