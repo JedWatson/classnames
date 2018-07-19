@@ -27,7 +27,7 @@
 					classes.push(inner);
 				}
 			} else if (argType === 'object') {
-				if (hasOwn.call(arg, 'toString') && typeof arg.toString === 'function') {
+				if (typeof arg.toString === 'function' && hasOwn.call(arg, 'toString')) {
 					classes.push(arg.toString());
 				} else {
 					for (var key in arg) {
