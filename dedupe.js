@@ -28,12 +28,16 @@
 			resultSet[num] = true;
 		}
 
-		function _parseObject (resultSet, object) {
-			for (var k in object) {
-				if (hasOwn.call(object, k)) {
-					// set value to false instead of deleting it to avoid changing object structure
-					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
-					resultSet[k] = !!object[k];
+		function _parseObject(resultSet, object) {
+			if (hasOwn.call(object, 'toString') && typeof object.toString === 'function') {
+				resultSet[object.toString()] = true;
+			} else {
+				for (var k in object) {
+					if (hasOwn.call(object, k)) {
+						// set value to false instead of deleting it to avoid changing object structure
+						// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
+						resultSet[k] = !!object[k];
+					}
 				}
 			}
 		}

@@ -74,4 +74,10 @@ describe('dedupe', function () {
 	it('handles deep array recursion', function () {
 		assert.equal(dedupe(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
+
+	it('handles own toString() method defined on object', function () {
+		assert.equal(dedupe({
+			toString: function () { return 'classFromMethod'; }
+		}), 'classFromMethod');
+	});
 });
