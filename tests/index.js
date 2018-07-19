@@ -90,4 +90,10 @@ describe('classNames', function () {
 			greaterZero: 1
 		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
 	});
+
+	it('handles own toString() method defined on object', function () {
+		assert.equal(classNames({
+			toString: function () { return 'classFromMethod'; }
+		}), 'classFromMethod');
+	});
 });
