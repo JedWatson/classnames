@@ -3,8 +3,5 @@ before_install:
   - "npm install npm -g"
 node_js:
   - "stable"
-  - "4"
-  - "5"
-  - "6"
-  - "0.10"
-  - "0.12"
+  - "9"
+  - "10"
