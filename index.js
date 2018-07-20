@@ -27,9 +27,13 @@
 					classes.push(inner);
 				}
 			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+				if (arg instanceof String) {
+					classes.push(arg);
+				} else {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
 					}
 				}
 			}
