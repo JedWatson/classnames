@@ -154,6 +154,15 @@ describe('bind', function () {
 			}), 'classFromMethod');
 		});
 
+		it('handles toString() method defined inherited in object', function () {
+			var Class1 = function() {};
+			var Class2 = function() {};
+			Class1.prototype.toString = function() { return 'classFromMethod'; }
+			Class2.prototype = Object.create(Class1.prototype);
+	
+			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+		});
+
 	});
 
 })

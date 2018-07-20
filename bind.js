@@ -24,7 +24,7 @@
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
-				if (typeof arg.toString === 'function' && hasOwn.call(arg, 'toString')) {
+				if (arg.toString !== Object.prototype.toString) {
 					classes.push(arg.toString());
 				} else {
 					for (var key in arg) {

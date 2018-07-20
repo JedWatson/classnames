@@ -29,7 +29,7 @@
 		}
 
 		function _parseObject(resultSet, object) {
-			if (typeof object.toString === 'function' && hasOwn.call(object, 'toString')) {
+			if(object.toString !== Object.prototype.toString) {
 				resultSet[object.toString()] = true;
 			} else {
 				for (var k in object) {

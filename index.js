@@ -21,13 +21,15 @@
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
+			} else if (Array.isArray(arg)) {
+				if(arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
 				}
 			} else if (argType === 'object') {
-				if (typeof arg.toString === 'function' && hasOwn.call(arg, 'toString')) {
+				if (arg.toString !== Object.prototype.toString) {
 					classes.push(arg.toString());
 				} else {
 					for (var key in arg) {

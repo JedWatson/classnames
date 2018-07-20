@@ -91,9 +91,18 @@ describe('classNames', function () {
 		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
 	});
 
-	it('handles own toString() method defined on object', function () {
+	it('handles toString() method defined on object', function () {
 		assert.equal(classNames({
 			toString: function () { return 'classFromMethod'; }
 		}), 'classFromMethod');
+	});
+
+	it('handles toString() method defined inherited in object', function () {
+		var Class1 = function() {};
+		var Class2 = function() {};
+		Class1.prototype.toString = function() { return 'classFromMethod'; }
+		Class2.prototype = Object.create(Class1.prototype);
+
+		assert.equal(classNames(new Class2()), 'classFromMethod');
 	});
 });
