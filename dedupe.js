@@ -9,11 +9,6 @@
 	'use strict';
 
 	var classNames = (function () {
-		// don't inherit from Object so we can skip hasOwnProperty check later
-		// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
-		function StorageObject() {}
-		StorageObject.prototype = Object.create(null);
-
 		function _parseArray (resultSet, array) {
 			var length = array.length;
 
@@ -25,15 +20,17 @@
 		var hasOwn = {}.hasOwnProperty;
 
 		function _parseNumber (resultSet, num) {
-			resultSet[num] = true;
+			resultSet.add(num);
 		}
 
 		function _parseObject (resultSet, object) {
 			for (var k in object) {
 				if (hasOwn.call(object, k)) {
-					// set value to false instead of deleting it to avoid changing object structure
-					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
-					resultSet[k] = !!object[k];
+					if (!!object[k]) {
+						resultSet.add(k);
+					} else {
+						resultSet.delete(k);
+					}
 				}
 			}
 		}
@@ -44,7 +41,7 @@
 			var length = array.length;
 
 			for (var i = 0; i < length; ++i) {
-				resultSet[array[i]] = true;
+				resultSet.add(array[i]);
 			}
 		}
 
@@ -79,16 +76,13 @@
 				args[i] = arguments[i];
 			}
 
-			var classSet = new StorageObject();
+			var classSet = new Set();
 			_parseArray(classSet, args);
 
 			var list = [];
-
-			for (var k in classSet) {
-				if (classSet[k]) {
-					list.push(k)
-				}
-			}
+			classSet.forEach(function (value) {
+				list.push(value);
+			});
 
 			return list.join(' ');
 		}
