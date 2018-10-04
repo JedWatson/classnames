@@ -195,6 +195,8 @@ export default class SubmitButton extends Component {
 
 `Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill. This is only used in `dedupe.js`.
 
-## License
 
-[MIT](LICENSE). Copyright (c) 2018 Jed Watson.
+## LICENSE [MIT](LICENSE)
+
+Copyright (c) 2018 Jed Watson.
+Copyright of the Typescript bindings are respective of each contributor listed in the definition file.
