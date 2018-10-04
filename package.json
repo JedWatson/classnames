@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/JedWatson/classnames.git"
   },
+  "types": "./index.d.ts",
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
