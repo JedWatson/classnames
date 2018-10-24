@@ -1,10 +1,10 @@
-declare type ClassValue = string | number | ClassDictionary | ClassArray | undefined | null | false;
+export type ClassValue = string | number | ClassDictionary | ClassArray | undefined | null | false;
 
-interface ClassDictionary {
+export interface ClassDictionary {
 	[id: string]: boolean | undefined | null;
 }
 
-interface ClassArray extends Array<ClassValue> { }
+export interface ClassArray extends Array<ClassValue> { }
 
 interface ClassNamesFn {
 	(...classes: ClassValue[]): string;
