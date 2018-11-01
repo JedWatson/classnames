@@ -35,7 +35,10 @@
 			}
 		}
 
-		return classes.join(' ');
+		var allClasses = classes.join(' ').trim();
+		var result = allClasses.length === 0 ? undefined : allClasses;
+
+		return result;
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
