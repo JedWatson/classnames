@@ -84,7 +84,7 @@ This package is the official replacement for `classSet`, which was originally sh
 One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
-var Button = React.createClass({
+class Button extends React.Component {
   // ...
   render () {
     var btnClass = 'btn';
@@ -92,7 +92,7 @@ var Button = React.createClass({
     else if (this.state.isHovered) btnClass += ' btn-over';
     return <button className={btnClass}>{this.props.label}</button>;
   }
-});
+}
 ```
 
 You can express the conditional classes more simply as an object:
@@ -100,7 +100,7 @@ You can express the conditional classes more simply as an object:
 ```js
 var classNames = require('classnames');
 
-var Button = React.createClass({
+class Button extends React.Component {
   // ...
   render () {
     var btnClass = classNames({
@@ -110,7 +110,7 @@ var Button = React.createClass({
     });
     return <button className={btnClass}>{this.props.label}</button>;
   }
-});
+}
 ```
 
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
