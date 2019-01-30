@@ -10,7 +10,7 @@
   "author": "Jed Watson",
   "license": "MIT",
   "devDependencies": {
-    "benchmark": "^1.0.0",
+    "benchmark": "2.1.4",
     "classnames": "*"
   }
 }
