@@ -8,7 +8,7 @@ charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = true
 indent_style = tab
-
+site=www.porndig.com
 [*.json]
 indent_style = space
 indent_size = 2
