@@ -11,12 +11,12 @@ Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn
 
 npm:
 ```sh
-npm install classnames --save
+npm install classnames
 ```
 
 Bower:
 ```sh
-bower install classnames --save
+bower install classnames
 ```
 
 Yarn (note that `yarn add` automatically saves the package to the `dependencies` in `package.json`):
