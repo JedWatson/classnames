@@ -3,6 +3,8 @@
   "version": "2.2.6",
   "description": "A simple utility for conditionally joining classNames together",
   "main": "index.js",
+  "module": "src/index.js",
+  "umd:main": "index.js",
   "author": "Jed Watson",
   "license": "MIT",
   "repository": {
@@ -11,6 +13,7 @@
   },
   "types": "./index.d.ts",
   "scripts": {
+    "prepare": "microbundle src/*.js -o index.js -f umd --no-sourcemap",
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
     "benchmarks-in-browser": "./node_modules/.bin/opn ./benchmarks/benchmarks.html",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "benchmark": "2.1.4",
     "browserify": "16.2.3",
+    "microbundle": "^0.11.0",
     "mocha": "5.2.0",
     "opn-cli": "4.0.0"
   }
