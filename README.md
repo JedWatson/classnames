@@ -1,9 +1,11 @@
 Classnames
 ===========
 
-[![Version](http://img.shields.io/npm/v/classnames.svg)](https://www.npmjs.org/package/classnames)
-[![Build Status](https://travis-ci.org/JedWatson/classnames.svg?branch=master)](https://travis-ci.org/JedWatson/classnames)
-[![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
+[![NPM version](https://badgen.net/npm/v/classnames)](https://www.npmjs.com/package/classnames)
+[![Build status](https://badgen.net/travis/JedWatson/classnames)](https://travis-ci.org/JedWatson/classnames)
+[![NPM Weekly Downloads](https://badgen.net/npm/dw/classnames)](https://www.npmjs.com/package/classnames)
+[![License](https://badgen.net/npm/license/classnames)](https://www.npmjs.com/package/classnames)
+[![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](https://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
 
 A simple JavaScript utility for conditionally joining classNames together.
 
@@ -20,7 +22,7 @@ bower install classnames
 yarn add classnames
 ```
 
-Use with [Node.js](https://nodejs.org/en/), [Browserify](http://browserify.org/), or [webpack](https://webpack.github.io/):
+Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
 var classNames = require('classnames');
@@ -33,7 +35,7 @@ Alternatively, you can simply include `index.js` on your page with a standalone 
 
 We take the stability and performance of this package seriously, because it is run millions of times a day in browsers all around the world. Updates are thoroughly reviewed for performance impacts before being released, and we have a comprehensive test suite.
 
-Classnames follows the [SemVer](http://semver.org/) standard for versioning.
+Classnames follows the [SemVer](https://semver.org/) standard for versioning.
 
 There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md).
 
@@ -66,7 +68,7 @@ classNames('a', arr); // => 'a b c'
 
 ### Dynamic class names with ES2015
 
-If you're in an environment that supports [computed keys](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
+If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
 let buttonType = 'primary';
