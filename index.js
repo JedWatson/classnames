@@ -15,16 +15,15 @@
 		var len = args.length;
 		if (!len)
 			return "";
-		var str = "", item, type, i, n;
+		var str = "", item, i, n;
 		for (i = 0; i < len; i++) {
 			if (!(item = args[i]))
 				continue;
-			type = typeof item;
-			if (type === "string" || type === "number") {
+			if (typeof item === "string" || typeof item === "number") {
 				str && (str += " "), (str += item);
 				continue;
 			}
-			if (type !== "object")
+			if (typeof item !== "object")
 				continue;
 			if (isArray(item)) {
 				if (item.length && (item = reduceArray(item))) {
@@ -45,7 +44,6 @@
 	function classNames() {
 		return reduceArray(arguments);
 	}
-	
 
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
