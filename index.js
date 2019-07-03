@@ -30,8 +30,9 @@
 				continue;
 			}
 
-			if (typeof item !== "object")
+			if (typeof item !== "object") {
 				continue;
+			}
 
 			if (isArray(item)) {
 				if ((item = classNames.apply(this, item))){
