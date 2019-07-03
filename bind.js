@@ -8,31 +8,41 @@
 (function () {
 	'use strict';
 
-	var hasOwn = {}.hasOwnProperty;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var isArray = Array.isArray;
 
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(this, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(this && this[key] || key);
+	function reduceArray (args, context) {
+		var len = args.length;
+		if (!len)
+			return "";
+		var str = "", item, i, n;
+		for (i = 0; i < len; i++) {
+			if (!(item = args[i]))
+				continue;
+			if (typeof item === "string" || typeof item === "number") {
+				(item = context && context[item] || item), str && (str += " "), (str += item);
+				continue;
+			}
+			if (typeof item !== "object")
+				continue;
+			if (isArray(item)) {
+				if (item.length && (item = reduceArray(item, context))) {
+					str && (str += " "), (str += item);
+				}
+			}
+			else {
+				for (n in item) {
+					if (hasOwnProperty.call(item, n) && item[n] && n) {
+						(n = context && context[n] || n), (str && (str += " ")), (str += n);
 					}
 				}
 			}
 		}
+		return str;
+	}
 
-		return classes.join(' ');
+	function classNames() {
+		return reduceArray(arguments, this);
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
