@@ -1,8 +1,8 @@
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
+ Copyright (c) 2018 Jed Watson.
+ Licensed under the MIT License (MIT), see
+ http://jedwatson.github.io/classnames
+ */
 /* global define */
 
 (function () {
@@ -11,49 +11,60 @@
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var isArray = Array.isArray;
 
-	function reduceArray (arr, that) {
-		var len = arr.length;
-		if (!len)
+	function classNames()
+	{
+		var len = arguments.length;
+
+		if (!len){
 			return "";
+		}
+
 		var str = "", item, i, n;
 		for (i = 0; i < len; i++) {
-			if (!(item = arr[i]))
-				continue;
-			if (typeof item === "string" || typeof item === "number") {
-				(item = that && that[item] || item), str && (str += " "), (str += item);
+			if (!(item = arguments[i])) {
 				continue;
 			}
+
+			if (typeof item === "string" || typeof item === "number") {
+				str && (str += " ");
+				(str += this && this[item] || item);
+				continue;
+			}
+
 			if (typeof item !== "object")
 				continue;
+
 			if (isArray(item)) {
-				if (item.length && (item = reduceArray(item, that))) {
-					str && (str += " "), (str += item);
+				if ((item = classNames.apply(this, item))){
+					str && (str += " ");
+					(str += item);
 				}
+
+				continue;
 			}
-			else {
-				for (n in item) {
-					if (hasOwnProperty.call(item, n) && item[n] && n) {
-						(n = that && that[n] || n), (str && (str += " ")), (str += n);
-					}
+
+			for (n in item) {
+				if (hasOwnProperty.call(item, n) && item[n] && n){
+					str && (str += " ");
+					(str += this && this[n] || n);
 				}
 			}
 		}
-		return str;
-	}
 
-	function classNames() {
-		return reduceArray(arguments, this);
+		return str;
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+	}
+	else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 		// register as 'classnames', consistent with npm package name
 		define('classnames', [], function () {
 			return classNames;
 		});
-	} else {
+	}
+	else {
 		window.classNames = classNames;
 	}
 }());

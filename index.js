@@ -10,39 +10,47 @@
 
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var isArray = Array.isArray;
+	
+	function classNames() {
+		var len = arguments.length;
 
-	function reduceArray (arr) {
-		var len = arr.length;
-		if (!len)
+		if (!len){
 			return "";
+		}
+
 		var str = "", item, i, n;
 		for (i = 0; i < len; i++) {
-			if (!(item = arr[i]))
-				continue;
-			if (typeof item === "string" || typeof item === "number") {
-				str && (str += " "), (str += item);
+			if (!(item = arguments[i])) {
 				continue;
 			}
+
+			if (typeof item === "string" || typeof item === "number") {
+				str && (str += " ");
+				(str += item);
+				continue;
+			}
+
 			if (typeof item !== "object")
 				continue;
+
 			if (isArray(item)) {
-				if (item.length && (item = reduceArray(item))) {
-					str && (str += " "), (str += item);
+				if ((item = classNames.apply(this, item))){
+					str && (str += " ");
+					(str += item);
 				}
+
+				continue;
 			}
-			else {
-				for (n in item) {
-					if (hasOwnProperty.call(item, n) && item[n] && n) {
-						str && (str += " "), (str += n);
-					}
+
+			for (n in item) {
+				if (hasOwnProperty.call(item, n) && item[n] && n){
+					str && (str += " ");
+					(str += n);
 				}
 			}
 		}
+		
 		return str;
-	}
-	
-	function classNames() {
-		return reduceArray(arguments);
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
