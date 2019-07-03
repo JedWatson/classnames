@@ -8,4 +8,5 @@ export interface ClassDictionary
 export interface ClassArray extends Array<ClassValue> {}
 
 export function classNames(...args: ClassArray): string;
+
 export default classNames;
