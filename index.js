@@ -11,13 +11,13 @@
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var isArray = Array.isArray;
 
-	function reduceArray (args) {
-		var len = args.length;
+	function reduceArray (arr) {
+		var len = arr.length;
 		if (!len)
 			return "";
 		var str = "", item, i, n;
 		for (i = 0; i < len; i++) {
-			if (!(item = args[i]))
+			if (!(item = arr[i]))
 				continue;
 			if (typeof item === "string" || typeof item === "number") {
 				str && (str += " "), (str += item);

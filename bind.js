@@ -11,29 +11,29 @@
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var isArray = Array.isArray;
 
-	function reduceArray (args, context) {
-		var len = args.length;
+	function reduceArray (arr, that) {
+		var len = arr.length;
 		if (!len)
 			return "";
 		var str = "", item, i, n;
 		for (i = 0; i < len; i++) {
-			if (!(item = args[i]))
+			if (!(item = arr[i]))
 				continue;
 			if (typeof item === "string" || typeof item === "number") {
-				(item = context && context[item] || item), str && (str += " "), (str += item);
+				(item = that && that[item] || item), str && (str += " "), (str += item);
 				continue;
 			}
 			if (typeof item !== "object")
 				continue;
 			if (isArray(item)) {
-				if (item.length && (item = reduceArray(item, context))) {
+				if (item.length && (item = reduceArray(item, that))) {
 					str && (str += " "), (str += item);
 				}
 			}
 			else {
 				for (n in item) {
 					if (hasOwnProperty.call(item, n) && item[n] && n) {
-						(n = context && context[n] || n), (str && (str += " ")), (str += n);
+						(n = that && that[n] || n), (str && (str += " ")), (str += n);
 					}
 				}
 			}
