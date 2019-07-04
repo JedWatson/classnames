@@ -12,13 +12,13 @@ A simple JavaScript utility for conditionally joining classNames together.
 Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
 ```bash
-# via NPM
+# via npm
 npm install classnames
 
-# via BOWER
+# via Bower
 bower install classnames
 
-# or YARN (note that it will automatically save the package to your `dependencies` in `package.json`)
+# or Yarn (note that it will automatically save the package to your `dependencies` in `package.json`)
 yarn add classnames
 ```
 
