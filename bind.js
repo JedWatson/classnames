@@ -15,29 +15,23 @@
 	{
 		var len = arguments.length;
 
-		if (!len){
-			return "";
-		}
+		if (!len) return '';
 
-		var str = "", item, i, n;
+		var str = '', item, i, n;
 		for (i = 0; i < len; i++) {
-			if (!(item = arguments[i])) {
-				continue;
-			}
+			if (!(item = arguments[i])) continue;
 
-			if (typeof item === "string" || typeof item === "number") {
-				str && (str += " ");
+			if (typeof item === 'string' || typeof item === 'number') {
+				str && (str += ' ');
 				(str += this && this[item] || item);
 				continue;
 			}
 
-			if (typeof item !== "object") {
-				continue;
-			}
+			if (typeof item !== 'object') continue;
 
 			if (isArray(item)) {
-				if ((item = classNames.apply(this, item))){
-					str && (str += " ");
+				if ((item = classNames.apply(this, item))) {
+					str && (str += ' ');
 					(str += item);
 				}
 
@@ -45,8 +39,8 @@
 			}
 
 			for (n in item) {
-				if (hasOwnProperty.call(item, n) && item[n] && n){
-					str && (str += " ");
+				if (hasOwnProperty.call(item, n) && item[n] && n) {
+					str && (str += ' ');
 					(str += this && this[n] || n);
 				}
 			}

@@ -51,7 +51,7 @@
 	function classNames(){
 		var classSet = new StorageObject();
 
-		var str = "", n,
+		var str = '', n,
 			len = arguments.length;
 
 		for (n = 0; n < len; n++) {
@@ -60,7 +60,7 @@
 
 		for (n in classSet) {
 			if (classSet[n]) {
-				str && (str += " "), (str += n);
+				str && (str += ' '), (str += n);
 			}
 		}
 
