@@ -1,49 +1,65 @@
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
+ Copyright (c) 2018 Jed Watson.
+ Licensed under the MIT License (MIT), see
+ http://jedwatson.github.io/classnames
+ */
 /* global define */
 
 (function () {
 	'use strict';
 
-	var hasOwn = {}.hasOwnProperty;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var isArray = Array.isArray;
 
-	function classNames () {
-		var classes = [];
+	function classNames()
+	{
+		var len = arguments.length;
 
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
+		if (!len) return '';
 
-			var argType = typeof arg;
+		var str = '', item, i, n;
+		for (i = 0; i < len; i++) {
+			if (!(item = arguments[i])) continue;
 
-			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(this, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(this && this[key] || key);
-					}
+			if (typeof item === 'string' || typeof item === 'number') {
+				str && (str += ' ');
+				(str += this && this[item] || item);
+				continue;
+			}
+
+			if (typeof item !== 'object') continue;
+
+			if (isArray(item)) {
+				if ((item = classNames.apply(this, item))) {
+					str && (str += ' ');
+					(str += item);
+				}
+
+				continue;
+			}
+
+			for (n in item) {
+				if (hasOwnProperty.call(item, n) && item[n] && n) {
+					str && (str += ' ');
+					(str += this && this[n] || n);
 				}
 			}
 		}
 
-		return classes.join(' ');
+		return str;
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+	}
+	else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 		// register as 'classnames', consistent with npm package name
 		define('classnames', [], function () {
 			return classNames;
 		});
-	} else {
+	}
+	else {
 		window.classNames = classNames;
 	}
 }());
