@@ -23,6 +23,8 @@
 		}
 
 		var hasOwn = {}.hasOwnProperty;
+		var prefixCls = '';
+		var prefixSep = '-';
 
 		function _parseNumber (resultSet, num) {
 			resultSet[num] = true;
@@ -77,10 +79,16 @@
 		function _classNames () {
 			// don't leak arguments
 			// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
-			var len = arguments.length;
+			var argClasses = arguments && arguments.classes;
+			var argCls = arguments && arguments.prefixCls;
+			var argSep = hasOwn.call('prefixSep') ? arguments.prefixSep : prefixSep;
+			if(argCls) {
+				prefixCls = `${argCls}${argSep}`
+			}
+			var len = argClasses.length;
 			var args = Array(len);
 			for (var i = 0; i < len; i++) {
-				args[i] = arguments[i];
+				args[i] = argClasses[i];
 			}
 
 			var classSet = new StorageObject();
@@ -90,7 +98,7 @@
 
 			for (var k in classSet) {
 				if (classSet[k]) {
-					list.push(k)
+					list.push(`${prefixCls}${k}`)
 				}
 			}
 

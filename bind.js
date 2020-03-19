@@ -9,27 +9,35 @@
 	'use strict';
 
 	var hasOwn = {}.hasOwnProperty;
+	var prefixCls = '';
+	var prefixSep = '-';
 
 	function classNames() {
 		var classes = [];
+		var argClasses = arguments && arguments.classes;
+		var argCls = arguments && arguments.prefixCls;
+		var argSep = hasOwn.call('prefixSep') ? arguments.prefixSep : prefixSep;
+		if(argCls) {
+			prefixCls = `${argCls}${argSep}`
+		}
 
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
+		for (var i = 0; i < argClasses.length; i++) {
+			var arg = argClasses[i];
 			if (!arg) continue;
 
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
+				classes.push(this && this[`${prefixCls}${arg}`] || `${prefixCls}${arg}`);
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
 				if (arg.toString !== Object.prototype.toString) {
-					classes.push(arg.toString());
+					classes.push(`${prefixCls}${arg.toString()}`);
 				} else {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(this && this[key] || key);
+							classes.push(this && this[`${prefixCls}${key}`] || `${prefixCls}${key}`);
 						}
 					}
 				}

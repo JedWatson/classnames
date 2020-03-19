@@ -9,32 +9,40 @@
 	'use strict';
 
 	var hasOwn = {}.hasOwnProperty;
+	var prefixCls = '';
+	var prefixSep = '-'; 
 
 	function classNames() {
 		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
+		console.log(arguments);
+		var argClasses = arguments && arguments.classes;
+		var argCls = arguments && arguments.prefixCls;
+		var argSep = hasOwn.call('prefixSep') ? arguments.prefixSep : prefixSep;
+		if(argCls) {
+			prefixCls = `${argCls}${argSep}`
+		}
+		for (var i = 0; i < argClasses.length; i++) {
+			var arg = argClasses[i];
 			if (!arg) continue;
 
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
+				classes.push(`${prefixCls}${arg}`);
 			} else if (Array.isArray(arg)) {
 				if(arg.length) {
 					var inner = classNames.apply(null, arg);
 					if (inner) {
-						classes.push(inner);
+						classes.push(`${prefixCls}${inner}`);
 					}
 				}
 			} else if (argType === 'object') {
 				if (arg.toString !== Object.prototype.toString) {
-					classes.push(arg.toString());
+					classes.push(`${prefixCls}${arg.toString()}`);
 				} else {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
+							classes.push(`${prefixCls}${key}`);
 						}
 					}
 				}
