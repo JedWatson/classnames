@@ -12,21 +12,17 @@
 
 	function classNames() {
 		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
+		
+		function handleArg(arg) {
+			if (!arg) return;
 
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
 			} else if (Array.isArray(arg)) {
-				if(arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
-					}
+				for(var i = 0; i < arg.length; i++) {
+					handleArg(arg[i]);
 				}
 			} else if (argType === 'object') {
 				if (arg.toString !== Object.prototype.toString) {
@@ -39,6 +35,10 @@
 					}
 				}
 			}
+		}
+		
+		for(var i = 0; i < arguments.length; i++) {
+			handleArg(arguments[i]);
 		}
 
 		return classes.join(' ');
