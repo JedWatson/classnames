@@ -13,7 +13,7 @@
 	function classNames() {
 		var classes = [];
 
-		for (var i = 0; i < arguments.length; i++) {
+		for (var i = 0, length = arguments.length; i < length; i++) {
 			var arg = arguments[i];
 			if (!arg) continue;
 
