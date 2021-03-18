@@ -26,7 +26,7 @@ function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
 
 	// other handling
 	suite.on('complete', function () {
-		log('\n> Fastest is' + (' ' + this.filter('fastest').pluck('name').join(' | ')).replace(/\s+/, ' ') + '\n');
+		log('\n> Fastest is' + (' ' + this.filter('fastest').map(result => result.name).join(' | ')).replace(/\s+/, ' ') + '\n');
 	});
 
 	suite.on('error', function (event) {
