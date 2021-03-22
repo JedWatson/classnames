@@ -191,6 +191,8 @@ export default class SubmitButton extends Component {
 
 `Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
 
-## License
 
-[MIT](LICENSE). Copyright (c) 2018 Jed Watson.
+## LICENSE [MIT](LICENSE)
+
+Copyright (c) 2018 Jed Watson.
+Copyright of the Typescript bindings are respective of each contributor listed in the definition file.
