@@ -10,7 +10,7 @@
 
 	var hasOwn = {}.hasOwnProperty;
 
-	function classNames() {
+	function classNames () {
 		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {

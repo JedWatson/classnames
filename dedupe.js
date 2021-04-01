@@ -28,7 +28,7 @@
 			resultSet[num] = true;
 		}
 
-		function _parseObject(resultSet, object) {
+		function _parseObject (resultSet, object) {
 			if (object.toString === Object.prototype.toString) {
 				for (var k in object) {
 					if (hasOwn.call(object, k)) {
