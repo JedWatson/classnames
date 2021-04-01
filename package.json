@@ -13,7 +13,6 @@
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
-    "benchmarks-in-browser": "./node_modules/.bin/opn ./benchmarks/benchmarks.html",
     "test": "mocha tests/*.js"
   },
   "keywords": [
@@ -28,7 +27,6 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "browserify": "^16.2.3",
-    "mocha": "^8.3.2",
-    "opn-cli": "^3.1.0"
+    "mocha": "^8.3.2"
   }
 }
