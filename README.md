@@ -1,30 +1,28 @@
 Classnames
 ===========
 
-[![Version](http://img.shields.io/npm/v/classnames.svg)](https://www.npmjs.org/package/classnames)
-[![Build Status](https://travis-ci.org/JedWatson/classnames.svg?branch=master)](https://travis-ci.org/JedWatson/classnames)
-[![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
+[![NPM version](https://badgen.net/npm/v/classnames)](https://www.npmjs.com/package/classnames)
+[![Build status](https://badgen.net/travis/JedWatson/classnames)](https://travis-ci.org/JedWatson/classnames)
+[![NPM Weekly Downloads](https://badgen.net/npm/dw/classnames)](https://www.npmjs.com/package/classnames)
+[![License](https://badgen.net/npm/license/classnames)](https://www.npmjs.com/package/classnames)
+[![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](https://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
 
 A simple JavaScript utility for conditionally joining classNames together.
 
 Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
 
-npm:
-```sh
+```bash
+# via npm
 npm install classnames
-```
 
-Bower:
-```sh
+# via Bower
 bower install classnames
-```
 
-Yarn (note that `yarn add` automatically saves the package to the `dependencies` in `package.json`):
-```sh
+# or Yarn (note that it will automatically save the package to your `dependencies` in `package.json`)
 yarn add classnames
 ```
 
-Use with [Node.js](https://nodejs.org/en/), [Browserify](http://browserify.org/), or [webpack](https://webpack.github.io/):
+Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
 var classNames = require('classnames');
@@ -37,7 +35,7 @@ Alternatively, you can simply include `index.js` on your page with a standalone 
 
 We take the stability and performance of this package seriously, because it is run millions of times a day in browsers all around the world. Updates are thoroughly reviewed for performance impacts before being released, and we have a comprehensive test suite.
 
-Classnames follows the [SemVer](http://semver.org/) standard for versioning.
+Classnames follows the [SemVer](https://semver.org/) standard for versioning.
 
 There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md).
 
@@ -70,7 +68,7 @@ classNames('a', arr); // => 'a b c'
 
 ### Dynamic class names with ES2015
 
-If you're in an environment that supports [computed keys](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
+If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
 let buttonType = 'primary';
@@ -193,8 +191,8 @@ export default class SubmitButton extends Component {
 
 `Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
 
-`Object.keys`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill. This is only used in `dedupe.js`.
 
-## License
+## LICENSE [MIT](LICENSE)
 
-[MIT](LICENSE). Copyright (c) 2018 Jed Watson.
+Copyright (c) 2018 Jed Watson.
+Copyright of the Typescript bindings are respective of each contributor listed in the definition file.
