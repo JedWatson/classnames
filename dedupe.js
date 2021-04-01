@@ -28,10 +28,8 @@
 			resultSet[num] = true;
 		}
 
-		function _parseObject(resultSet, object) {
-			if(object.toString !== Object.prototype.toString) {
-				resultSet[object.toString()] = true;
-			} else {
+		function _parseObject (resultSet, object) {
+			if (object.toString === Object.prototype.toString) {
 				for (var k in object) {
 					if (hasOwn.call(object, k)) {
 						// set value to false instead of deleting it to avoid changing object structure
@@ -39,6 +37,8 @@
 						resultSet[k] = !!object[k];
 					}
 				}
+			} else {
+				resultSet[object.toString()] = true;
 			}
 		}
 

@@ -10,7 +10,7 @@
 
 	var hasOwn = {}.hasOwnProperty;
 
-	function classNames() {
+	function classNames () {
 		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {
@@ -24,14 +24,14 @@
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
-				if (arg.toString !== Object.prototype.toString) {
-					classes.push(arg.toString());
-				} else {
+				if (arg.toString === Object.prototype.toString) {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
 							classes.push(this && this[key] || key);
 						}
 					}
+				} else {
+					classes.push(arg.toString());
 				}
 			}
 		}
