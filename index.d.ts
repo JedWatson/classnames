@@ -8,15 +8,10 @@
 //   Michal Adamczyk <https://github.com/mradamczyk>
 //   Marvin Hagemeister <https://github.com/marvinhagemeister>
 
-export type ClassValue = string | number | boolean | undefined | null | ClassDictionary | ClassArray;
+export type Value = string | number | boolean | undefined | null;
+export type Mapping = { [key: string]: Value };
+export type Argument = Value | Mapping | Argument[];
 
-export interface ClassDictionary
-{
-	[id: string]: boolean | undefined | null;
-}
-
-export interface ClassArray extends Array<ClassValue> {}
-
-export function classNames(...args: ClassArray): string;
+export function classNames(...args: Argument[]): string;
 
 export default classNames;
