@@ -1,9 +1,10 @@
 import * as base from './index';
 
-interface IClassNamesBind {
-	bind: (styles: any) => typeof base;
+export interface IClassNamesBind
+{
+	bind: (styles: any) => typeof base
 }
 
-declare var classNames: IClassNamesBind;
+export const classNames: IClassNamesBind;
 
-export = classNames;
+export default classNames;
