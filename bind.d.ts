@@ -1,10 +1,5 @@
-import * as base from './index';
+export * from './index';
+import { Argument } from './index';
 
-export interface IClassNamesBind
-{
-	bind: (styles: any) => typeof base
-}
-
-declare const classNames: IClassNamesBind;
-
-export default classNames;
+export type Binding = { [key: string]: string };
+export default function classNames(this: Binding | void, ...args: Argument[]): string;
