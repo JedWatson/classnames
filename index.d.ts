@@ -12,6 +12,4 @@ export type Value = string | number | boolean | undefined | null;
 export type Mapping = { [key: string]: Value };
 export type Argument = Value | Mapping | Argument[];
 
-export function classNames(...args: Argument[]): string;
-
-export default classNames;
+export default function classNames(...args: Argument[]): string;
