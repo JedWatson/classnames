@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.3.1 / 2021-04-03
+
+- Fix bind/dedupe TypeScript types exports
+- Fix mapping Value types, thanks [Remco Haszing](https://github.com/remcohaszing)
+- Removed non-existent named exports from types, thanks [Remco Haszing](https://github.com/remcohaszing)
+
 ## v2.3.0 / 2021-04-01
 
 - Added TypeScript types
