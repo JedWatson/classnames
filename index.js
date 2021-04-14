@@ -29,7 +29,7 @@
 					}
 				}
 			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
+				if (!arg.hasOwnProperty('toString')) {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
 							classes.push(key);
