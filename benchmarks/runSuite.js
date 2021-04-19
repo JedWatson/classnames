@@ -1,7 +1,10 @@
-var benchmark = require('benchmark');
+import benchmark from 'benchmark';
+import _ from 'lodash';
 
-function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
-	var suite = new benchmark.Suite();
+const { Suite } = benchmark.runInContext({ _ });
+
+export default function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
+	var suite = new Suite();
 
 	suite.add('local#' + fixture.description, function () {
 		local.apply(null, fixture.args);
@@ -36,5 +39,3 @@ function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
 
 	suite.run();
 }
-
-module.exports = runSuite;

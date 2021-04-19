@@ -25,11 +25,9 @@ yarn add classnames
 Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
-var classNames = require('classnames');
+import classNames from 'classnames';
 classNames('foo', 'bar'); // => 'foo bar'
 ```
-
-Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
 
 ### Project philosophy
 
@@ -96,7 +94,7 @@ class Button extends React.Component {
 You can express the conditional classes more simply as an object:
 
 ```js
-var classNames = require('classnames');
+import classNames from 'classnames';
 
 class Button extends React.Component {
   // ...
@@ -130,14 +128,11 @@ This version is slower (about 5x) so it is offered as an opt-in.
 To use the dedupe version with Node.js, Browserify, or webpack:
 
 ```js
-var classNames = require('classnames/dedupe');
+import classNames from 'classnames/dedupe';
 
 classNames('foo', 'foo', 'bar'); // => 'foo bar'
 classNames('foo', { foo: false, bar: true }); // => 'bar'
 ```
-
-For standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
-
 
 ### Alternate `bind` version (for [css-modules](https://github.com/css-modules/css-modules))
 
@@ -146,7 +141,7 @@ If you are using [css-modules](https://github.com/css-modules/css-modules), or a
 _Note that in ES2015 environments, it may be better to use the "dynamic class names" approach documented above._
 
 ```js
-var classNames = require('classnames/bind');
+import classNames from 'classnames/bind';
 
 var styles = {
   foo: 'abc',
