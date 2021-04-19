@@ -2,7 +2,7 @@ Classnames
 ===========
 
 [![NPM version](https://badgen.net/npm/v/classnames)](https://www.npmjs.com/package/classnames)
-[![Build status](https://badgen.net/travis/JedWatson/classnames)](https://travis-ci.org/JedWatson/classnames)
+![Node.js CI](https://github.com/JedWatson/classnames/workflows/Node.js%20CI/badge.svg)
 [![NPM Weekly Downloads](https://badgen.net/npm/dw/classnames)](https://www.npmjs.com/package/classnames)
 [![License](https://badgen.net/npm/license/classnames)](https://www.npmjs.com/package/classnames)
 [![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](https://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=classnames)
