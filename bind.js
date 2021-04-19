@@ -24,10 +24,14 @@
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(this && this[key] || key);
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(this && this[key] || key);
+						}
 					}
+				} else {
+					classes.push(arg.toString());
 				}
 			}
 		}

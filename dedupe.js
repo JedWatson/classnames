@@ -24,14 +24,16 @@
 		}
 
 		function _parseObject (resultSet, object) {
-			for (var k in object) {
-				if (hasOwn.call(object, k)) {
+			if (object.toString === Object.prototype.toString) {
+				for (var k in object) {
 					if (!!object[k]) {
 						resultSet.add(k);
 					} else {
 						resultSet.delete(k);
 					}
 				}
+			} else {
+				resultSet[object.toString()] = true;
 			}
 		}
 

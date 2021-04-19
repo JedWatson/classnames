@@ -71,6 +71,12 @@ describe('bind', function () {
 		it('handles deep array recursion', function () {
 			assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 		});
+
+		it('handles own toString() method defined on object', function () {
+			assert.equal(classNames({
+				toString: function () { return 'classFromMethod'; }
+			}), 'classFromMethod');
+		});
 	});
 
 	describe('classNamesBound', function () {
@@ -141,6 +147,20 @@ describe('bind', function () {
 		it('handles deep array recursion', function () {
 			assert.equal(classNamesBound(['a', ['b', ['c', {d: true}]]]), '#a #b #c #d');
 		});
-	});
 
+		it('handles own toString() method defined on object', function () {
+			assert.equal(classNamesBound({
+				toString: function () { return 'classFromMethod'; }
+			}), 'classFromMethod');
+		});
+
+		it('handles toString() method defined inherited in object', function () {
+			var Class1 = function() {};
+			var Class2 = function() {};
+			Class1.prototype.toString = function() { return 'classFromMethod'; }
+			Class2.prototype = Object.create(Class1.prototype);
+
+			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+		});
+	});
 })
