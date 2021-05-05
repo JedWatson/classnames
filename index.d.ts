@@ -10,7 +10,7 @@
 
 export type Value = string | number | boolean | undefined | null;
 export type Mapping = { [key: string]: any };
-interface ArgumentArray extends Array<Value | Mapping>{}
+interface ArgumentArray extends Array<Value | Mapping | ArgumentArray>{}
 export type Argument = Value | Mapping | ArgumentArray[];
 
 export default function classNames(...args: Argument[]): string;
