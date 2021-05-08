@@ -1,4 +1,2 @@
-export * from './index';
-import classNames from './index';
-
-export default classNames;
+export * from '.';
+export { default } from '.';
