@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import dedupe from 'classnames/dedupe';
 import bind from 'classnames/bind';
 
-// index
+// default
 classNames('foo');
 classNames(null);
 classNames(undefined);
@@ -22,6 +22,23 @@ classNames(Symbol());
 classNames([Symbol()]);
 // $ExpectError
 classNames([[Symbol()]]);
+
+// should match tests/index.js
+classNames('c', ['a', 'b']);
+classNames('', 'b', {}, '');
+classNames('a', 0, null, undefined, true, 1, 'b');
+classNames('a', [[]]);
+classNames('a', []);
+classNames('c', ['a', 'b']);
+classNames(['a', 'b']);
+classNames(['a', 'b'], 'c');
+classNames(['a', 'b'], ['c', 'd']);
+classNames(['a', 0, null, undefined, false, true, 'b']);
+classNames(['a', ['b', 'c']]);
+classNames(['a', ['b', ['c', {d: true}]]]);
+classNames(['a', {b: true, c: false}]);
+classNames({a: true}, 'b', 0);
+classNames({}, Infinity, [{}, []]);
 
 // dedupe
 dedupe('foo');
