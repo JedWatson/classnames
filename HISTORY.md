@@ -2,6 +2,7 @@
 
 ## v3.0.0 / XXX-XX-XX
 - Changed the minimum required NodeJS version to 12.22.0
+- Dropped support for Bower, use NPM or Yarn instead
 
 ## v2.3.1 / 2021-04-03
 
