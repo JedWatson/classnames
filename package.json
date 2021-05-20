@@ -11,7 +11,7 @@
   },
   "types": "./index.d.ts",
   "engines": {
-    "node": ">=12.22.0"
+    "node": "^12.22 || >= 14.17"
   },
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
