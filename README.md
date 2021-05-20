@@ -22,7 +22,7 @@ bower install classnames
 yarn add classnames
 ```
 
-Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
+Use with [Node.js](https://nodejs.org/en/), or [webpack](https://webpack.github.io/):
 
 ```js
 import classNames from 'classnames';
@@ -125,7 +125,7 @@ There is an alternate version of `classNames` available which correctly dedupes 
 
 This version is slower (about 5x) so it is offered as an opt-in.
 
-To use the dedupe version with Node.js, Browserify, or webpack:
+To use the dedupe version with Node.js, or webpack:
 
 ```js
 import classNames from 'classnames/dedupe';
