@@ -1,6 +1,7 @@
 /* global describe, it */
 
 var assert = require('assert');
+var vm = require('vm');
 var classNames = require('../');
 
 describe('classNames', function () {
@@ -104,5 +105,15 @@ describe('classNames', function () {
 		Class2.prototype = Object.create(Class1.prototype);
 
 		assert.equal(classNames(new Class2()), 'classFromMethod');
+	});
+
+	it('handles objects in a VM', function () {
+		var context = { classNames, output: undefined };
+		vm.createContext(context);
+
+		var code = 'output = classNames({ a: true, b: true });';
+
+		vm.runInContext(code, context);
+		assert.equal(context.output, 'a b');
 	});
 });
