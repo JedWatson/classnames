@@ -111,6 +111,7 @@ describe('classNames', function () {
 		var context = { classNames, output: undefined };
 		vm.createContext(context);
 
+		var code = 'output = classNames({ a: true, b: true });';
 
 		vm.runInContext(code, context);
 		assert.equal(context.output, 'a b');
