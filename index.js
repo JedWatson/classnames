@@ -9,6 +9,7 @@
 	'use strict';
 
 	var hasOwn = {}.hasOwnProperty;
+	var nativeCodeString = '[native code]';
 
 	function classNames() {
 		var classes = [];
@@ -29,7 +30,7 @@
 					}
 				}
 			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
+				if (arg.toString.toString().indexOf(nativeCodeString) !== -1) {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
 							classes.push(key);
