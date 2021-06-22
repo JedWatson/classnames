@@ -2,7 +2,13 @@
   "name": "classnames",
   "version": "2.3.1",
   "description": "A simple utility for conditionally joining classNames together",
-  "main": "index.js",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.js",
+    "./bind": "./bind.js",
+    "./dedupe": "./dedupe.js"
+  },
   "author": "Jed Watson",
   "license": "MIT",
   "repository": {
@@ -11,11 +17,9 @@
   },
   "types": "./index.d.ts",
   "engines": {
-    "node": "^12.22 || >= 14.17"
+    "node": "^12.20 || >= 14.13"
   },
   "scripts": {
-    "benchmarks": "node ./benchmarks/run",
-    "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
     "dtslint": "dtslint",
     "test": "mocha tests/*.js"
   },
@@ -29,8 +33,6 @@
     "utility"
   ],
   "devDependencies": {
-    "benchmark": "^2.1.4",
-    "browserify": "^17.0.0",
     "dtslint": "^4.0.9",
     "mocha": "^8.3.2"
   }

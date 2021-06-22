@@ -1,16 +1,17 @@
 {
-  "name": "classnames-benchmarks",
-  "version": "1.0.0",
-  "private": true,
-  "description": "",
-  "main": "run.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Tests should be run in the main classnames package.\" && exit 1"
+    "benchmarks": "node run.js",
+    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve runInBrowser.js --file runInBrowser.bundle.js && http-server ./benchmarks -o"
   },
-  "author": "Jed Watson",
-  "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "benchmark": "2.1.4",
-    "classnames": "*"
+    "classnames": "*",
+    "http-server": "^0.12.3",
+    "lodash": "^4.17.21",
+    "rollup": "^2.48.0"
   }
 }

@@ -1,7 +1,7 @@
 /* global describe, it */
 
-var assert = require('assert');
-var classNames = require('../bind');
+import { strictEqual } from 'node:assert';
+import classNames from '../bind.js';
 
 var cssModulesMock = {
 	a: "#a",
@@ -17,7 +17,7 @@ var classNamesBound = classNames.bind(cssModulesMock);
 describe('bind', function () {
 	describe('classNames', function () {
 		it('keeps object keys with truthy values', function () {
-			assert.equal(classNames({
+			strictEqual(classNames({
 				a: true,
 				b: false,
 				c: 0,
@@ -28,52 +28,52 @@ describe('bind', function () {
 		});
 
 		it('joins arrays of class names and ignore falsy values', function () {
-			assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
+			strictEqual(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
 		});
 
 		it('supports heterogenous arguments', function () {
-			assert.equal(classNames({a: true}, 'b', 0), 'a b');
+			strictEqual(classNames({a: true}, 'b', 0), 'a b');
 		});
 
 		it('should be trimmed', function () {
-			assert.equal(classNames('', 'b', {}, ''), 'b');
+			strictEqual(classNames('', 'b', {}, ''), 'b');
 		});
 
 		it('returns an empty string for an empty configuration', function () {
-			assert.equal(classNames({}), '');
+			strictEqual(classNames({}), '');
 		});
 
 		it('supports an array of class names', function () {
-			assert.equal(classNames(['a', 'b']), 'a b');
+			strictEqual(classNames(['a', 'b']), 'a b');
 		});
 
 		it('joins array arguments with string arguments', function () {
-			assert.equal(classNames(['a', 'b'], 'c'), 'a b c');
-			assert.equal(classNames('c', ['a', 'b']), 'c a b');
+			strictEqual(classNames(['a', 'b'], 'c'), 'a b c');
+			strictEqual(classNames('c', ['a', 'b']), 'c a b');
 		});
 
 		it('handles multiple array arguments', function () {
-			assert.equal(classNames(['a', 'b'], ['c', 'd']), 'a b c d');
+			strictEqual(classNames(['a', 'b'], ['c', 'd']), 'a b c d');
 		});
 
 		it('handles arrays that include falsy and true values', function () {
-			assert.equal(classNames(['a', 0, null, undefined, false, true, 'b']), 'a b');
+			strictEqual(classNames(['a', 0, null, undefined, false, true, 'b']), 'a b');
 		});
 
 		it('handles arrays that include arrays', function () {
-			assert.equal(classNames(['a', ['b', 'c']]), 'a b c');
+			strictEqual(classNames(['a', ['b', 'c']]), 'a b c');
 		});
 
 		it('handles arrays that include objects', function () {
-			assert.equal(classNames(['a', {b: true, c: false}]), 'a b');
+			strictEqual(classNames(['a', {b: true, c: false}]), 'a b');
 		});
 
 		it('handles deep array recursion', function () {
-			assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
+			strictEqual(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 		});
 
 		it('handles own toString() method defined on object', function () {
-			assert.equal(classNames({
+			strictEqual(classNames({
 				toString: function () { return 'classFromMethod'; }
 			}), 'classFromMethod');
 		});
@@ -81,7 +81,7 @@ describe('bind', function () {
 
 	describe('classNamesBound', function () {
 		it('keeps object keys with truthy values', function () {
-			assert.equal(classNamesBound({
+			strictEqual(classNamesBound({
 				a: true,
 				b: false,
 				c: 0,
@@ -91,7 +91,7 @@ describe('bind', function () {
 			}), '#a #f');
 		});
 		it('keeps class names undefined in bound hash', function () {
-			assert.equal(classNamesBound({
+			strictEqual(classNamesBound({
 				a: true,
 				b: false,
 				c: 0,
@@ -104,52 +104,52 @@ describe('bind', function () {
 			}), '#a #f x z');
 		})
 		it('joins arrays of class names and ignore falsy values', function () {
-			assert.equal(classNamesBound('a', 0, null, undefined, true, 1, 'b'), '#a 1 #b');
+			strictEqual(classNamesBound('a', 0, null, undefined, true, 1, 'b'), '#a 1 #b');
 		});
 
 		it('supports heterogenous arguments', function () {
-			assert.equal(classNamesBound({a: true}, 'b', 0), '#a #b');
+			strictEqual(classNamesBound({a: true}, 'b', 0), '#a #b');
 		});
 
 		it('should be trimmed', function () {
-			assert.equal(classNamesBound('', 'b', {}, ''), '#b');
+			strictEqual(classNamesBound('', 'b', {}, ''), '#b');
 		});
 
 		it('returns an empty string for an empty configuration', function () {
-			assert.equal(classNamesBound({}), '');
+			strictEqual(classNamesBound({}), '');
 		});
 
 		it('supports an array of class names', function () {
-			assert.equal(classNamesBound(['a', 'b']), '#a #b');
+			strictEqual(classNamesBound(['a', 'b']), '#a #b');
 		});
 
 		it('joins array arguments with string arguments', function () {
-			assert.equal(classNamesBound(['a', 'b'], 'c'), '#a #b #c');
-			assert.equal(classNamesBound('c', ['a', 'b']), '#c #a #b');
+			strictEqual(classNamesBound(['a', 'b'], 'c'), '#a #b #c');
+			strictEqual(classNamesBound('c', ['a', 'b']), '#c #a #b');
 		});
 
 		it('handles multiple array arguments', function () {
-			assert.equal(classNamesBound(['a', 'b'], ['c', 'd']), '#a #b #c #d');
+			strictEqual(classNamesBound(['a', 'b'], ['c', 'd']), '#a #b #c #d');
 		});
 
 		it('handles arrays that include falsy and true values', function () {
-			assert.equal(classNamesBound(['a', 0, null, undefined, false, true, 'b']), '#a #b');
+			strictEqual(classNamesBound(['a', 0, null, undefined, false, true, 'b']), '#a #b');
 		});
 
 		it('handles arrays that include arrays', function () {
-			assert.equal(classNamesBound(['a', ['b', 'c']]), '#a #b #c');
+			strictEqual(classNamesBound(['a', ['b', 'c']]), '#a #b #c');
 		});
 
 		it('handles arrays that include objects', function () {
-			assert.equal(classNamesBound(['a', {b: true, c: false}]), '#a #b');
+			strictEqual(classNamesBound(['a', {b: true, c: false}]), '#a #b');
 		});
 
 		it('handles deep array recursion', function () {
-			assert.equal(classNamesBound(['a', ['b', ['c', {d: true}]]]), '#a #b #c #d');
+			strictEqual(classNamesBound(['a', ['b', ['c', {d: true}]]]), '#a #b #c #d');
 		});
 
 		it('handles own toString() method defined on object', function () {
-			assert.equal(classNamesBound({
+			strictEqual(classNamesBound({
 				toString: function () { return 'classFromMethod'; }
 			}), 'classFromMethod');
 		});
@@ -160,7 +160,7 @@ describe('bind', function () {
 			Class1.prototype.toString = function() { return 'classFromMethod'; }
 			Class2.prototype = Object.create(Class1.prototype);
 
-			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+			strictEqual(classNamesBound(new Class2()), 'classFromMethod');
 		});
 	});
 })

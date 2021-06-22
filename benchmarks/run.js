@@ -1,16 +1,19 @@
-var fixtures = require('./fixtures');
-var local = require('../');
-var dedupe = require('../dedupe');
-var localPackage = require('../package.json');
+import { readFile } from 'node:fs/promises'
+import fixtures from './fixtures.js';
+import local from '../index.js';
+import dedupe from '../dedupe.js';
+
+var localPackage = JSON.parse(await readFile(new URL('../package.json', import.meta.url)));
 
 function log (message) {
 	console.log(message);
 }
 
 try {
-	var npm = require('classnames');
-	var npmDedupe = require('classnames/dedupe');
-	var npmPackage = require('./node_modules/classnames/package.json');
+	var npm = (await import('classnames')).default;
+	// TODO: .js extension can be dropped once a new version has been published.
+	var npmDedupe = (await import('classnames/dedupe.js')).default;
+	var npmPackage = JSON.parse(await readFile(new URL('./node_modules/classnames/package.json', import.meta.url)));
 } catch (e) {
 	log('There was an error loading the benchmark classnames package.\n' +
 		'Please make sure you have run `npm install` in ./benchmarks\n');
@@ -24,8 +27,8 @@ if (localPackage.version !== npmPackage.version) {
 	process.exit(0);
 }
 
-var runChecks = require('./runChecks');
-var runSuite = require('./runSuite');
+import runChecks from './runChecks.js';
+import runSuite from './runSuite.js';
 
 fixtures.forEach(function (f) {
 	runChecks(local, npm, dedupe, npmDedupe, f);
