@@ -57,7 +57,7 @@ classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1
 Arrays will be recursively flattened as per the rules above:
 
 ```js
-var arr = ['b', { c: true, d: false }];
+const arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
 ```
 
@@ -66,7 +66,7 @@ classNames('a', arr); // => 'a b c'
 If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
-let buttonType = 'primary';
+const buttonType = 'primary';
 classNames({ [`btn-${buttonType}`]: true });
 ```
 
@@ -77,14 +77,18 @@ This package is the official replacement for `classSet`, which was originally sh
 One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
-class Button extends React.Component {
-  // ...
-  render () {
-    var btnClass = 'btn';
-    if (this.state.isPressed) btnClass += ' btn-pressed';
-    else if (this.state.isHovered) btnClass += ' btn-over';
-    return <button className={btnClass}>{this.props.label}</button>;
+function Button(props) {
+  let btnClass = 'btn';
+
+  if (props.isPressed) {
+    btnClass += ' btn-pressed';
   }
+  
+  if (props.isHovered) {
+    btnClass += ' btn-over';
+  }
+
+  return <button className={btnClass}>{props.label}</button>;
 }
 ```
 
@@ -93,25 +97,23 @@ You can express the conditional classes more simply as an object:
 ```js
 import classNames from 'classnames';
 
-class Button extends React.Component {
-  // ...
-  render () {
-    var btnClass = classNames({
-      btn: true,
-      'btn-pressed': this.state.isPressed,
-      'btn-over': !this.state.isPressed && this.state.isHovered
-    });
-    return <button className={btnClass}>{this.props.label}</button>;
-  }
+function Button(props) {
+  const btnClass = classNames({
+    btn: true,
+    'btn-pressed': props.isPressed,
+    'btn-over': !props.isPressed && props.isHovered
+  });
+
+  return <button className={btnClass}>{props.label}</button>;
 }
 ```
 
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
-var btnClass = classNames('btn', this.props.className, {
-  'btn-pressed': this.state.isPressed,
-  'btn-over': !this.state.isPressed && this.state.isHovered
+const btnClass = classNames('btn', props.className, {
+  'btn-pressed': props.isPressed,
+  'btn-over': !props.isPressed && props.isHovered
 });
 ```
 
@@ -140,40 +142,36 @@ _Note that in ES2015 environments, it may be better to use the "dynamic class na
 ```js
 import classNames from 'classnames/bind';
 
-var styles = {
+const styles = {
   foo: 'abc',
   bar: 'def',
   baz: 'xyz'
 };
 
-var cx = classNames.bind(styles);
-
-var className = cx('foo', ['bar'], { baz: true }); // => "abc def xyz"
+const cx = classNames.bind(styles);
+const className = cx('foo', ['bar'], { baz: true }); // => "abc def xyz"
 ```
 
 Real-world example:
 
 ```js
 /* components/submit-button.js */
-import { Component } from 'react';
 import classNames from 'classnames/bind';
 import styles from './submit-button.css';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-export default class SubmitButton extends Component {
-  render () {
-    let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-    let className = cx({
-      base: true,
-      inProgress: this.props.store.submissionInProgress,
-      error: this.props.store.errorOccurred,
-      disabled: this.props.form.valid,
-    });
-    return <button className={className}>{text}</button>;
-  }
-};
+export default function SubmitButton(props) {
+  const text = props.store.submissionInProgress ? 'Processing...' : 'Submit';
+  const className = cx({
+    base: true,
+    inProgress: props.store.submissionInProgress,
+    error: props.store.errorOccurred,
+    disabled: props.form.valid,
+  });
 
+  return <button className={className}>{text}</button>;
+}
 ```
 
 
