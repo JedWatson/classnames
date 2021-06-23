@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "benchmarks": "node run.js",
-    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve runInBrowser.js --file runInBrowser.bundle.js && http-server ./benchmarks -o"
+    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve runInBrowser.js --file runInBrowser.bundle.js && http-server . -o"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",

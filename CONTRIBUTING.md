@@ -12,10 +12,14 @@ performance.
 [JSPerf](http://jsperf.com) test and link to it from your issue / PR.
 * Tests must be added for any change or new feature before it will be accepted.
 
-A benchmark utilitiy is included so that changes may be tested against the
+A benchmark utility is included so that changes may be tested against the
 current published version. To run the benchmarks, `npm install` in the
-`./benchmarks` directory then run `npm run benchmarks` in the package root.
+`benchmarks` directory then run `npm run benchmarks` in the same directory.
 
 Please be aware though that local benchmarks are just a smoke-signal; they will
-run in the v8 version that your node/iojs uses, while classNames is _most_
+run in the v8 version that your Node uses, while classNames is _most_
 often run across a wide variety of browsers and browser versions.
+
+It is recommended to test possible regressions in performance in all major
+browsers. This can be done by running `npm run benchmarks-browser` in the
+`benchmarks` directory.
