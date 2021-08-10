@@ -14,4 +14,7 @@ export type Mapping = Record<string, unknown>;
 export interface ArgumentArray extends Array<Argument> {}
 export type Argument = Value | Mapping | ArgumentArray;
 
+/**
+ * A simple JavaScript utility for conditionally joining classNames together.
+ */
 export default function classNames(...args: ArgumentArray): string;
