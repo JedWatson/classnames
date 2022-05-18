@@ -53,6 +53,8 @@
 			return classNames;
 		});
 	} else {
-		window.classNames = classNames;
+		if (typeof window !== 'undefined') {
+			window.classNames = classNames;
+		}
 	}
 }());
