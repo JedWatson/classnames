@@ -1,5 +1,9 @@
-export * from '.';
-import { ArgumentArray } from '.';
+import { ArgumentArray } from './index.js';
 
-export type Binding = Record<string, string>;
-export default function classNames(this: Binding | undefined, ...args: ArgumentArray): string;
+declare namespace classNames {
+	type Binding = Record<string, string>;
+}
+
+declare function classNames(this: classNames.Binding | undefined, ...args: ArgumentArray): string;
+
+export = classNames;
