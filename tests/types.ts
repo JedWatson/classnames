@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import dedupe from 'classnames/dedupe';
-import bind from 'classnames/bind';
+import classNames = require('classnames');
+import dedupe = require('classnames/dedupe');
+import bind = require('classnames/bind');
 
 // default
 classNames('foo');

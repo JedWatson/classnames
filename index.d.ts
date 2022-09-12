@@ -7,14 +7,17 @@
 //   Sean Kelley <https://github.com/seansfkelley>
 //   Michal Adamczyk <https://github.com/mradamczyk>
 //   Marvin Hagemeister <https://github.com/marvinhagemeister>
-// TypeScript Version: 3.0
 
-export type Value = string | number | boolean | undefined | null;
-export type Mapping = Record<string, unknown>;
-export interface ArgumentArray extends Array<Argument> {}
-export type Argument = Value | Mapping | ArgumentArray;
+declare namespace classNames {
+  type Value = string | number | boolean | undefined | null;
+  type Mapping = Record<string, unknown>;
+  interface ArgumentArray extends Array<Argument> {}
+  type Argument = Value | Mapping | ArgumentArray;
+}
 
 /**
  * A simple JavaScript utility for conditionally joining classNames together.
  */
-export default function classNames(...args: ArgumentArray): string;
+declare function classNames(...args: classNames.ArgumentArray): string;
+
+export = classNames;

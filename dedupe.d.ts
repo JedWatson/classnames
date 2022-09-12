@@ -1,2 +1,2 @@
-export * from '.';
-export { default } from '.';
+import classNames = require('./index.js');
+export = classNames;
