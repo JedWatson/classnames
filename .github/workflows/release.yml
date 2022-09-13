@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Release
+    runs-on: ubuntu-latest
+    environment: release
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
