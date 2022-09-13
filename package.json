@@ -25,6 +25,13 @@
     "util",
     "utility"
   ],
+  "files": [
+    "HISTORY.md",
+    "LICENSE",
+    "README.md",
+    "*.d.ts",
+    "*.js"
+  ],
   "devDependencies": {
     "benchmark": "^2.1.4",
     "browserify": "^17.0.0",
