@@ -13,7 +13,9 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-
+      - uses: actions/setup-node@main
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
