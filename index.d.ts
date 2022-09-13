@@ -8,8 +8,16 @@
 //   Michal Adamczyk <https://github.com/mradamczyk>
 //   Marvin Hagemeister <https://github.com/marvinhagemeister>
 
-export type Value = string | number | boolean | undefined | null;
-export type Mapping = { [key: string]: any };
-export type Argument = Value | Mapping | Argument[];
+declare namespace classNames {
+  type Value = string | number | boolean | undefined | null;
+  type Mapping = Record<string, unknown>;
+  interface ArgumentArray extends Array<Argument> {}
+  type Argument = Value | Mapping | ArgumentArray;
+}
 
-export default function classNames(...args: Argument[]): string;
+/**
+ * A simple JavaScript utility for conditionally joining classNames together.
+ */
+declare function classNames(...args: classNames.ArgumentArray): string;
+
+export = classNames;
