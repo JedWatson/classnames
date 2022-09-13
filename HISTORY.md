@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.3.2 / 2022-09-13
+
+- Fix TypeScript types when using require ([#276](https://github.com/JedWatson/classnames/pull/276))
+- Fix toString as '[Object object]' in a vm ([#281](https://github.com/JedWatson/classnames/pull/281))
+
 ## v2.3.1 / 2021-04-03
 
 - Fix bind/dedupe TypeScript types exports
