@@ -29,6 +29,6 @@
     "benchmark": "^2.1.4",
     "browserify": "^17.0.0",
     "dtslint": "^4.0.9",
-    "mocha": "^8.3.2"
+    "mocha": "^10.0.0"
   }
 }
