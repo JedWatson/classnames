@@ -1,7 +1,7 @@
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
 */
 /* global define */
 
@@ -24,14 +24,15 @@
 			} else if (Array.isArray(arg)) {
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(this && this[key] || key);
-						}
-					}
-				} else {
+				if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
 					classes.push(arg.toString());
+					continue;
+				}
+
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(this && this[key] || key);
+					}
 				}
 			}
 		}

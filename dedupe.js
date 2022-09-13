@@ -1,7 +1,7 @@
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
 */
 /* global define */
 
@@ -29,16 +29,17 @@
 		}
 
 		function _parseObject (resultSet, object) {
-			if (object.toString === Object.prototype.toString) {
-				for (var k in object) {
-					if (hasOwn.call(object, k)) {
-						// set value to false instead of deleting it to avoid changing object structure
-						// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
-						resultSet[k] = !!object[k];
-					}
-				}
-			} else {
+			if (object.toString !== Object.prototype.toString && !object.toString.toString().includes('[native code]')) {
 				resultSet[object.toString()] = true;
+				return;
+			}
+
+			for (var k in object) {
+				if (hasOwn.call(object, k)) {
+					// set value to false instead of deleting it to avoid changing object structure
+					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
+					resultSet[k] = !!object[k];
+				}
 			}
 		}
 
