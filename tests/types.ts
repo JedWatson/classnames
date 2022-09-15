@@ -13,9 +13,12 @@ classNames({ conditional: true });
 classNames({ conditional: {} });
 classNames({ conditional: Symbol() });
 classNames([]);
-classNames([['bar', null, undefined, true, false, 1337]]);
-classNames(['bar', null, undefined, true, false, 1337]);
-classNames('bar', null, undefined, true, false, 1337);
+classNames([['bar', null, undefined, true, false, 1234]]);
+classNames(['bar', null, undefined, true, false, 1234]);
+classNames('bar', null, undefined, true, false, 1234);
+classNames('bar', ['abc', { foo: true }]);
+classNames('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
+classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
 // $ExpectError
 classNames(Symbol());
 // $ExpectError
@@ -51,9 +54,12 @@ dedupe({ conditional: true });
 dedupe({ conditional: {} });
 dedupe({ conditional: Symbol() });
 dedupe([]);
-dedupe([['bar', null, undefined, true, false, 1337]]);
-dedupe(['bar', null, undefined, true, false, 1337]);
-dedupe('bar', null, undefined, true, false, 1337);
+dedupe([['bar', null, undefined, true, false, 1234]]);
+dedupe(['bar', null, undefined, true, false, 1234]);
+dedupe('bar', null, undefined, true, false, 1234);
+dedupe('bar', ['abc', { foo: true }]);
+dedupe('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
+dedupe('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
 // $ExpectError
 dedupe(Symbol());
 // $ExpectError
@@ -76,9 +82,12 @@ bound({ conditional: true });
 bound({ conditional: {} });
 bound({ conditional: Symbol() });
 bound([]);
-bound([['bar', null, undefined, true, false, 1337]]);
-bound(['bar', null, undefined, true, false, 1337]);
-bound('bar', null, undefined, true, false, 1337);
+bound([['bar', null, undefined, true, false, 1234]]);
+bound(['bar', null, undefined, true, false, 1234]);
+bound('bar', null, undefined, true, false, 1234);
+bound('bar', ['abc', { foo: true }]);
+bound('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
+bound('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
 // $ExpectError
 bound(Symbol());
 // $ExpectError
