@@ -52,9 +52,7 @@
 		define('classnames', [], function () {
 			return classNames;
 		});
-	} else {
-		if (typeof window !== 'undefined') {
-			window.classNames = classNames;
-		}
+	} else if (typeof window !== 'undefined') {
+		window.classNames = classNames;
 	}
 }());
