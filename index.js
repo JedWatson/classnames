@@ -9,7 +9,6 @@
 	'use strict';
 
 	var hasOwn = {}.hasOwnProperty;
-	var nativeCodeString = '[native code]';
 
 	function classNames() {
 		var classes = [];
