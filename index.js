@@ -11,7 +11,7 @@
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames() {
-		var classes = [];
+		var classes = "";
 
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
@@ -20,29 +20,29 @@
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
+				classes += ' ' + arg;
 			} else if (Array.isArray(arg)) {
 				if (arg.length) {
 					var inner = classNames.apply(null, arg);
 					if (inner) {
-						classes.push(inner);
+						classes += ' ' + inner;
 					}
 				}
 			} else if (argType === 'object') {
 				if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-					classes.push(arg.toString());
+					classes += ' ' + arg;
 					continue;
 				}
 
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+						classes += ' ' + key;
 					}
 				}
 			}
 		}
 
-		return classes.join(' ');
+		return classes.trimStart();
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
