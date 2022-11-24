@@ -2,6 +2,18 @@ import classNames = require('classnames');
 import dedupe = require('classnames/dedupe');
 import bind = require('classnames/bind');
 
+type Foo = {
+  bar: boolean;
+};
+
+const foo: Foo = { bar: true };
+
+interface IFoo {
+  bar: boolean;
+}
+
+const ifoo: IFoo = { bar: true };
+
 // default
 classNames('foo');
 classNames(null);
@@ -19,6 +31,8 @@ classNames('bar', null, undefined, true, false, 1234);
 classNames('bar', ['abc', { foo: true }]);
 classNames('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
+classNames(foo);
+classNames(ifoo);
 // $ExpectError
 classNames(Symbol());
 // $ExpectError
@@ -60,6 +74,8 @@ dedupe('bar', null, undefined, true, false, 1234);
 dedupe('bar', ['abc', { foo: true }]);
 dedupe('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 dedupe('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
+dedupe(foo);
+dedupe(ifoo);
 // $ExpectError
 dedupe(Symbol());
 // $ExpectError
@@ -88,6 +104,8 @@ bound('bar', null, undefined, true, false, 1234);
 bound('bar', ['abc', { foo: true }]);
 bound('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 bound('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
+bound(foo);
+bound(ifoo);
 // $ExpectError
 bound(Symbol());
 // $ExpectError
