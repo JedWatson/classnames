@@ -25,8 +25,12 @@
 				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
 				if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-					classes.push(arg.toString());
-					continue;
+					if (typeof arg.toString() === 'string' || typeof arg.toString() === 'number' && arg.toString()) {
+						classes.push(arg.toString());
+						continue;
+					} else {
+						classNames.apply(null, arg)
+					}
 				}
 
 				for (var key in arg) {

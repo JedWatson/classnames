@@ -30,7 +30,13 @@
 
 		function _parseObject (resultSet, object) {
 			if (object.toString !== Object.prototype.toString && !object.toString.toString().includes('[native code]')) {
-				resultSet[object.toString()] = true;
+				if (typeof object.toString() === 'string' || typeof object.toString() === 'number' && object.toString()) {
+					resultSet[object.toString()] = true;
+					return;
+				} else {
+					_parse(resultSet, object.toString())
+				}
+				
 				return;
 			}
 
