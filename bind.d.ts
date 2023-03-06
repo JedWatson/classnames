@@ -4,6 +4,14 @@ declare namespace classNames {
 	type Binding = Record<string, string>;
 }
 
-declare function classNames(this: classNames.Binding | undefined, ...args: ArgumentArray): string;
+interface ClassNames {
+	(this: classNames.Binding | undefined, ...args: ArgumentArray): string;
+
+	default: ClassNames;
+}
+
+declare const classNames: ClassNames;
+
+export as namespace classNames;
 
 export = classNames;

@@ -3,6 +3,7 @@ import dedupe = require('classnames/dedupe');
 import bind = require('classnames/bind');
 
 // default
+classNames.default('foo');
 classNames('foo');
 classNames(null);
 classNames(undefined);
@@ -44,6 +45,7 @@ classNames({a: true}, 'b', 0);
 classNames({}, Infinity, [{}, []]);
 
 // dedupe
+dedupe.default('foo');
 dedupe('foo');
 dedupe(null);
 dedupe(undefined);
@@ -68,6 +70,7 @@ dedupe([Symbol()]);
 dedupe([[Symbol()]]);
 
 // bind
+bind.default.bind({foo: 'bar'});
 const bound = bind.bind({foo: 'bar'});
 bind.bind(undefined);
 // $ExpectError
