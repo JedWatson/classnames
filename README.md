@@ -139,8 +139,8 @@ Because you can mix together object, array and string arguments, supporting opti
 
 ```js
 const btnClass = classNames('btn', this.props.className, {
-	'btn-pressed': this.state.isPressed,
-	'btn-over': !this.state.isPressed && this.state.isHovered,
+	'btn-pressed': isPressed,
+	'btn-over': !isPressed && isHovered,
 });
 ```
 
