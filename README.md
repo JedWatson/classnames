@@ -1,5 +1,4 @@
-Classnames
-===========
+# Classnames
 
 [![NPM version](https://badgen.net/npm/v/classnames)](https://www.npmjs.com/package/classnames)
 ![Node.js CI](https://github.com/JedWatson/classnames/workflows/Node.js%20CI/badge.svg)
@@ -25,7 +24,7 @@ yarn add classnames
 Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
-var classNames = require('classnames');
+const classNames = require('classnames');
 classNames('foo', 'bar'); // => 'foo bar'
 ```
 
@@ -62,7 +61,7 @@ classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1
 Arrays will be recursively flattened as per the rules above:
 
 ```js
-var arr = ['b', { c: true, d: false }];
+const arr = ['b', { c: true, d: false }];
 classNames('a', arr); // => 'a b c'
 ```
 
@@ -82,44 +81,68 @@ This package is the official replacement for `classSet`, which was originally sh
 One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
-class Button extends React.Component {
-  // ...
-  render () {
-    var btnClass = 'btn';
-    if (this.state.isPressed) btnClass += ' btn-pressed';
-    else if (this.state.isHovered) btnClass += ' btn-over';
-    return <button className={btnClass}>{this.props.label}</button>;
-  }
+import React, { useState } from 'react';
+
+export default function Button (props) {
+	const [isPressed, setIsPressed] = useState(false);
+	const [isHovered, setIsHovered] = useState(false);
+
+	let btnClass = 'btn';
+	if (isPressed) btnClass += ' btn-pressed';
+	else if (isHovered) btnClass += ' btn-over';
+
+	return (
+		<button
+			className={btnClass}
+			onMouseDown={() => setIsPressed(true)}
+			onMouseUp={() => setIsPressed(false)}
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+		>
+			{props.label}
+		</button>
+	);
 }
 ```
 
 You can express the conditional classes more simply as an object:
 
 ```js
-var classNames = require('classnames');
+import React, { useState } from 'react';
+import classNames from 'classnames';
 
-class Button extends React.Component {
-  // ...
-  render () {
-    var btnClass = classNames({
-      btn: true,
-      'btn-pressed': this.state.isPressed,
-      'btn-over': !this.state.isPressed && this.state.isHovered
-    });
-    return <button className={btnClass}>{this.props.label}</button>;
-  }
+export default function Button (props) {
+	const [isPressed, setIsPressed] = useState(false);
+	const [isHovered, setIsHovered] = useState(false);
+
+	const btnClass = classNames({
+		btn: true,
+		'btn-pressed': isPressed,
+		'btn-over': !isPressed && isHovered,
+	});
+
+	return (
+		<button
+			className={btnClass}
+			onMouseDown={() => setIsPressed(true)}
+			onMouseUp={() => setIsPressed(false)}
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+		>
+			{props.label}
+		</button>
+	);
 }
 ```
 
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
-var btnClass = classNames('btn', this.props.className, {
-  'btn-pressed': this.state.isPressed,
-  'btn-over': !this.state.isPressed && this.state.isHovered
+const btnClass = classNames('btn', this.props.className, {
+	'btn-pressed': isPressed,
+	'btn-over': !isPressed && isHovered,
 });
 ```
-
 
 ### Alternate `dedupe` version
 
@@ -130,7 +153,7 @@ This version is slower (about 5x) so it is offered as an opt-in.
 To use the dedupe version with Node.js, Browserify, or webpack:
 
 ```js
-var classNames = require('classnames/dedupe');
+const classNames = require('classnames/dedupe');
 
 classNames('foo', 'foo', 'bar'); // => 'foo bar'
 classNames('foo', { foo: false, bar: true }); // => 'bar'
@@ -138,59 +161,58 @@ classNames('foo', { foo: false, bar: true }); // => 'bar'
 
 For standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
 
-
 ### Alternate `bind` version (for [css-modules](https://github.com/css-modules/css-modules))
 
-If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class "names" and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
+If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class 'names' and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
 
 _Note that in ES2015 environments, it may be better to use the "dynamic class names" approach documented above._
 
 ```js
-var classNames = require('classnames/bind');
+const classNames = require('classnames/bind');
 
-var styles = {
-  foo: 'abc',
-  bar: 'def',
-  baz: 'xyz'
+const styles = {
+	foo: 'abc',
+	bar: 'def',
+	baz: 'xyz',
 };
 
-var cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-var className = cx('foo', ['bar'], { baz: true }); // => "abc def xyz"
+const className = cx('foo', ['bar'], { baz: true }); // => 'abc def xyz'
 ```
 
 Real-world example:
 
 ```js
 /* components/submit-button.js */
-import { Component } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './submit-button.css';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
-export default class SubmitButton extends Component {
-  render () {
-    let text = this.props.store.submissionInProgress ? 'Processing...' : 'Submit';
-    let className = cx({
-      base: true,
-      inProgress: this.props.store.submissionInProgress,
-      error: this.props.store.errorOccurred,
-      disabled: this.props.form.valid,
-    });
-    return <button className={className}>{text}</button>;
-  }
-};
+export default function SubmitButton ({ store, form }) {
+  const [submissionInProgress, setSubmissionInProgress] = useState(store.submissionInProgress);
+  const [errorOccurred, setErrorOccurred] = useState(store.errorOccurred);
+  const [valid, setValid] = useState(form.valid);
 
+  const text = submissionInProgress ? 'Processing...' : 'Submit';
+  const className = cx({
+    base: true,
+    inProgress: submissionInProgress,
+    error: errorOccurred,
+    disabled: valid,
+  });
+
+  return <button className={className}>{text}</button>;
+}
 ```
-
 
 ## Polyfills needed to support older browsers
 
 #### `classNames >=2.0.0`
 
 `Array.isArray`: see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) for details about unsupported older browsers (e.g. <= IE8) and a simple polyfill.
-
 
 ## LICENSE [MIT](LICENSE)
 
