@@ -24,8 +24,8 @@ yarn add classnames
 Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
 
 ```js
-const classNames = require("classnames");
-classNames("foo", "bar"); // => 'foo bar'
+const classNames = require('classnames');
+classNames('foo', 'bar'); // => 'foo bar'
 ```
 
 Alternatively, you can simply include `index.js` on your page with a standalone `<script>` tag and it will export a global `classNames` method, or define the module if you are using RequireJS.
@@ -44,25 +44,25 @@ The `classNames` function takes any number of arguments which can be a string or
 The argument `'foo'` is short for `{ foo: true }`. If the value associated with a given key is falsy, that key won't be included in the output.
 
 ```js
-classNames("foo", "bar"); // => 'foo bar'
-classNames("foo", { bar: true }); // => 'foo bar'
-classNames({ "foo-bar": true }); // => 'foo-bar'
-classNames({ "foo-bar": false }); // => ''
+classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo', { bar: true }); // => 'foo bar'
+classNames({ 'foo-bar': true }); // => 'foo-bar'
+classNames({ 'foo-bar': false }); // => ''
 classNames({ foo: true }, { bar: true }); // => 'foo bar'
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
 // lots of arguments of various types
-classNames("foo", { bar: true, duck: false }, "baz", { quux: true }); // => 'foo bar baz quux'
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
 
 // other falsy values are just ignored
-classNames(null, false, "bar", undefined, 0, 1, { baz: null }, ""); // => 'bar 1'
+classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 ```
 
 Arrays will be recursively flattened as per the rules above:
 
 ```js
-const arr = ["b", { c: true, d: false }];
-classNames("a", arr); // => 'a b c'
+const arr = ['b', { c: true, d: false }];
+classNames('a', arr); // => 'a b c'
 ```
 
 ### Dynamic class names with ES2015
@@ -70,7 +70,7 @@ classNames("a", arr); // => 'a b c'
 If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
-let buttonType = "primary";
+let buttonType = 'primary';
 classNames({ [`btn-${buttonType}`]: true });
 ```
 
@@ -81,15 +81,15 @@ This package is the official replacement for `classSet`, which was originally sh
 One of its primary use cases is to make dynamic and conditional `className` props simpler to work with (especially more so than conditional string manipulation). So where you may have the following code to generate a `className` prop for a `<button>` in React:
 
 ```js
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export default function Button(props) {
 	const [isPressed, setIsPressed] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
-	let btnClass = "btn";
-	if (isPressed) btnClass += " btn-pressed";
-	else if (isHovered) btnClass += " btn-over";
+	let btnClass = 'btn';
+	if (isPressed) btnClass += ' btn-pressed';
+	else if (isHovered) btnClass += ' btn-over';
 
 	return (
 		<button
@@ -108,8 +108,8 @@ export default function Button(props) {
 You can express the conditional classes more simply as an object:
 
 ```js
-import React, { useState } from "react";
-import classNames from "classnames";
+import React, { useState } from 'react';
+import classNames from 'classnames';
 
 export default function Button(props) {
 	const [isPressed, setIsPressed] = useState(false);
@@ -117,8 +117,8 @@ export default function Button(props) {
 
 	const btnClass = classNames({
 		btn: true,
-		"btn-pressed": isPressed,
-		"btn-over": !isPressed && isHovered,
+		'btn-pressed': isPressed,
+		'btn-over': !isPressed && isHovered,
 	});
 
 	return (
@@ -138,9 +138,9 @@ export default function Button(props) {
 Because you can mix together object, array and string arguments, supporting optional `className` props is also simpler as only truthy arguments get included in the result:
 
 ```js
-const btnClass = classNames("btn", this.props.className, {
-	"btn-pressed": this.state.isPressed,
-	"btn-over": !this.state.isPressed && this.state.isHovered,
+const btnClass = classNames('btn', this.props.className, {
+	'btn-pressed': this.state.isPressed,
+	'btn-over': !this.state.isPressed && this.state.isHovered,
 });
 ```
 
@@ -153,32 +153,32 @@ This version is slower (about 5x) so it is offered as an opt-in.
 To use the dedupe version with Node.js, Browserify, or webpack:
 
 ```js
-const classNames = require("classnames/dedupe");
+const classNames = require('classnames/dedupe');
 
-classNames("foo", "foo", "bar"); // => 'foo bar'
-classNames("foo", { foo: false, bar: true }); // => 'bar'
+classNames('foo', 'foo', 'bar'); // => 'foo bar'
+classNames('foo', { foo: false, bar: true }); // => 'bar'
 ```
 
 For standalone (global / AMD) use, include `dedupe.js` in a `<script>` tag on your page.
 
 ### Alternate `bind` version (for [css-modules](https://github.com/css-modules/css-modules))
 
-If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class "names" and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
+If you are using [css-modules](https://github.com/css-modules/css-modules), or a similar approach to abstract class 'names' and the real `className` values that are actually output to the DOM, you may want to use the `bind` variant.
 
 _Note that in ES2015 environments, it may be better to use the "dynamic class names" approach documented above._
 
 ```js
-const classNames = require("classnames/bind");
+const classNames = require('classnames/bind');
 
 const styles = {
-	foo: "abc",
-	bar: "def",
-	baz: "xyz",
+	foo: 'abc',
+	bar: 'def',
+	baz: 'xyz',
 };
 
 const cx = classNames.bind(styles);
 
-const className = cx("foo", ["bar"], { baz: true }); // => "abc def xyz"
+const className = cx('foo', ['bar'], { baz: true }); // => 'abc def xyz'
 ```
 
 Real-world example:
@@ -221,3 +221,4 @@ export default const SubmitButton = ({ store, form }) => {
 
 Copyright (c) 2018 Jed Watson.
 Copyright of the Typescript bindings are respective of each contributor listed in the definition file.
+
