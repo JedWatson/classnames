@@ -83,7 +83,7 @@ One of its primary use cases is to make dynamic and conditional `className` prop
 ```js
 import React, { useState } from 'react';
 
-export default function Button(props) {
+export default function Button (props) {
 	const [isPressed, setIsPressed] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -111,7 +111,7 @@ You can express the conditional classes more simply as an object:
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-export default function Button(props) {
+export default function Button (props) {
 	const [isPressed, setIsPressed] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -191,7 +191,7 @@ import styles from './submit-button.css';
 
 const cx = classNames.bind(styles);
 
-export default const SubmitButton = ({ store, form }) => {
+export default function SubmitButton ({ store, form }) {
   const [submissionInProgress, setSubmissionInProgress] = useState(store.submissionInProgress);
   const [errorOccurred, setErrorOccurred] = useState(store.errorOccurred);
   const [valid, setValid] = useState(form.valid);
@@ -205,10 +205,7 @@ export default const SubmitButton = ({ store, form }) => {
   });
 
   return <button className={className}>{text}</button>;
-};
-
-
-
+}
 ```
 
 ## Polyfills needed to support older browsers
@@ -221,4 +218,3 @@ export default const SubmitButton = ({ store, form }) => {
 
 Copyright (c) 2018 Jed Watson.
 Copyright of the Typescript bindings are respective of each contributor listed in the definition file.
-
