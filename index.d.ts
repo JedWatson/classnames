@@ -15,9 +15,17 @@ declare namespace classNames {
   type Argument = Value | Mapping | ArgumentArray;
 }
 
+interface ClassNames {
+	(...args: classNames.ArgumentArray): string;
+
+	default: ClassNames;
+}
+
 /**
  * A simple JavaScript utility for conditionally joining classNames together.
  */
-declare function classNames(...args: classNames.ArgumentArray): string;
+declare const classNames: ClassNames;
+
+export as namespace classNames;
 
 export = classNames;
