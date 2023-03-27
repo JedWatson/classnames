@@ -18,21 +18,11 @@
 
   </p>
 
----
-
-A simple JavaScript utility for conditionally joining classNames together.
-
-Install with [npm](https://www.npmjs.com/), [Bower](https://bower.io/), or [Yarn](https://yarnpkg.com/):
+Install with [npm](https://www.npmjs.com/):
 
 ```bash
 # via npm
 npm install classnames
-
-# via Bower
-bower install classnames
-
-# or Yarn (note that it will automatically save the package to your `dependencies` in `package.json`)
-yarn add classnames
 ```
 
 Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
