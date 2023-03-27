@@ -18,10 +18,8 @@
 
   </p>
 
-Install with [npm](https://www.npmjs.com/):
-
+Install from the [npm registry](https://www.npmjs.com/) with your package manager:
 ```bash
-# via npm
 npm install classnames
 ```
 
