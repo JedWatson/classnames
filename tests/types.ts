@@ -20,6 +20,7 @@ classNames('bar', null, undefined, true, false, 1234);
 classNames('bar', ['abc', { foo: true }]);
 classNames('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
+classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }], ['abc', 1234, true, false, undefined, null, { foo: true }] as const);
 // $ExpectError
 classNames(Symbol());
 // $ExpectError
