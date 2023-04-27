@@ -12,7 +12,8 @@ declare namespace classNames {
   type Value = string | number | boolean | undefined | null;
   type Mapping = Record<string, unknown>;
   interface ArgumentArray extends Array<Argument> {}
-  type Argument = Value | Mapping | ArgumentArray | ReadonlyArray<Argument>;
+  interface ReadonlyArgumentArray extends ReadonlyArray<Argument> {}
+  type Argument = Value | Mapping | ArgumentArray | ReadonlyArgumentArray;
 }
 
 interface ClassNames {
