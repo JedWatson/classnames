@@ -16,10 +16,14 @@ declare namespace classNames {
   type Argument = Value | Mapping | ArgumentArray | ReadonlyArgumentArray;
 }
 
-interface ClassNames {
-	(...args: classNames.ArgumentArray): string;
+interface IJoin {
+  (key: string, ...args: classNames.ArgumentArray): string;
+}
 
-	default: ClassNames;
+interface ClassNames {
+  (...args: classNames.ArgumentArray): string;
+  join?: IJoin;
+  default: ClassNames;
 }
 
 /**
