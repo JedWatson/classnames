@@ -44,6 +44,18 @@
 
 		return classes.join(' ');
 	}
+	
+	classNames.join = function () {
+		const key = arguments[0];
+		if (!key || typeof key !== 'string') return '';
+		var args = [];
+		for (let i = 1; i < arguments.length; i++) {
+			args.push(arguments[i]);
+		}
+		var classes = classNames.apply(null, args);
+		return key + classes.split(' ').join(' ' + key)
+	}
+
 
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;

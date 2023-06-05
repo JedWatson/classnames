@@ -21,7 +21,7 @@ describe('classNames', function () {
 	});
 
 	it('supports heterogenous arguments', function () {
-		assert.equal(classNames({a: true}, 'b', 0), 'a b');
+		assert.equal(classNames({ a: true }, 'b', 0), 'a b');
 	});
 
 	it('should be trimmed', function () {
@@ -54,11 +54,11 @@ describe('classNames', function () {
 	});
 
 	it('handles arrays that include objects', function () {
-		assert.equal(classNames(['a', {b: true, c: false}]), 'a b');
+		assert.equal(classNames(['a', { b: true, c: false }]), 'a b');
 	});
 
 	it('handles deep array recursion', function () {
-		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
+		assert.equal(classNames(['a', ['b', ['c', { d: true }]]]), 'a b c d');
 	});
 
 	it('handles arrays that are empty', function () {
@@ -85,7 +85,7 @@ describe('classNames', function () {
 			whitespace: ' ',
 			function: Object.prototype.toString,
 			emptyObject: {},
-			nonEmptyObject: {a: 1, b: 2},
+			nonEmptyObject: { a: 1, b: 2 },
 			emptyList: [],
 			nonEmptyList: [1, 2, 3],
 			greaterZero: 1
@@ -99,9 +99,9 @@ describe('classNames', function () {
 	});
 
 	it('handles toString() method defined inherited in object', function () {
-		var Class1 = function() {};
-		var Class2 = function() {};
-		Class1.prototype.toString = function() { return 'classFromMethod'; }
+		var Class1 = function () { };
+		var Class2 = function () { };
+		Class1.prototype.toString = function () { return 'classFromMethod'; }
 		Class2.prototype = Object.create(Class1.prototype);
 
 		assert.equal(classNames(new Class2()), 'classFromMethod');
@@ -116,4 +116,23 @@ describe('classNames', function () {
 		vm.runInContext(code, context);
 		assert.equal(context.output, 'a b');
 	});
+
+	it('handles join operations', function () {
+		assert.equal(classNames(
+			'a',
+			classNames.join('hover:',
+				{
+					'b': true,
+				},
+				['c', 'd']
+			),
+			[classNames.join('sm:', {
+				"h-max": true,
+				"bg-red-500": true,
+			})]
+		), 'a hover:b hover:c hover:d sm:h-max sm:bg-red-500');
+	});
+
+
+
 });
