@@ -38,3 +38,4 @@ jobs:
         node-version: lts/*
     - run: npm ci
     - run: npm run dtslint
+    bypass/solve : failure of #97
