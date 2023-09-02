@@ -28,8 +28,8 @@ describe('classNames', function () {
 		assert.equal(classNames('', 'b', {}, ''), 'b');
 	});
 
-	it('returns an empty string for an empty configuration', function () {
-		assert.equal(classNames({}), '');
+	it('returns a null for an empty configuration', function () {
+		assert.equal(classNames({}), null);
 	});
 
 	it('supports an array of class names', function () {

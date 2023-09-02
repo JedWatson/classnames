@@ -42,7 +42,12 @@
 			}
 		}
 
-		return classes.join(' ');
+		var totalClasses = classes.join(' ');
+
+		if (totalClasses.length > 0) {
+			return totalClasses;
+		}
+		return null;
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {

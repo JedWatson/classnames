@@ -95,7 +95,12 @@
 				}
 			}
 
-			return list.join(' ');
+			var totalList = list.join(' ');
+
+			if (totalList.length) {
+				return totalList;
+			}
+			return null;
 		}
 
 		return _classNames;

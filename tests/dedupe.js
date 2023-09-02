@@ -42,8 +42,8 @@ describe('dedupe', function () {
 		assert.equal(dedupe('', 'b', {}, ''), 'b');
 	});
 
-	it('returns an empty string for an empty configuration', function () {
-		assert.equal(dedupe({}), '');
+	it('returns a null for an empty configuration', function () {
+		assert.equal(dedupe({}), null);
 	});
 
 	it('supports an array of class names', function () {
