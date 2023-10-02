@@ -94,7 +94,7 @@
 					list.push(k)
 				}
 			}
-			
+
 			return list.join(' ') || null;
 		}
 
