@@ -94,13 +94,8 @@
 					list.push(k)
 				}
 			}
-
-			var totalList = list.join(' ');
-
-			if (totalList.length) {
-				return totalList;
-			}
-			return null;
+			
+			return list.join(' ') || null;
 		}
 
 		return _classNames;
