@@ -31,7 +31,7 @@ Alternatively, you can simply include `index.js` on your page with a standalone 
 
 ### Project philosophy
 
-We take the stability and performance of this package seriously, because it is run millions of times a day in browsers all around the world. Updates are thoroughly reviewed for performance impacts before being released, and we have a comprehensive test suite.
+We take the stability and performance of this package seriously, because it is run millions of times a day in browsers all around the world. Updates are thoroughly reviewed for performance implications before being released, and we have a comprehensive test suite.
 
 Classnames follows the [SemVer](https://semver.org/) standard for versioning.
 
