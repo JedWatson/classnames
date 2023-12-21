@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.3.3 / 2023-12-21
+
+- Fix default export, thanks [Remco Haszing](https://github.com/remcohaszing) ([#301](https://github.com/JedWatson/classnames/pull/301))
+- Fix types for read-only arrays, thanks [Ben Thompson](https://github.com/BenGearset) ([#307](https://github.com/JedWatson/classnames/pull/307))
+- Replace README examples with functional-style components, thanks [JoeDGit](https://github.com/JoeDGit) ([#303](https://github.com/JedWatson/classnames/pull/303))
+
 ## v2.3.2 / 2022-09-13
 
 - Fix TypeScript types when using require, thanks [Mark Dalgleish](https://github.com/markdalgleish) ([#276](https://github.com/JedWatson/classnames/pull/276))
