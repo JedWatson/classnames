@@ -5,17 +5,25 @@ on:
 
 jobs:
   publish:
-    name: Release
+    name: Publish package to NPM
     runs-on: ubuntu-latest
     environment: release
+
     steps:
-      - uses: actions/checkout@main
+      - name: Check out repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-node@main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm publish
+          node-version: 20
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Publish to NPM
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
