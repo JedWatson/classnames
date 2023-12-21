@@ -14,7 +14,7 @@
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
     "dtslint": "dtslint",
-    "test": "node --test ./tests/*.js"
+    "test": "node --test ./tests/*.mjs"
   },
   "keywords": [
     "react",
