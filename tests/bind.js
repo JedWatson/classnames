@@ -1,5 +1,4 @@
-/* global describe, it */
-
+var { describe, it } = require('node:test');
 var assert = require('assert');
 var classNames = require('../bind');
 

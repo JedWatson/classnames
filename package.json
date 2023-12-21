@@ -14,7 +14,7 @@
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
     "dtslint": "dtslint",
-    "test": "mocha tests/*.js"
+    "test": "node --test ./tests/*.js"
   },
   "keywords": [
     "react",
@@ -35,7 +35,6 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "browserify": "^17.0.0",
-    "dtslint": "^4.0.9",
-    "mocha": "^10.0.0"
+    "dtslint": "^4.0.9"
   }
 }
