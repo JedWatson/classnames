@@ -1,5 +1,4 @@
-/* global describe, it */
-
+var { describe, it } = require('node:test');
 var assert = require('assert');
 var vm = require('vm');
 var classNames = require('../');
