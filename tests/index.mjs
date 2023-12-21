@@ -1,10 +1,10 @@
-var { describe, it } = require('node:test');
-var assert = require('assert');
-var vm = require('vm');
-var classNames = require('../');
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import classNames from '../index.js';
 
-describe('classNames', function () {
-	it('keeps object keys with truthy values', function () {
+describe('classNames', () => {
+	it('keeps object keys with truthy values', () => {
 		assert.equal(classNames({
 			a: true,
 			b: false,
@@ -15,64 +15,64 @@ describe('classNames', function () {
 		}), 'a f');
 	});
 
-	it('joins arrays of class names and ignore falsy values', function () {
+	it('joins arrays of class names and ignore falsy values', () => {
 		assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
 	});
 
-	it('supports heterogenous arguments', function () {
+	it('supports heterogenous arguments', () => {
 		assert.equal(classNames({a: true}, 'b', 0), 'a b');
 	});
 
-	it('should be trimmed', function () {
+	it('should be trimmed', () => {
 		assert.equal(classNames('', 'b', {}, ''), 'b');
 	});
 
-	it('returns an empty string for an empty configuration', function () {
+	it('returns an empty string for an empty configuration', () => {
 		assert.equal(classNames({}), '');
 	});
 
-	it('supports an array of class names', function () {
+	it('supports an array of class names', () => {
 		assert.equal(classNames(['a', 'b']), 'a b');
 	});
 
-	it('joins array arguments with string arguments', function () {
+	it('joins array arguments with string arguments', () => {
 		assert.equal(classNames(['a', 'b'], 'c'), 'a b c');
 		assert.equal(classNames('c', ['a', 'b']), 'c a b');
 	});
 
-	it('handles multiple array arguments', function () {
+	it('handles multiple array arguments', () => {
 		assert.equal(classNames(['a', 'b'], ['c', 'd']), 'a b c d');
 	});
 
-	it('handles arrays that include falsy and true values', function () {
+	it('handles arrays that include falsy and true values', () => {
 		assert.equal(classNames(['a', 0, null, undefined, false, true, 'b']), 'a b');
 	});
 
-	it('handles arrays that include arrays', function () {
+	it('handles arrays that include arrays', () => {
 		assert.equal(classNames(['a', ['b', 'c']]), 'a b c');
 	});
 
-	it('handles arrays that include objects', function () {
+	it('handles arrays that include objects', () => {
 		assert.equal(classNames(['a', {b: true, c: false}]), 'a b');
 	});
 
-	it('handles deep array recursion', function () {
+	it('handles deep array recursion', () => {
 		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
 
-	it('handles arrays that are empty', function () {
+	it('handles arrays that are empty', () => {
 		assert.equal(classNames('a', []), 'a');
 	});
 
-	it('handles nested arrays that have empty nested arrays', function () {
+	it('handles nested arrays that have empty nested arrays', () => {
 		assert.equal(classNames('a', [[]]), 'a');
 	});
 
-	it('handles all types of truthy and falsy property values as expected', function () {
+	it('handles all types of truthy and falsy property values as expected', () => {
 		assert.equal(classNames({
 			// falsy:
 			null: null,
-			emptyString: "",
+			emptyString: '',
 			noNumber: NaN,
 			zero: 0,
 			negativeZero: -0,
@@ -80,7 +80,7 @@ describe('classNames', function () {
 			undefined: undefined,
 
 			// truthy (literally anything else):
-			nonEmptyString: "foobar",
+			nonEmptyString: 'foobar',
 			whitespace: ' ',
 			function: Object.prototype.toString,
 			emptyObject: {},
@@ -91,26 +91,24 @@ describe('classNames', function () {
 		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
 	});
 
-	it('handles toString() method defined on object', function () {
+	it('handles toString() method defined on object', () => {
 		assert.equal(classNames({
-			toString: function () { return 'classFromMethod'; }
+			toString: () => { return 'classFromMethod'; }
 		}), 'classFromMethod');
 	});
 
-	it('handles toString() method defined inherited in object', function () {
-		var Class1 = function() {};
-		var Class2 = function() {};
-		Class1.prototype.toString = function() { return 'classFromMethod'; }
-		Class2.prototype = Object.create(Class1.prototype);
+	it('handles toString() method defined inherited in object', () => {
+		class Class1 { toString() { return 'classFromMethod'; } }
+		class Class2 extends Class1 {}
 
 		assert.equal(classNames(new Class2()), 'classFromMethod');
 	});
 
-	it('handles objects in a VM', function () {
-		var context = { classNames, output: undefined };
+	it('handles objects in a VM', () => {
+		const context = { classNames, output: undefined };
 		vm.createContext(context);
 
-		var code = 'output = classNames({ a: true, b: true });';
+		const code = 'output = classNames({ a: true, b: true });';
 
 		vm.runInContext(code, context);
 		assert.equal(context.output, 'a b');
