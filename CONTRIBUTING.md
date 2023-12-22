@@ -21,5 +21,5 @@ run in the v8 version that your local Node.js uses, while classNames is _most_
 often run across a wide variety of browsers and browser versions.
 
 It is recommended to test possible regressions in performance in all major
-browsers. This can be done by running `npm run benchmarks-browserify` in the
-`./benchmarks` directory.
+browsers. This can be done by running `npm run benchmarks-browser` in the
+`./benchmarks` directory, the benchmark will then be served from http://localhost:8080.

@@ -2,12 +2,17 @@
   "name": "classnames-benchmarks",
   "scripts": {
     "benchmarks": "node ./run.js",
-    "benchmarks-browserify": "browserify ./runInBrowser.js >./runInBrowser.bundle.js"
+    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve ./runInBrowser.js --file ./runInBrowser.bundle.js --format iife && http-server -o"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "benchmark": "^2.1.4",
-    "browserify": "^17.0.0",
+    "classnames-local": "file:../",
     "classnames-npm": "npm:classnames@*",
-    "classnames-local": "file:../"
+    "http-server": "^14.1.1",
+    "lodash": "^4.17.21",
+    "rollup": "^4.9.1"
   }
 }
