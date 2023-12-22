@@ -13,7 +13,7 @@
   "scripts": {
     "benchmarks": "node ./benchmarks/run",
     "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
-    "dtslint": "dtslint",
+    "check-types": "tsd",
     "test": "node --test ./tests/*.mjs"
   },
   "keywords": [
@@ -35,6 +35,9 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "browserify": "^17.0.0",
-    "dtslint": "^4.0.9"
+    "tsd": "^0.30.0"
+  },
+  "tsd": {
+    "directory": "./tests"
   }
 }
