@@ -1,16 +1,13 @@
 {
   "name": "classnames-benchmarks",
-  "version": "1.0.0",
-  "private": true,
-  "description": "",
-  "main": "run.js",
   "scripts": {
-    "test": "echo \"Tests should be run in the main classnames package.\" && exit 1"
+    "benchmarks": "node ./run.js",
+    "benchmarks-browserify": "browserify ./runInBrowser.js >./runInBrowser.bundle.js"
   },
-  "author": "Jed Watson",
-  "license": "MIT",
   "devDependencies": {
-    "benchmark": "2.1.4",
-    "classnames": "*"
+    "benchmark": "^2.1.4",
+    "browserify": "^17.0.0",
+    "classnames-npm": "npm:classnames@*",
+    "classnames-local": "file:../"
   }
 }

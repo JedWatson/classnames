@@ -1,11 +1,11 @@
 var fixtures = require('./fixtures');
-var local = require('../');
-var dedupe = require('../dedupe');
-var localPackage = require('../package.json');
+var local = require('classnames-local');
+var dedupe = require('classnames-local/dedupe');
+var localPackage = require('classnames-local/package.json');
 
-var npm = require('classnames');
-var npmDedupe = require('classnames/dedupe');
-var npmPackage = require('./node_modules/classnames/package.json');
+var npm = require('classnames-npm');
+var npmDedupe = require('classnames-npm/dedupe');
+var npmPackage = require('classnames-npm/package.json');
 
 function log (message) {
 	console.log(message);
@@ -16,7 +16,7 @@ function log (message) {
 
 if (localPackage.version !== npmPackage.version) {
 	log('Your local version (' + localPackage.version + ') does not match the installed version (' + npmPackage.version + ')\n\n' +
-		'Please run `npm update` in ./benchmarks to ensure you are benchmarking\n' +
+		'Please run `npm update classnames-npm` in ./benchmarks to ensure you are benchmarking\n' +
 		'the latest version of this package.\n');
 	return;
 }

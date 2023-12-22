@@ -11,10 +11,8 @@
   },
   "types": "./index.d.ts",
   "scripts": {
-    "benchmarks": "node ./benchmarks/run",
-    "benchmarks-browserify": "./node_modules/.bin/browserify ./benchmarks/runInBrowser.js >./benchmarks/runInBrowser.bundle.js",
-    "check-types": "tsd",
-    "test": "node --test ./tests/*.mjs"
+    "test": "node --test ./tests/*.mjs",
+    "check-types": "tsd"
   },
   "keywords": [
     "react",
@@ -32,9 +30,10 @@
     "*.d.ts",
     "*.js"
   ],
+  "workspaces": [
+    "benchmarks"
+  ],
   "devDependencies": {
-    "benchmark": "^2.1.4",
-    "browserify": "^17.0.0",
     "tsd": "^0.30.0"
   },
   "tsd": {
