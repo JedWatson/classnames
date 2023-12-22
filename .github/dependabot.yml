@@ -4,3 +4,9 @@ updates:
     directory: /
     schedule:
       interval: daily
+  - package-ecosystem: npm
+    directory: /
+    rebase-strategy: disabled
+    versioning-strategy: increase
+    schedule:
+      interval: daily
