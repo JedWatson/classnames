@@ -52,3 +52,23 @@ jobs:
 
       - name: Check type definitions
         run: npm run check-types
+
+  benchmarks:
+    name: Run benchmarks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run benchmarks
+        run: npm run benchmarks --workspace=benchmarks
