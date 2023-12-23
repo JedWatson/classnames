@@ -1,38 +1,36 @@
-var benchmark = require('benchmark');
-var _ = require('lodash');
+import benchmark from 'benchmark';
+import _ from 'lodash';
 
-var Suite = benchmark.runInContext({ _ }).Suite;
+const { Suite } = benchmark.runInContext({ _ });
 
 function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
-	var suite = new Suite();
+	const suite = new Suite();
 
-	suite.add('local#' + fixture.description, function () {
-		local.apply(null, fixture.args);
+	suite.add(`local#${fixture.description}`, () => {
+		local(...fixture.args);
 	});
 
-	suite.add('  npm#' + fixture.description, function () {
-		npm.apply(null, fixture.args);
+	suite.add(`  npm#${fixture.description}`, () => {
+		npm(...fixture.args);
 	});
 
-	suite.add('local/dedupe#' + fixture.description, function () {
-		dedupe.apply(null, fixture.args);
+	suite.add(`local/dedupe#${fixture.description}`, () => {
+		dedupe(...fixture.args);
 	});
 
-	suite.add('  npm/dedupe#' + fixture.description, function () {
-		npmDedupe.apply(null, fixture.args);
+	suite.add(`  npm/dedupe#${fixture.description}`, () => {
+		npmDedupe(...fixture.args);
 	});
 
-	// after each cycle
-	suite.on('cycle', function (event) {
-		log('* ' + String(event.target));
+	suite.on('cycle', (event) => {
+		log(`* ${event.target}`);
 	});
 
-	// other handling
-	suite.on('complete', function () {
-		log('\n> Fastest is' + (' ' + this.filter('fastest').map(result => result.name).join(' | ')).replace(/\s+/, ' ') + '\n');
+	suite.on('complete', () => {
+		log(`\n> Fastest is ${(suite.filter('fastest').map(result => result.name).join(' | ')).replace(/\s+/, ' ')}\n`);
 	});
 
-	suite.on('error', function (event) {
+	suite.on('error', (event) => {
 		log(event.target.error.message);
 		throw event.target.error;
 	});
@@ -40,4 +38,4 @@ function runSuite (local, npm, dedupe, npmDedupe, fixture, log) {
 	suite.run();
 }
 
-module.exports = runSuite;
+export default runSuite;
