@@ -1,8 +1,9 @@
 {
   "name": "classnames-benchmarks",
+  "type": "module",
   "scripts": {
     "benchmarks": "node ./run.js",
-    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve ./runInBrowser.js --file ./runInBrowser.bundle.js --format iife && http-server -o"
+    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve ./runInBrowser.js --file ./runInBrowser.bundle.js && http-server -o -c-1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",

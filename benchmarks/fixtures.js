@@ -1,4 +1,4 @@
-var fixtures = [
+const fixtures = [
 	{
 		description: 'strings',
 		args: ['one', 'two', 'three'],
@@ -26,4 +26,4 @@ var fixtures = [
 	}
 ];
 
-module.exports = fixtures;
+export default fixtures;
