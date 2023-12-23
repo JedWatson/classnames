@@ -3,17 +3,16 @@
   "type": "module",
   "scripts": {
     "benchmarks": "node ./run.js",
-    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve ./runInBrowser.js --file ./runInBrowser.bundle.js && http-server -o -c-1"
+    "benchmarks-browser": "rollup --plugin commonjs,json,node-resolve ./runInBrowser.js --file ./runInBrowser.bundle.js && http-server -c-1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "benchmark": "^2.1.4",
     "classnames-local": "file:../",
     "classnames-npm": "npm:classnames@*",
     "http-server": "^14.1.1",
-    "lodash": "^4.17.21",
-    "rollup": "^4.9.1"
+    "rollup": "^4.9.1",
+    "tinybench": "^2.5.1"
   }
 }
