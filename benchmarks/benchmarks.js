@@ -1,11 +1,14 @@
 import { Bench } from 'tinybench';
+import { markdownTable } from 'markdown-table';
 
 import local from 'classnames-local';
+import bind from 'classnames-local/bind.js';
 import dedupe from 'classnames-local/dedupe.js';
 import localPackage from 'classnames-local/package.json' with { type: 'json' };
 
 import npm from 'classnames-npm';
 import npmDedupe from 'classnames-npm/dedupe.js';
+import npmBind from 'classnames-npm/bind.js';
 import npmPackage from 'classnames-npm/package.json' with { type: 'json' };
 
 if (localPackage.version !== npmPackage.version) {
@@ -40,9 +43,9 @@ const benchmarks = [
 
 export async function runBenchmarks () {
 	for (const benchmark of benchmarks) {
-		console.log(`Benchmarking '${benchmark.description}'.`);
+		console.log(`Benchmarking '${benchmark.description}'.\n`);
 		const bench = await runBenchmark(benchmark);
-		console.table(bench.table());
+		printTable(bench);
 	}
 	
 	console.log('Finished!');
@@ -51,22 +54,23 @@ export async function runBenchmarks () {
 async function runBenchmark (benchmark) {
 	const bench = new Bench();
 
-	bench.add(`local#${benchmark.description}`, () => {
-		local(...benchmark.args);
-	});
+	bench.add('default/local', () => local(...benchmark.args));
+	bench.add('default/npm', () => npm(...benchmark.args));
 
-	bench.add(`npm#${benchmark.description}`, () => {
-		npm(...benchmark.args);
-	});
+	bench.add('bind/local', () => bind(...benchmark.args));
+	bench.add('bind/npm', () => npmBind(...benchmark.args));
 
-	bench.add(`local/dedupe#${benchmark.description}`, () => {
-		dedupe(...benchmark.args);
-	});
-
-	bench.add(`npm/dedupe#${benchmark.description}`, () => {
-		npmDedupe(...benchmark.args);
-	});
+	bench.add('dedupe/local', () => dedupe(...benchmark.args));
+	bench.add('dedupe/npm', () => npmDedupe(...benchmark.args));
 
 	await bench.run();
 	return bench;
+}
+
+function printTable(bench) {
+	const table = bench.table();
+	const headers = Object.keys(table[0]);
+	const data = table.map((entry) => headers.map((header) => entry[header]));
+
+	console.log(markdownTable([headers, ...data]) + '\n');
 }
