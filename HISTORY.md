@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.4.0 / 2023-12-26
+
+- Use string concatenation to increase performance thanks [Jon Koops](https://github.com/jonkoops) ([#336](https://github.com/JedWatson/classnames/pull/336))
+
 ## v2.3.3 / 2023-12-21
 
 - Fix default export, thanks [Remco Haszing](https://github.com/remcohaszing) ([#301](https://github.com/JedWatson/classnames/pull/301))
