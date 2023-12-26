@@ -12,6 +12,7 @@
     "classnames-local": "file:../",
     "classnames-npm": "npm:classnames@*",
     "http-server": "^14.1.1",
+    "markdown-table": "^3.0.3",
     "rollup": "^4.9.1",
     "tinybench": "^2.5.1"
   }
