@@ -2,14 +2,42 @@
   "name": "classnames",
   "version": "2.4.0",
   "description": "A simple utility for conditionally joining classNames together",
-  "main": "index.js",
   "author": "Jed Watson",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/JedWatson/classnames.git"
   },
+  "type": "commonjs",
+  "main": "./index.js",
   "types": "./index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./index.js": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./bind": {
+      "types": "./bind.d.ts",
+      "default": "./bind.js"
+    },
+    "./bind.js": {
+      "types": "./bind.d.ts",
+      "default": "./bind.js"
+    },
+    "./dedupe": {
+      "types": "./dedupe.d.ts",
+      "default": "./dedupe.js"
+    },
+    "./dedupe.js": {
+      "types": "./dedupe.d.ts",
+      "default": "./dedupe.js"
+    }
+  },
   "scripts": {
     "test": "node --test ./tests/*.mjs",
     "check-types": "tsd"
