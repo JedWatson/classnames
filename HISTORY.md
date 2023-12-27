@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.5.0 / 2023-12-27
+
+- Restore ability to pass a TypeScript `interface` ([#341](https://github.com/JedWatson/classnames/pull/341))
+- Add `exports` field to package ([#342](https://github.com/JedWatson/classnames/pull/342))
+
 ## v2.4.0 / 2023-12-26
 
 - Use string concatenation to increase performance thanks [Jon Koops](https://github.com/jonkoops) ([#336](https://github.com/JedWatson/classnames/pull/336))
