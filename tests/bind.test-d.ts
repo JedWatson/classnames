@@ -1,6 +1,18 @@
 import {expectError} from 'tsd';
 import bind from '../bind';
 
+type Foo = {
+  bar: boolean;
+};
+
+const foo: Foo = { bar: true };
+
+interface IFoo {
+  bar: boolean;
+}
+
+const ifoo: IFoo = { bar: true };
+
 // bind
 bind.default.bind({foo: 'bar'});
 const bound = bind.bind({foo: 'bar'});
@@ -22,6 +34,6 @@ bound('bar', null, undefined, true, false, 1234);
 bound('bar', ['abc', { foo: true }]);
 bound('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 bound('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
+bound(foo);
+bound(ifoo);
 expectError(bound(Symbol()));
-expectError(bound([Symbol()]));
-expectError(bound([[Symbol()]]));

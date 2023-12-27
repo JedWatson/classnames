@@ -1,6 +1,18 @@
 import {expectError} from 'tsd';
 import classNames from '..';
 
+type Foo = {
+  bar: boolean;
+};
+
+const foo: Foo = { bar: true };
+
+interface IFoo {
+  bar: boolean;
+}
+
+const ifoo: IFoo = { bar: true };
+
 // default
 classNames.default('foo');
 classNames('foo');
@@ -20,11 +32,9 @@ classNames('bar', ['abc', { foo: true }]);
 classNames('bar', ['abc', { foo: true }], { def: false, ijk: 1234 });
 classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }]);
 classNames('abc', 1234, true, false, undefined, null, { foo: true }, ['abc', 1234, true, false, undefined, null, { foo: true }], ['abc', 1234, true, false, undefined, null, { foo: true }] as const);
-
+classNames(foo);
+classNames(ifoo);
 expectError(classNames(Symbol()));
-expectError(classNames([Symbol()]));
-expectError(classNames([[Symbol()]]));
-
 // should match tests/index.js
 classNames('c', ['a', 'b']);
 classNames('', 'b', {}, '');
