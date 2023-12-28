@@ -14,7 +14,6 @@ interface IFoo {
 const ifoo: IFoo = { bar: true };
 
 // default
-classNames.default('foo');
 classNames('foo');
 classNames(null);
 classNames(undefined);

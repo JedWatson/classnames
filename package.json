@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/JedWatson/classnames.git"
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
@@ -39,7 +39,7 @@
     }
   },
   "scripts": {
-    "test": "node --test ./tests/*.mjs",
+    "test": "node --test ./tests/*.js",
     "bench": "node ./benchmarks/run.js",
     "bench-browser": "rollup --plugin commonjs,json,node-resolve ./benchmarks/runInBrowser.js --file ./benchmarks/runInBrowser.bundle.js && http-server -c-1 ./benchmarks",
     "check-types": "tsd"

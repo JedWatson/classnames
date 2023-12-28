@@ -14,7 +14,6 @@ interface IFoo {
 const ifoo: IFoo = { bar: true };
 
 // dedupe
-dedupe.default('foo');
 dedupe('foo');
 dedupe(null);
 dedupe(undefined);
