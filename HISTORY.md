@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.5.1 / 2023-12-29
+
+- Remove `workspaces` field from package ([#350](https://github.com/JedWatson/classnames/pull/350))
+
 ## v2.5.0 / 2023-12-27
 
 - Restore ability to pass a TypeScript `interface` ([#341](https://github.com/JedWatson/classnames/pull/341))
