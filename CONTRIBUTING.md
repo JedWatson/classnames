@@ -14,12 +14,12 @@ performance.
 
 A benchmark utility is included so that changes may be tested against the
 current published version. To run the benchmarks, run `npm install` in the
-root directory then run `npm run benchmarks` in the `./benchmarks` directory.
+root directory then run `npm run bench`.
 
 Please be aware though that local benchmarks are just a smoke-signal; they will
 run in the v8 version that your local Node.js uses, while classNames is _most_
 often run across a wide variety of browsers and browser versions.
 
 It is recommended to test possible regressions in performance in all major
-browsers. This can be done by running `npm run benchmarks-browser` in the
-`./benchmarks` directory, the benchmark will then be served from http://localhost:8080.
+browsers. This can be done by running `npm run bench-browser`, the benchmark
+will then be served from http://localhost:8080.

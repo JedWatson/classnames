@@ -71,4 +71,4 @@ jobs:
         run: npm ci
 
       - name: Run benchmarks
-        run: npm run benchmarks --workspace=benchmarks
+        run: npm run bench

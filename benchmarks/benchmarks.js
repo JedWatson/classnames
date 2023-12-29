@@ -14,7 +14,7 @@ import npmPackage from 'classnames-npm/package.json' with { type: 'json' };
 if (localPackage.version !== npmPackage.version) {
 	console.warn(
 		`Your local version (${localPackage.version}) does not match the installed version (${npmPackage.version}).\n\n` +
-		'Please run `npm update classnames-npm` in ./benchmarks to ensure you are benchmarking against the latest version published to NPM.\n'
+		'Please run `npm update classnames-npm` to ensure you are benchmarking against the latest version published to NPM.\n'
 	);
 }
 
