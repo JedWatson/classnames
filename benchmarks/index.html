@@ -6,6 +6,22 @@
 	</head>
 	<body>
 		<button id="start" type="button">Start benchmarks</button>
-		<script type="module" src="./runInBrowser.bundle.js"></script>
+		<script type="importmap">
+			{
+				"imports": {
+					"tinybench": "./node_modules/tinybench/dist/index.js",
+					"markdown-table": "./node_modules/markdown-table/index.js",
+					"classnames-local": "./node_modules/classnames-local/index.js",
+					"classnames-local/bind.js": "./node_modules/classnames-local/bind.js",
+					"classnames-local/dedupe.js": "./node_modules/classnames-local/dedupe.js",
+					"classnames-local/package.json": "./node_modules/classnames-local/package.json",
+					"classnames-npm": "./node_modules/classnames-npm/index.js",
+					"classnames-npm/bind.js": "./node_modules/classnames-npm/bind.js",
+					"classnames-npm/dedupe.js": "./node_modules/classnames-npm/dedupe.js",
+					"classnames-npm/package.json": "./node_modules/classnames-npm/package.json"
+				}
+			}
+		</script>		
+		<script type="module" src="./runInBrowser.js"></script>
 	</body>
 </html>
