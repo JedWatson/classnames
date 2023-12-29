@@ -1,10 +1,10 @@
-var hasOwn = {}.hasOwnProperty;
+const hasOwn = {}.hasOwnProperty;
 
 export default function classNames () {
-	var classes = '';
+	let classes = '';
 
-	for (var i = 0; i < arguments.length; i++) {
-		var arg = arguments[i];
+	for (let i = 0; i < arguments.length; i++) {
+		const arg = arguments[i];
 		if (arg) {
 			classes = appendClass(classes, parseValue.call(this, arg));
 		}
@@ -30,9 +30,9 @@ function parseValue (arg) {
 		return arg.toString();
 	}
 
-	var classes = '';
+	let classes = '';
 
-	for (var key in arg) {
+	for (const key in arg) {
 		if (hasOwn.call(arg, key) && arg[key]) {
 			classes = appendClass(classes, this && this[key] || key);
 		}
