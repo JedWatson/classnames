@@ -14,7 +14,6 @@ interface IFoo {
 const ifoo: IFoo = { bar: true };
 
 // bind
-bind.default.bind({foo: 'bar'});
 const bound = bind.bind({foo: 'bar'});
 bind.bind(undefined);
 expectError(bind.bind(Symbol()));
