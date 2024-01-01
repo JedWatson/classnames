@@ -29,16 +29,8 @@ const benchmarks = [
 	},
 	{
 		description: 'strings, object',
-		args: ['one', 'two', {four: true, three: false}]
+		args: ['one', 'two', {four: true, three: false}, {}]
 	},
-	{
-		description: 'mix',
-		args: ['one', {two: true, three: false}, {four: 'four', five: true}, 6, {}]
-	},
-	{
-		description: 'arrays',
-		args: [['one', 'two'], ['three'], ['four', ['five']], [{six: true}, {seven: false}]]
-	}
 ];
 
 export async function runBenchmarks () {
