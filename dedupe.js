@@ -1,94 +1,67 @@
-const classNames = (function () {
-	// don't inherit from Object so we can skip hasOwnProperty check later
-	// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
-	function StorageObject() {}
-	StorageObject.prototype = Object.create(null);
+const hasOwn = {}.hasOwnProperty;
 
-	function _parseArray (resultSet, array) {
-		const length = array.length;
+export default function classNames () {
+	const classes = new Set();
 
-		for (let i = 0; i < length; ++i) {
-			_parse(resultSet, array[i]);
-		}
+	for (let i = 0; i < arguments.length; i++) {
+		appendValue(classes, arguments[i]);
 	}
 
-	const hasOwn = {}.hasOwnProperty;
+	return Array.from(classes.values()).join(' ');
+}
 
-	function _parseNumber (resultSet, num) {
-		resultSet[num] = true;
+function appendValue (classes, value) {
+	if (!value) {
+		return;
 	}
 
-	function _parseObject (resultSet, object) {
-		if (object.toString !== Object.prototype.toString && !object.toString.toString().includes('[native code]')) {
-			resultSet[object.toString()] = true;
-			return;
-		}
+	const type = typeof value;
 
-		for (const k in object) {
-			if (hasOwn.call(object, k)) {
-				// set value to false instead of deleting it to avoid changing object structure
-				// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
-				resultSet[k] = !!object[k];
-			}
-		}
+	if (type === 'string') {
+		appendString(classes, value);
+	} else if (Array.isArray(value)) {
+		appendArray(classes, value);
+	} else if (type === 'object') {
+		appendObject(classes, value);
+	} else if (type === 'number') {
+		classes.add(value);
+	}
+}
+
+const SPACE = /\s+/;
+
+function appendString (classes, value) {
+	const entries = value.split(SPACE);
+
+	for (let entry of entries) {
+		classes.add(entry);
+	}
+}
+
+function appendArray (classes, values) {
+	for (const value of values) {
+		appendValue(classes, value);
+	}
+}
+
+function appendObject (classes, value) {
+	if (
+		value.toString !== Object.prototype.toString &&
+		!value.toString.toString().includes('[native code]')
+	) {
+		classes.add(value.toString());
+		return;
 	}
 
-	const SPACE = /\s+/;
-	function _parseString (resultSet, str) {
-		const array = str.split(SPACE);
-		const length = array.length;
+	for (const key in value) {
+		if (!hasOwn.call(value, key)) {
+			continue;
+		}
 
-		for (let i = 0; i < length; ++i) {
-			resultSet[array[i]] = true;
+		if (value[key]) {
+			classes.add(key);
+		} else {
+			classes.delete(key);
 		}
 	}
-
-	function _parse (resultSet, arg) {
-		if (!arg) return;
-		const argType = typeof arg;
-
-		// 'foo bar'
-		if (argType === 'string') {
-			_parseString(resultSet, arg);
-
-		// ['foo', 'bar', ...]
-		} else if (Array.isArray(arg)) {
-			_parseArray(resultSet, arg);
-
-		// { 'foo': true, ... }
-		} else if (argType === 'object') {
-			_parseObject(resultSet, arg);
-
-		// '130'
-		} else if (argType === 'number') {
-			_parseNumber(resultSet, arg);
-		}
-	}
-
-	function _classNames () {
-		// don't leak arguments
-		// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
-		const length = arguments.length;
-		const args = Array(length);
-		for (let i = 0; i < length; i++) {
-			args[i] = arguments[i];
-		}
-
-		const classSet = new StorageObject();
-		_parseArray(classSet, args);
-
-		const list = [];
-
-		for (const k in classSet) {
-			if (classSet[k]) {
-				list.push(k)
-			}
-		}
-
-		return list.join(' ');
-	}
-
-	return _classNames;
-})();
-
-export default classNames;
+}

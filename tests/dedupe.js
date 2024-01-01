@@ -30,7 +30,7 @@ describe('dedupe', () => {
 	});
 
 	it('joins arrays of class names and ignore falsy values', () => {
-		assert.equal(dedupe('a', 0, null, undefined, true, 1, 'b'), '1 a b');
+		assert.equal(dedupe('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
 	});
 
 	it('supports heterogenous arguments', () => {
