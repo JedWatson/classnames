@@ -1,6 +1,6 @@
 {
   "name": "classnames",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "A simple utility for conditionally joining classNames together",
   "author": "Jed Watson",
   "license": "MIT",
