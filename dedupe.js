@@ -87,15 +87,16 @@
 			var classSet = new StorageObject();
 			_parseArray(classSet, args);
 
-			var list = [];
+			var classes = '';
 
-			for (var k in classSet) {
-				if (classSet[k]) {
-					list.push(k)
+			for (var key in classSet) {
+				if (classSet[key]) {
+					classes && (classes += ' ');
+					classes += key;
 				}
 			}
 
-			return list.join(' ');
+			return classes;
 		}
 
 		return _classNames;
