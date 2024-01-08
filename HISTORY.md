@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.5.2 / 2024-01-08
+
+- Use string concatenation to speed up dedupe variant ([#363](https://github.com/JedWatson/classnames/pull/363))
+
 ## v2.5.1 / 2023-12-29
 
 - Remove `workspaces` field from package ([#350](https://github.com/JedWatson/classnames/pull/350))
