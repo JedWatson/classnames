@@ -6,15 +6,16 @@ export default function classNames () {
 	const classSet = new StorageObject();
 	appendArray(classSet, arguments);
 
-	const list = [];
+	let classes = '';
 
-	for (const k in classSet) {
-		if (classSet[k]) {
-			list.push(k);
+	for (const key in classSet) {
+		if (classSet[key]) {
+			classes && (classes += ' ');
+			classes += key;
 		}
 	}
 
-	return list.join(' ');
+	return classes;
 }
 
 function appendValue (classSet, arg) {
