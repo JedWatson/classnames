@@ -3,17 +3,8 @@ function StorageObject () {}
 StorageObject.prototype = Object.create(null);
 
 export default function classNames () {
-	// Don't leak arguments.
-	// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
-	const length = arguments.length;
-	const args = Array(length);
-
-	for (let i = 0; i < length; i++) {
-		args[i] = arguments[i];
-	}
-
 	const classSet = new StorageObject();
-	appendArray(classSet, args);
+	appendArray(classSet, arguments);
 
 	const list = [];
 
