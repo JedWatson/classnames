@@ -50,5 +50,5 @@ function appendClass (value, newClass) {
 		return value + ' ' + newClass;
 	}
 
-	return value + newClass;
+	return newClass;
 }
