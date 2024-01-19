@@ -10,7 +10,7 @@ export default function classNames () {
 
 	for (const key in classSet) {
 		if (classSet[key]) {
-			classes = classes + (classes ? ' ' +  key : key);
+			classes += classes ? (' ' +  key) : key;
 		}
 	}
 
