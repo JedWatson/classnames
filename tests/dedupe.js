@@ -23,14 +23,14 @@ describe('dedupe', () => {
 	});
 
 	it('should make sure object with falsy value wipe out previous classes', () => {
-		assert.equal(dedupe('foo foo', 0, null, undefined, true, 1, 'b', { 'foo': false }), '1 b');
+		assert.equal(dedupe('foo foo', 0, null, undefined, false, 'b', { 'foo': false }), 'b');
 		assert.equal(dedupe('foo', 'foobar', 'bar', { foo: false }), 'foobar bar');
 		assert.equal(dedupe('foo', 'foo-bar', 'bar', { foo: false }), 'foo-bar bar');
 		assert.equal(dedupe('foo', '-moz-foo-bar', 'bar', { foo: false }), '-moz-foo-bar bar');
 	});
 
 	it('joins arrays of class names and ignore falsy values', () => {
-		assert.equal(dedupe('a', 0, null, undefined, true, 1, 'b'), '1 a b');
+		assert.equal(dedupe('a', 0, null, undefined, false, 'b'), 'a b');
 	});
 
 	it('supports heterogenous arguments', () => {

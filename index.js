@@ -14,7 +14,7 @@ export default function classNames () {
 }
 
 function parseValue (arg) {
-	if (typeof arg === 'string' || typeof arg === 'number') {
+	if (typeof arg === 'string') {
 		return arg;
 	}
 
