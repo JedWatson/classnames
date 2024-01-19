@@ -46,9 +46,5 @@ function appendClass (value, newClass) {
 		return value;
 	}
 
-	if (value) {
-		return value + ' ' + newClass;
-	}
-
-	return value + newClass;
+	return value ? (value + ' ' + newClass) : newClass;
 }
