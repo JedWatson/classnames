@@ -33,7 +33,7 @@ const benchmarks = [
 	},
 	{
 		description: 'mix',
-		args: ['one', {two: true, three: false}, {four: 'four', five: true}, 6, {}]
+		args: ['one', {two: true, three: false}, {four: 'four', five: true}, {}]
 	},
 	{
 		description: 'arrays',

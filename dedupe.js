@@ -27,8 +27,6 @@ function appendValue (classSet, arg) {
 		appendArray(classSet, arg);
 	} else if (argType === 'object') {
 		appendObject(classSet, arg);
-	} else if (argType === 'number') {
-		appendNumber(classSet, arg);
 	}
 }
 
@@ -49,10 +47,6 @@ function appendArray (classSet, array) {
 	for (let i = 0; i < length; i++) {
 		appendValue(classSet, array[i]);
 	}
-}
-
-function appendNumber (classSet, num) {
-	classSet[num] = true;
 }
 
 const hasOwn = {}.hasOwnProperty;
