@@ -26,18 +26,37 @@ function parseValue (arg) {
 		return classNames.apply(this, arg);
 	}
 
+	if (arg instanceof Set) {
+		return classNames.apply(this, Array.from(arg));
+	}
+
 	if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
 		return arg.toString();
 	}
 
 	let classes = '';
 
+	if (arg instanceof Map) {
+		for (const [key, value] of arg) {
+			if (value) {
+				if (typeof key === 'symbol') {
+					const symbolDescription = key.toString().slice(7, -1);
+					classes = appendClass(classes, this && this[symbolDescription] || symbolDescription);
+				}
+
+				if (typeof key === 'string') {
+					classes = appendClass(classes, this && this[key] || key);			
+				}
+			}
+		}
+		return classes;
+	}
+
 	for (const key in arg) {
 		if (hasOwn.call(arg, key) && arg[key]) {
 			classes = appendClass(classes, this && this[key] || key);
 		}
 	}
-
 	return classes;
 }
 

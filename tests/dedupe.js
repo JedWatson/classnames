@@ -74,6 +74,21 @@ describe('dedupe', () => {
 		assert.equal(dedupe(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
 
+	it('supports for Set', () => {
+		assert.equal(dedupe(new Set(['a', {a: true}, ['b', ['b', {b: true}]], 'c', {d: true, f: false}])), 'a b c d');
+	});
+
+	it('supports for Map', () => {
+		assert.equal(dedupe(new Map([
+			['a', ''],
+			['b', true],
+			['a', true],
+			['d', true],
+			[Symbol('b'), true],
+			[Symbol('f'), null],
+		])), 'a b d');
+	});
+
 	it('handles own toString() method defined on object', () => {
 		assert.equal(dedupe({
 			toString: () => { return 'classFromMethod'; }

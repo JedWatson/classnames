@@ -25,6 +25,10 @@ function appendValue (classSet, arg) {
 		appendString(classSet, arg);
 	} else if (Array.isArray(arg)) {
 		appendArray(classSet, arg);
+	} else if (arg instanceof Set) {
+		appendSet(classSet, arg);
+	} else if (arg instanceof Map) {
+		appendMap(classSet, arg);
 	} else if (argType === 'object') {
 		appendObject(classSet, arg);
 	}
@@ -65,6 +69,30 @@ function appendObject (classSet, object) {
 			// Set value to false instead of deleting it to avoid changing object structure.
 			// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
 			classSet[k] = !!object[k];
+		}
+	}
+}
+
+function appendSet(classSet, set) {
+	const array = Array.from(set);
+	const length = array.length;
+
+	for (let i = 0; i < length; i++) {
+		appendValue(classSet, array[i]);
+	}
+}
+
+function appendMap(classSet, map) {
+	for (const [key, value] of map) {
+		if (value) {
+			if (typeof key === 'symbol') {
+				const symbolDescription = key.toString().slice(7, -1);
+				classSet[symbolDescription] = !!value;
+			}
+	
+			if (typeof key === 'string') {
+				classSet[key] = !!value;
+			}
 		}
 	}
 }

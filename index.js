@@ -26,11 +26,33 @@ function parseValue (arg) {
 		return classNames.apply(null, arg);
 	}
 
-	if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-		return arg.toString();
+	if (arg instanceof Set) {
+		return classNames.apply(null, Array.from(arg));
 	}
 
-	let classes = '';
+	let classes = "";
+
+	if (arg instanceof Map) {
+		for (const [key, value] of arg) {
+			if (value) {
+				if (typeof key === 'symbol') {
+					const symbolDescription = key.toString().slice(7, -1);
+					classes = appendClass(classes, symbolDescription);
+				}
+	
+				if (typeof key === 'string') {
+					classes = appendClass(classes, key);
+				}
+			}
+		}
+		return classes;
+	}
+
+	if (
+		arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')
+	) {
+		return arg.toString();
+	}
 
 	for (const key in arg) {
 		if (hasOwn.call(arg, key) && arg[key]) {

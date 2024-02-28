@@ -113,4 +113,19 @@ describe('classNames', () => {
 		vm.runInContext(code, context);
 		assert.equal(context.output, 'a b');
 	});
+
+	it('supports for Set', () => {
+		assert.equal(classNames(new Set(['', {}, ['a', ['b', {c: null}]], 'd', {e: true, f: false}])), 'a b d e');
+	});
+
+	it('supports for Map', () => {
+		assert.equal(classNames(new Map([
+			['a', ''],
+			['b', true],
+			[{}, true],
+			['d', true],
+			[Symbol('e'), null],
+			[Symbol('f'), {}],
+		])), 'b d f');
+	});
 });

@@ -76,6 +76,21 @@ describe('bind', () => {
 				toString: () => { return 'classFromMethod'; }
 			}), 'classFromMethod');
 		});
+
+		it('supports for Set', () => {
+			assert.equal(classNames(new Set(['', {}, ['a', ['b', { c: null}]], 'd', {e: true, f: false}])), 'a b d e');
+		});
+
+		it('supports for Map', () => {
+			assert.equal(classNames(new Map([
+				['a', ''],
+				['b', true],
+				[{}, true],
+				['d', 1],
+				[Symbol('e'), null],
+				[Symbol('f'), {}],
+			])), 'b d f');
+		});
 	});
 
 	describe('classNamesBound', () => {
@@ -160,6 +175,28 @@ describe('bind', () => {
 			class Class2 extends Class1 {}
 
 			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+		});
+
+		it('handles toString() method defined inherited in object', () => {
+			class Class1 { toString() { return 'classFromMethod'; } }
+			class Class2 extends Class1 {}
+
+			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+		});
+
+		it('supports for Set', () => {
+			assert.equal(classNamesBound(new Set(['', {}, ['a', ['b', { c: null}]], 'd', { e: true, f: false }])), '#a #b #d #e');
+		});
+
+		it('supports for Map', () => {
+			assert.equal(classNamesBound(new Map([
+				['a', ''],
+				['b', true],
+				[{}, true],
+				['d', true],
+				[Symbol('e'), null],
+				[Symbol('f'), {}],
+			])), '#b #d #f');
 		});
 	});
 })
