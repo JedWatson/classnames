@@ -30,10 +30,6 @@ function parseValue (arg) {
 		return classNames.apply(this, Array.from(arg));
 	}
 
-	if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-		return arg.toString();
-	}
-
 	let classes = '';
 
 	if (arg instanceof Map) {
@@ -50,6 +46,10 @@ function parseValue (arg) {
 			}
 		}
 		return classes;
+	}
+
+	if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+		return arg.toString();
 	}
 
 	for (const key in arg) {
