@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   publish:
-    name: Publish package to NPM
+    name: Publish package to NPM and Create GitHub Release
     runs-on: ubuntu-latest
     environment: release
 
@@ -26,38 +26,19 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
 
+      - name: Get package version
+        run: |
+          VERSION=$(npm pkg get version | xargs)
+          echo "Package version is $VERSION"
+          echo "::set-output name=version::$VERSION"
+
       - name: Publish to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
 
-  fetch-version-from-npm:
-    runs-on: ubuntu-latest
-    needs: publish
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Get latest package version
-        id: get_version
-        run: |
-          VERSION=$(curl -s https://registry.npmjs.org/classnames/latest | jq -r '.version')
-          echo "::set-output name=version::$VERSION"
-
-  create-github-release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    needs: fetch-version-from-npm
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Create GitHub Release
-        run: gh release create ${{ needs.fetch-version-from-npm.outputs.version }} --title ${{ needs.fetch-version-from-npm.outputs.version }} --notes "Full changelog at https://github.com/JedWatson/classnames/blob/main/CHANGELOG.md"
+        run: gh release create ${{ steps.get_version.outputs.version }} --title ${{ steps.get_version.outputs.version }} --notes "Full changelog at https://github.com/JedWatson/classnames/blob/main/CHANGELOG.md"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
