@@ -68,7 +68,7 @@
     "classnames-npm": "npm:classnames@*",
     "http-server": "^14.1.1",
     "markdown-table": "^3.0.3",
-    "rollup": "^4.13.1",
+    "rollup": "^4.13.2",
     "tinybench": "^2.6.0",
     "tsd": "^0.30.7"
   },
