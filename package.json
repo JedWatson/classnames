@@ -70,7 +70,7 @@
     "markdown-table": "^3.0.3",
     "rollup": "^4.13.2",
     "tinybench": "^2.6.0",
-    "tsd": "^0.30.7"
+    "tsd": "^0.31.0"
   },
   "tsd": {
     "directory": "./tests"
