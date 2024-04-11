@@ -69,7 +69,7 @@ classNames('a', arr); // => 'a b c'
 If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
-let buttonType = 'primary';
+const buttonType = 'primary';
 classNames({ [`btn-${buttonType}`]: true });
 ```
 
