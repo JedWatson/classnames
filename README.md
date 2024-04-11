@@ -69,7 +69,7 @@ classNames('a', arr); // => 'a b c'
 If you're in an environment that supports [computed keys](https://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer) (available in ES2015 and Babel) you can use dynamic class names:
 
 ```js
-let buttonType = 'primary';
+const buttonType = 'primary';
 classNames({ [`btn-${buttonType}`]: true });
 ```
 
@@ -83,24 +83,24 @@ One of its primary use cases is to make dynamic and conditional `className` prop
 import React, { useState } from 'react';
 
 export default function Button (props) {
-	const [isPressed, setIsPressed] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-	let btnClass = 'btn';
-	if (isPressed) btnClass += ' btn-pressed';
-	else if (isHovered) btnClass += ' btn-over';
+  let btnClass = 'btn';
+  if (isPressed) btnClass += ' btn-pressed';
+  else if (isHovered) btnClass += ' btn-over';
 
-	return (
-		<button
-			className={btnClass}
-			onMouseDown={() => setIsPressed(true)}
-			onMouseUp={() => setIsPressed(false)}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-		>
-			{props.label}
-		</button>
-	);
+  return (
+    <button
+      className={btnClass}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {props.label}
+    </button>
+  );
 }
 ```
 
@@ -111,26 +111,26 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 export default function Button (props) {
-	const [isPressed, setIsPressed] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-	const btnClass = classNames({
-		btn: true,
-		'btn-pressed': isPressed,
-		'btn-over': !isPressed && isHovered,
-	});
+  const btnClass = classNames({
+    btn: true,
+    'btn-pressed': isPressed,
+    'btn-over': !isPressed && isHovered,
+  });
 
-	return (
-		<button
-			className={btnClass}
-			onMouseDown={() => setIsPressed(true)}
-			onMouseUp={() => setIsPressed(false)}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-		>
-			{props.label}
-		</button>
-	);
+  return (
+    <button
+      className={btnClass}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {props.label}
+    </button>
+  );
 }
 ```
 
@@ -138,8 +138,8 @@ Because you can mix together object, array and string arguments, supporting opti
 
 ```js
 const btnClass = classNames('btn', this.props.className, {
-	'btn-pressed': isPressed,
-	'btn-over': !isPressed && isHovered,
+  'btn-pressed': isPressed,
+  'btn-over': !isPressed && isHovered,
 });
 ```
 
@@ -170,9 +170,9 @@ _Note that in ES2015 environments, it may be better to use the "dynamic class na
 const classNames = require('classnames/bind');
 
 const styles = {
-	foo: 'abc',
-	bar: 'def',
-	baz: 'xyz',
+  foo: 'abc',
+  bar: 'def',
+  baz: 'xyz',
 };
 
 const cx = classNames.bind(styles);
