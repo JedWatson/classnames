@@ -7,10 +7,10 @@
 //   Sean Kelley <https://github.com/seansfkelley>
 //   Michal Adamczyk <https://github.com/mradamczyk>
 //   Marvin Hagemeister <https://github.com/marvinhagemeister>
-export type Value = string | boolean | undefined | null;
+export type Value = string | boolean | undefined | null | number | bigint;
 export type Mapping = Record<string, any>;
-export interface ArgumentArray extends Array<Argument> {}
-export interface ReadonlyArgumentArray extends ReadonlyArray<Argument> {}
+export type ArgumentArray = Argument[];
+export type ReadonlyArgumentArray = ReadonlyArray<Argument>;
 export type Argument = Value | Mapping | ArgumentArray | ReadonlyArgumentArray;
 /**
  * A simple JavaScript utility for conditionally joining classNames together.
