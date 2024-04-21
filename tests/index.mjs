@@ -22,7 +22,7 @@ describe('classNames', () => {
 	});
 
 	it('supports heterogenous arguments', () => {
-		assert.equal(classNames({ a: true }, 'b', 0), 'a b');
+		assert.equal(classNames({a: true}, 'b', 0), 'a b');
 	});
 
 	it('should be trimmed', () => {
@@ -55,11 +55,11 @@ describe('classNames', () => {
 	});
 
 	it('handles arrays that include objects', () => {
-		assert.equal(classNames(['a', { b: true, c: false }]), 'a b');
+		assert.equal(classNames(['a', {b: true, c: false}]), 'a b');
 	});
 
 	it('handles deep array recursion', () => {
-		assert.equal(classNames(['a', ['b', ['c', { d: true }]]]), 'a b c d');
+		assert.equal(classNames(['a', ['b', ['c', {d: true}]]]), 'a b c d');
 	});
 
 	it('handles arrays that are empty', () => {
@@ -87,7 +87,7 @@ describe('classNames', () => {
 			whitespace: ' ',
 			function: Object.prototype.toString,
 			emptyObject: {},
-			nonEmptyObject: { a: 1, b: 2 },
+			nonEmptyObject: {a: 1, b: 2},
 			emptyList: [],
 			nonEmptyList: [1, 2, 3],
 			greaterZero: 1,
@@ -103,7 +103,7 @@ describe('classNames', () => {
 
 	it('handles toString() method defined inherited in object', () => {
 		class Class1 { toString() { return 'classFromMethod'; } }
-		class Class2 extends Class1 { }
+		class Class2 extends Class1 {}
 
 		assert.equal(classNames(new Class2()), 'classFromMethod');
 	});

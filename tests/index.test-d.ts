@@ -1,14 +1,14 @@
-import { expectError } from 'tsd';
+import {expectError} from 'tsd';
 import classNames from '..';
 
 type Foo = {
-	bar: boolean;
+  bar: boolean;
 };
 
 const foo: Foo = { bar: true };
 
 interface IFoo {
-	bar: boolean;
+  bar: boolean;
 }
 
 const ifoo: IFoo = { bar: true };
@@ -48,7 +48,7 @@ classNames(['a', 'b'], 'c');
 classNames(['a', 'b'], ['c', 'd']);
 classNames(['a', 0, 0n, null, undefined, false, true, 'b']);
 classNames(['a', ['b', 'c']]);
-classNames(['a', ['b', ['c', { d: true }]]]);
-classNames(['a', { b: true, c: false }]);
-classNames({ a: true }, 'b', 0);
+classNames(['a', ['b', ['c', {d: true}]]]);
+classNames(['a', {b: true, c: false}]);
+classNames({a: true}, 'b', 0);
 classNames({}, Infinity, [{}, []]);
