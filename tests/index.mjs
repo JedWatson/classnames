@@ -9,14 +9,16 @@ describe('classNames', () => {
 			a: true,
 			b: false,
 			c: 0,
-			d: null,
-			e: undefined,
-			f: 1
-		}), 'a f');
+			d: 0n,
+			e: null,
+			f: undefined,
+			g: 1,
+			h: 1n,
+		}), 'a g h');
 	});
 
 	it('joins arrays of class names and ignore falsy values', () => {
-		assert.equal(classNames('a', 0, null, undefined, true, 1, 'b'), 'a 1 b');
+		assert.equal(classNames('a', 0, 0n, null, undefined, true, 1, 1n, 'b'), 'a 1 b');
 	});
 
 	it('supports heterogenous arguments', () => {
@@ -45,7 +47,7 @@ describe('classNames', () => {
 	});
 
 	it('handles arrays that include falsy and true values', () => {
-		assert.equal(classNames(['a', 0, null, undefined, false, true, 'b']), 'a b');
+		assert.equal(classNames(['a', 0, 0n, null, undefined, false, true, 'b']), 'a b');
 	});
 
 	it('handles arrays that include arrays', () => {
@@ -75,6 +77,7 @@ describe('classNames', () => {
 			emptyString: '',
 			noNumber: NaN,
 			zero: 0,
+			zeroBigInt: 0n,
 			negativeZero: -0,
 			false: false,
 			undefined: undefined,
@@ -87,8 +90,9 @@ describe('classNames', () => {
 			nonEmptyObject: {a: 1, b: 2},
 			emptyList: [],
 			nonEmptyList: [1, 2, 3],
-			greaterZero: 1
-		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero');
+			greaterZero: 1,
+			greaterZeroBigInt: 1n,
+		}), 'nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero greaterZeroBigInt');
 	});
 
 	it('handles toString() method defined on object', () => {
