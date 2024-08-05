@@ -69,7 +69,7 @@
     "http-server": "^14.1.1",
     "markdown-table": "^3.0.3",
     "rollup": "^4.19.2",
-    "tinybench": "^2.8.0",
+    "tinybench": "^2.9.0",
     "tsd": "^0.31.1"
   },
   "tsd": {
