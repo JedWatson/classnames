@@ -63,7 +63,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^15.2.4",
     "classnames-local": "file:.",
     "classnames-npm": "npm:classnames@*",
     "http-server": "^14.1.1",
