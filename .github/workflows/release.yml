@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   publish:
-    name: Publish package to NPM
+    name: Publish package to NPM and Create GitHub Release
     runs-on: ubuntu-latest
     environment: release
 
@@ -26,8 +26,19 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
 
+      - name: Get package version
+        run: |
+          VERSION=$(npm pkg get version | xargs)
+          echo "Package version is $VERSION"
+          echo "::set-output name=version::$VERSION"
+
       - name: Publish to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+
+      - name: Create GitHub Release
+        run: gh release create ${{ steps.get_version.outputs.version }} --title ${{ steps.get_version.outputs.version }} --notes "Full changelog at https://github.com/JedWatson/classnames/blob/main/CHANGELOG.md"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
