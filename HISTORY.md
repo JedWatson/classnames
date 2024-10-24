@@ -103,7 +103,7 @@ define(["classnames"], function (classNames) {
 
 ## v1.2.2 / 2015-04-28
 
-- license comment updates to simiplify certain build scenarios
+- license comment updates to simplify certain build scenarios
 
 ## v1.2.1 / 2015-04-22
 
