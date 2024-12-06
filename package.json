@@ -9,6 +9,7 @@
     "url": "git+https://github.com/JedWatson/classnames.git"
   },
   "type": "module",
+  "sideEffects": false,
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
