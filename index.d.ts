@@ -7,7 +7,7 @@
 //   Sean Kelley <https://github.com/seansfkelley>
 //   Michal Adamczyk <https://github.com/mradamczyk>
 //   Marvin Hagemeister <https://github.com/marvinhagemeister>
-export type Value = string | boolean | undefined | bigint | null;
+export type Value = string | boolean | number | bigint | undefined | null;
 export type Mapping = Record<string, any>;
 export interface ArgumentArray extends Array<Argument> {}
 export interface ReadonlyArgumentArray extends ReadonlyArray<Argument> {}
