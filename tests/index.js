@@ -11,8 +11,10 @@ describe('classNames', () => {
 			c: 0,
 			d: null,
 			e: undefined,
-			f: 1
-		}), 'a f');
+			f: 1,
+			g: 0n,
+			h: 1n,
+		}), 'a f h');
 	});
 
 	it('joins arrays of class names and ignore falsy values', () => {
