@@ -1,6 +1,11 @@
 export default function classNames(...args) {
 	return args
 		.map((arg) => {
+			// falsy value: undefined | null | false | 0 | ""
+			if (!arg) {
+				return "";
+			}
+
 			// string: "a"
 			if (typeof arg === "string") {
 				return arg;
@@ -11,12 +16,7 @@ export default function classNames(...args) {
 				return classNames(...arg);
 			}
 
-			// failed condition: undefined | false | 0
-			if (!arg || typeof arg !== "object") {
-				return "";
-			}
-
-			// custom toString
+			// object with a custom toString method
 			if (
 				/* has a custom toString method */
 				arg.toString !== Object.prototype.toString &&
@@ -31,6 +31,6 @@ export default function classNames(...args) {
 				.filter((key) => arg[key] && arg.hasOwnProperty(key))
 				.join(" ");
 		})
-		.filter((v) => !!v) // remove empty strings to prevent duplicate whitespace
+		.filter((v) => !!v) // remove empty strings
 		.join(" ");
 }
