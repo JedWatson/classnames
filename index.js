@@ -1,14 +1,14 @@
 export default function classNames(...args) {
 	return args
 		.map((arg) => {
-			// falsy value: undefined | null | false | 0 | ""
-			if (!arg) {
-				return "";
-			}
-
 			// string: "a"
 			if (typeof arg === "string") {
 				return arg;
+			}
+
+			// falsy value: undefined | null | false | 0 | ""
+			if (!arg || typeof arg !== "object") {
+				return "";
 			}
 
 			// array: ["a", "b", "c"]
@@ -31,6 +31,6 @@ export default function classNames(...args) {
 				.filter((key) => arg[key] && arg.hasOwnProperty(key))
 				.join(" ");
 		})
-		.filter((v) => !!v) // remove empty strings
+		.filter((v) => v) // remove empty strings
 		.join(" ");
 }
