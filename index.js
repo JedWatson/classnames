@@ -1,50 +1,36 @@
-const hasOwn = {}.hasOwnProperty;
+export default function classNames(...args) {
+	return args
+		.map((arg) => {
+			// string: "a"
+			if (typeof arg === "string") {
+				return arg;
+			}
 
-export default function classNames () {
-	let classes = '';
+			// array: ["a", "b", "c"]
+			if (Array.isArray(arg)) {
+				return classNames(...arg);
+			}
 
-	for (let i = 0; i < arguments.length; i++) {
-		const arg = arguments[i];
-		if (arg) {
-			classes = appendClass(classes, parseValue(arg));
-		}
-	}
+			// failed condition: undefined | false | 0
+			if (!arg || typeof arg !== "object") {
+				return "";
+			}
 
-	return classes;
-}
+			// custom toString
+			if (
+				/* has a custom toString method */
+				arg.toString !== Object.prototype.toString &&
+				/* and is not a native toString */
+				!arg.toString.toString().includes("[native code]")
+			) {
+				return arg.toString();
+			}
 
-function parseValue (arg) {
-	if (typeof arg === 'string') {
-		return arg;
-	}
-
-	if (typeof arg !== 'object') {
-		return '';
-	}
-
-	if (Array.isArray(arg)) {
-		return classNames.apply(null, arg);
-	}
-
-	if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-		return arg.toString();
-	}
-
-	let classes = '';
-
-	for (const key in arg) {
-		if (hasOwn.call(arg, key) && arg[key]) {
-			classes = appendClass(classes, key);
-		}
-	}
-
-	return classes;
-}
-
-function appendClass (value, newClass) {
-	if (!newClass) {
-		return value;
-	}
-
-	return value ? (value + ' ' + newClass) : newClass;
+			// object: {"a": false, "b": true}
+			return Object.keys(arg)
+				.filter((key) => arg[key] && arg.hasOwnProperty(key))
+				.join(" ");
+		})
+		.filter((v) => !!v) // remove empty strings to prevent duplicate whitespace
+		.join(" ");
 }
