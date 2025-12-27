@@ -11,6 +11,7 @@
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
+  "sideEffects": false,
   "exports": {
     "./package.json": "./package.json",
     ".": {
