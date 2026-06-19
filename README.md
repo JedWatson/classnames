@@ -18,6 +18,8 @@
 Install from the [npm registry](https://www.npmjs.com/) with your package manager:
 ```bash
 npm install classnames
+# or
+deno install classnames
 ```
 
 Use with [Node.js](https://nodejs.org/en/), [Browserify](https://browserify.org/), or [webpack](https://webpack.github.io/):
