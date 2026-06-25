@@ -35,7 +35,7 @@ We take the stability and performance of this package seriously, because it is r
 
 Classnames follows the [SemVer](https://semver.org/) standard for versioning.
 
-There is also a [Changelog](https://github.com/JedWatson/classnames/blob/master/HISTORY.md).
+There is also a [Changelog](https://github.com/JedWatson/classnames/blob/main/HISTORY.md).
 
 ## Usage
 
