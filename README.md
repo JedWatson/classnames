@@ -55,6 +55,10 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo
 
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, { baz: null }, ''); // => 'bar'
+
+// conditional strings (falsy results are ignored)
+classNames('foo', true && 'bar'); // => 'foo bar'
+classNames('foo', false && 'bar'); // => 'foo'
 ```
 
 Arrays will be recursively flattened as per the rules above:
