@@ -104,6 +104,20 @@ describe('classNames', () => {
 		assert.equal(classNames(new Class2()), 'classFromMethod');
 	});
 
+	it('handles objects with a null prototype', () => {
+		const dict = Object.create(null);
+		dict.a = true;
+		dict.b = false;
+
+		assert.equal(classNames(dict), 'a');
+		assert.equal(classNames(Object.groupBy(['a', 'b'], (x) => x)), 'a b');
+	});
+
+	it('handles objects whose toString is not callable', () => {
+		assert.equal(classNames({toString: null, a: true}), 'a');
+		assert.equal(classNames({toString: undefined, a: true}), 'a');
+	});
+
 	it('handles objects in a VM', () => {
 		const context = { classNames, output: undefined };
 		vm.createContext(context);

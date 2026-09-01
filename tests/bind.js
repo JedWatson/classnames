@@ -76,6 +76,20 @@ describe('bind', () => {
 				toString: () => { return 'classFromMethod'; }
 			}), 'classFromMethod');
 		});
+
+		it('handles objects with a null prototype', () => {
+			const dict = Object.create(null);
+			dict.a = true;
+			dict.b = false;
+
+			assert.equal(classNames(dict), 'a');
+			assert.equal(classNames(Object.groupBy(['a', 'b'], (x) => x)), 'a b');
+		});
+
+		it('handles objects whose toString is not callable', () => {
+			assert.equal(classNames({toString: null, a: true}), 'a');
+			assert.equal(classNames({toString: undefined, a: true}), 'a');
+		});
 	});
 
 	describe('classNamesBound', () => {
@@ -160,6 +174,20 @@ describe('bind', () => {
 			class Class2 extends Class1 {}
 
 			assert.equal(classNamesBound(new Class2()), 'classFromMethod');
+		});
+
+		it('handles objects with a null prototype', () => {
+			const dict = Object.create(null);
+			dict.a = true;
+			dict.b = false;
+
+			assert.equal(classNamesBound(dict), '#a');
+			assert.equal(classNamesBound(Object.groupBy(['a', 'b'], (x) => x)), '#a #b');
+		});
+
+		it('handles objects whose toString is not callable', () => {
+			assert.equal(classNamesBound({toString: null, a: true}), '#a');
+			assert.equal(classNamesBound({toString: undefined, a: true}), '#a');
 		});
 	});
 })
