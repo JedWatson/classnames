@@ -86,4 +86,18 @@ describe('dedupe', () => {
 
 		assert.equal(dedupe(new Class2()), 'classFromMethod');
 	});
+
+	it('handles objects with a null prototype', () => {
+		const dict = Object.create(null);
+		dict.a = true;
+		dict.b = false;
+
+		assert.equal(dedupe(dict), 'a');
+		assert.equal(dedupe(Object.groupBy(['a', 'b'], (x) => x)), 'a b');
+	});
+
+	it('handles objects whose toString is not callable', () => {
+		assert.equal(dedupe({toString: null, a: true}), 'a');
+		assert.equal(dedupe({toString: undefined, a: true}), 'a');
+	});
 });

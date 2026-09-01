@@ -53,6 +53,7 @@ const hasOwn = {}.hasOwnProperty;
 
 function appendObject (classSet, object) {
 	if (
+		typeof object.toString === 'function' &&
 		object.toString !== Object.prototype.toString &&
 		!object.toString.toString().includes('[native code]')
 	) {
