@@ -79,6 +79,31 @@ describe('bind', () => {
 	});
 
 	describe('classNamesBound', () => {
+		it('keeps unmapped string classes that match Object.prototype properties', () => {
+			for (const name of ['toString', 'constructor', 'hasOwnProperty', '__proto__']) {
+				assert.equal(classNamesBound(name), name);
+				assert.equal(classNamesBound([name]), name);
+				assert.equal(classNamesBound('a', name), '#a ' + name);
+			}
+		});
+
+		it('keeps unmapped object keys that match Object.prototype properties', () => {
+			for (const name of ['constructor', 'hasOwnProperty', '__proto__']) {
+				assert.equal(classNamesBound({[name]: true}), name);
+			}
+		});
+
+		it('uses string mappings for prototype-named and inherited classes', () => {
+			const mappings = Object.setPrototypeOf({
+				toString: '#toString', constructor: '#constructor', ['__proto__']: '#proto'
+			}, {inherited: '#inherited'});
+			const bound = classNames.bind(mappings);
+			assert.equal(bound('toString', 'constructor', '__proto__', 'inherited'),
+				'#toString #constructor #proto #inherited');
+			assert.equal(bound({constructor: true, ['__proto__']: true, inherited: true}),
+				'#constructor #proto #inherited');
+		});
+
 		it('keeps object keys with truthy values', () => {
 			assert.equal(classNamesBound({
 				a: true,
