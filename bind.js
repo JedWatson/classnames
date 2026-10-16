@@ -15,7 +15,8 @@ export default function classNames () {
 
 function parseValue (arg) {
 	if (typeof arg === 'string') {
-		return this && this[arg] || arg;
+		const mappedClass = this && this[arg];
+		return typeof mappedClass === 'string' && mappedClass || arg;
 	}
 
 	if (typeof arg !== 'object') {
@@ -34,7 +35,8 @@ function parseValue (arg) {
 
 	for (const key in arg) {
 		if (hasOwn.call(arg, key) && arg[key]) {
-			classes = appendClass(classes, this && this[key] || key);
+			const mappedClass = this && this[key];
+			classes = appendClass(classes, typeof mappedClass === 'string' && mappedClass || key);
 		}
 	}
 
